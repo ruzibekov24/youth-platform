@@ -1,52 +1,59 @@
 # MIYA
 
-## Role inside the larger platform
+## 🇺🇿 O‘zbekcha
 
-MIYA began as a separate concept:
+MIYA — Youth Platformning o‘zi emas.
+
+U raqamli uyning **creation va problem-solving layer'i**.
 
 > **Muammoni ko‘r. Idea ber. Yechim top. Amalga oshir.**
 
-Inside the youth ecosystem, MIYA can become the **creation and problem-solving layer**.
-
-## Core flow
+### Flow
 
 **Problem → Idea → People → Project → Action**
 
-### Problem
-Identify something worth solving.
+### Ecosystem ichidagi roli
 
-### Idea
-Propose a possible solution.
+Discover nimanidir ko‘rsatadi.
 
-### People
-Find people with complementary skills.
+MIYA: “Bundan nima yaratish mumkin?” deydi.
 
-### Project
-Give the idea a concrete scope, goal, and plan.
+Community odamlarni birlashtiradi.
 
-### Action
-Build, test, launch, or present the result.
+Build projectni harakatga keltiradi.
 
-## Possible roles
+Profile natijani saqlaydi.
 
-- Problem Reporter
-- Idea Creator
-- Builder
-- Designer
-- Researcher
-- Organizer
-- Mentor
+Contribution esa projectni boshqalarga foydali qiladi.
 
-Roles should remain flexible.
+MIYA faqat startup uchun emas. School initiative, research, creative work, technology product, event, volunteering yoki community solution ham project bo‘lishi mumkin.
 
-## Why MIYA matters
+---
 
-Without an execution layer, a youth platform can become a directory of opportunities and a feed of ideas.
+## 🇬🇧 English
 
-MIYA asks a different question:
+MIYA is not the platform itself.
 
-> **What are you going to do with what you discovered?**
+It is the **creation and problem-solving layer** inside the digital home.
 
-## Constraint
+> **See a problem. Give an idea. Find a solution. Make it real.**
 
-Not every user needs MIYA. It should become powerful when a user has a problem, idea, or project to act on.
+**Problem → Idea → People → Project → Action**
+
+MIYA turns “I have an idea” into “We are building it.”
+
+Projects do not have to be startups. They can be school initiatives, research, creative work, technology, events, volunteering, or community solutions.
+
+---
+
+## 🇷🇺 Русский
+
+MIYA — не вся платформа.
+
+Это **слой создания и решения проблем** внутри цифрового дома.
+
+> **Увидь проблему → предложи идею → найди решение → воплоти его.**
+
+**Проблема → Идея → Люди → Проект → Действие**
+
+Проект не обязан быть стартапом. Это может быть школьная инициатива, исследование, технология, мероприятие, волонтёрская или общественная инициатива.
