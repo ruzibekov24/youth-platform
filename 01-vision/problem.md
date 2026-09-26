@@ -1,46 +1,59 @@
 # The Problem
 
-## Starting observation
+## 🇺🇿 O‘zbekcha
 
-A young person who wants to improve their life or create something useful usually needs information, opportunities, skills, people, feedback, tools, motivation, and a way to present their work.
+### Eski qarash
 
-Today, these things are often scattered across different platforms.
+Loyiha avval “yoshlarga kerakli narsalarni topib beradigan ecosystem” tomonga ketayotgan edi: scholarship, competition, volunteering, kurs, project, odamlar va boshqa imkoniyatlar.
 
-## Fragmentation
+Bu foydali, lekin yetarli emas.
 
-A young person may use Telegram for communities, Instagram for discovery, YouTube for learning, Google for research, GitHub for code, LinkedIn for professional identity, and separate websites for scholarships, competitions, volunteering, and programs.
+### Chuqurroq muammo
 
-Each service solves part of the journey.
+Yoshlarga faqat information kerak emas. Ularga **o‘z joyi, o‘z community'si va rivojlanib, nimadir yaratishga yordam beradigan muhit** kerak.
 
-We are investigating whether there is a useful layer that connects these parts around the young person's journey.
+Bugun yosh Telegram'da community, YouTube'da learning, Google'da research, GitHub'da project, LinkedIn'da identity, boshqa saytlarda opportunity qidiradi.
 
-## The deeper problem
+Muammo servislarning o‘zida emas. Muammo — yoshning **yo‘li tarqoq**.
 
-The question is not simply:
+### Muammo gipotezasi
 
-> Where can young people find information?
+> **Yoshlarda identity, community, growth, creation va contribution birlashadigan raqamli uy yetishmaydi.**
 
-It is:
+Bu hali gipoteza. Research bilan tekshiramiz.
 
-> How can a young person move from intention to meaningful action?
+### Biz yaratmoqchi bo‘lgan hissiyot
 
-A student may think:
+“Bunga qaysi saytdan kiraman?” emas.
 
-**I want to do something → What should I do? → Where do I start? → Who can help me? → How do I build it? → How do I show what I achieved?**
+> **“Bu mening joyim.”**
 
-## Problem statement
+---
 
-**Young people often face a fragmented journey from discovering an opportunity or problem to taking meaningful action. Information, people, learning resources, and project-building tools exist, but they are disconnected.**
+## 🇬🇧 English
 
-This is a hypothesis to validate, not a proven fact.
+The old concept was becoming a service that mainly **finds things for young people**.
 
-## What we are NOT assuming
+The deeper hypothesis is different:
 
-We are not assuming that:
-- every young person wants to build a startup;
-- every young person needs another social network;
-- AI automatically makes a product useful;
-- one platform should replace every existing service;
-- more features mean a better product.
+> **Young people lack a digital home where identity, community, growth, creation, and contribution naturally connect.**
 
-The product must earn its complexity by solving real problems.
+Today different parts of a young person's journey are scattered across messaging, social, learning, project, professional, and opportunity platforms.
+
+The problem is not necessarily those services. The problem is the fragmented journey.
+
+The goal is not to replace every existing platform. It is to explore whether a connected youth-home experience creates real value.
+
+---
+
+## 🇷🇺 Русский
+
+Изначально проект превращался в сервис, который в основном **находит нужные возможности для молодых людей**.
+
+Более глубокая гипотеза:
+
+> **Молодым людям не хватает цифрового дома, где естественно соединяются идентичность, сообщество, развитие, создание и вклад.**
+
+Разные части пути сейчас находятся в разных сервисах. Проблема — в фрагментации этого пути.
+
+Это гипотеза, которую необходимо проверить.
