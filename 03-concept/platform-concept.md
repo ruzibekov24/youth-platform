@@ -1,53 +1,96 @@
 # Platform Concept
 
-## Working concept
+## 🇺🇿 O‘zbekcha
 
-A youth-centered ecosystem connecting:
+### Asosiy g‘oya
 
-**Opportunities + Learning + Ideas + People + Projects + Achievements**
+> **Youth Platform — yoshlarning raqamli uyi.**
 
-The important part is the connection between these objects.
+Bu “senga nima kerak bo‘lsa topib beradigan servis” emas.
 
-## Core objects
+Opportunitylar, learning, projectlar va boshqa imkoniyatlar — uyning ichidagi qismlar.
 
-### Person
-Identity, interests, skills, goals, contributions, and evidence.
+### Real youth center o‘xshatishi
 
-### Opportunity
-Scholarship, competition, event, volunteer role, internship, program, grant, or similar possibility.
+Oddiy yoshlar markazida:
+- odamlar;
+- klublar;
+- eventlar;
+- o‘qish;
+- projectlar;
+- mentorlar;
+- birga ishlash joylari;
+- yaratgan narsani ko‘rsatish;
+- boshqalarga foyda berish imkoniyati bor.
 
-### Problem
-A real problem worth understanding or solving.
+Youth Platform shu **muhitni** digital formatga o‘tkazadi.
 
-### Idea
-A proposed approach to a problem.
+### Asosiy spaces
 
-### Team
-People collaborating toward a shared goal.
+**HOME** — shaxsiy boshlanish joyi.  
+**COMMUNITY** — odamlar, groups, clubs, discussions.  
+**GROWTH** — learning, skills, goals, mentors, challenges.  
+**CREATE / MIYA** — problem, idea, team, project.  
+**OPPORTUNITIES** — scholarship, program, event, competition, volunteering va boshqalar.  
+**CONTRIBUTION** — volunteerlik, mentoring, organizing, community impact.  
+**IDENTITY / PROFILE** — yoshning rivojlanib borayotgan identity'si va real ishlar evidence'i.
 
-### Project
-A concrete effort with a goal, people, tasks, progress, and outcome.
+### Asosiy loop
 
-### Resource
-Learning material, guide, template, tool, mentor, organization, or other support.
+**BELONG → GROW → CREATE → CONTRIBUTE → BELONG**
 
-### Achievement
-Evidence of participation, completion, contribution, skill, or impact.
+---
 
-## The key relationship
+## 🇬🇧 English
 
-**Discover an opportunity → learn → meet people → create an idea → form a team → build → produce an achievement → unlock another opportunity.**
+### Core idea
 
-## Not a social network clone
+> **Youth Platform is a digital home for young people.**
 
-We should avoid becoming primarily:
-- a generic feed;
-- a follower-count competition;
-- a reposting platform;
-- an engagement-optimization machine.
+It is not primarily a “find me something” service.
 
-Social features should exist because they help users learn, collaborate, or act.
+Opportunities, learning, projects, and discovery are rooms inside the larger home.
 
-## Not only a job board
+### Physical youth-center analogy
 
-The ecosystem can include education, competitions, volunteering, entrepreneurship, research, leadership, creativity, technology, community projects, and career opportunities.
+A youth center can have people, clubs, events, learning, projects, mentors, workspaces, showcases, and ways to contribute.
+
+Youth Platform explores how to bring that **environment** into a digital system.
+
+### Core spaces
+
+**HOME** — personal starting point.  
+**COMMUNITY** — people, groups, clubs, discussions.  
+**GROWTH** — learning, skills, goals, mentors, challenges.  
+**CREATE / MIYA** — problems, ideas, teams, projects.  
+**OPPORTUNITIES** — programs, competitions, events, volunteering, etc.  
+**CONTRIBUTION** — volunteering, mentoring, organizing, impact.  
+**IDENTITY / PROFILE** — a living record of the person’s journey.
+
+### Core loop
+
+**BELONG → GROW → CREATE → CONTRIBUTE → BELONG**
+
+---
+
+## 🇷🇺 Русский
+
+### Основная идея
+
+> **Youth Platform — цифровой дом для молодых людей.**
+
+Это не просто сервис «найди мне что-нибудь».
+
+Возможности, обучение, проекты и поиск — это отдельные пространства внутри большого дома.
+
+Физический молодёжный центр может объединять людей, клубы, мероприятия, обучение, проекты, наставников и возможность приносить пользу.
+
+Youth Platform исследует, как перенести эту **среду** в цифровой формат.
+
+Основные пространства:
+
+**HOME · COMMUNITY · GROWTH · CREATE / MIYA · OPPORTUNITIES · CONTRIBUTION · IDENTITY**
+
+Основной цикл:
+
+**BELONG → GROW → CREATE → CONTRIBUTE → BELONG**
