@@ -1,71 +1,71 @@
 # Roadmap
 
-This roadmap is deliberately product-first and technology-second.
+## 🇺🇿 O‘zbekcha
 
-## Phase 0 — Foundation
-**Goal:** Understand the problem.
+### Phase 0 — Uyni aniqlash
+Philosophy, birinchi youth segment, real interviewlar, mavjud communitylar va “digital youth center” ma’nosini aniqlash.
 
-- define the initial user segment;
-- interview real users;
-- map current workflows;
-- study alternatives;
-- test the core problem hypothesis;
-- refine the vision.
+### Phase 1 — Ecosystem dizayni
+Home, Community, Growth, Create/MIYA, Opportunities, Contribution va Identity'ni aniqlash va bog‘lash.
 
-**Output:** validated problem definition.
+### Phase 2 — Productdan oldin community
+Kichik community, challenge, MIYA challenge, manual opportunity discovery, team matching va project showcase kabi real tajribalarni sinash.
 
-## Phase 1 — Concept
-**Goal:** Define the system.
+### Phase 3 — Birinchi product
+Faqat validationdan keyin eng kichik useful productni qurish.
 
-- finalize the youth journey;
-- define core objects;
-- define MIYA's role;
-- design the ecosystem model;
-- define trust and safety principles;
-- decide what the first experience must accomplish.
+### Phase 4 — Ecosystem
+Community, opportunity, learning, MIYA, project spaces, mentorlar, achievements, events, partnerships va kerakli joylarda AI.
 
-**Output:** product specification.
+### Phase 5 — Youth Infrastructure
+**Yoshlar ↔ Communities ↔ Projects ↔ Organizations ↔ Opportunities**
 
-## Phase 2 — Manual MVP
-**Goal:** Validate value without building everything.
+> **Uyni qurishdan oldin unda kim yashashi va nima qilishi kerakligini tushun.**
 
-Possible experiments:
-- manually curated opportunity feed;
-- community-based opportunity matching;
-- manual team matching;
-- small MIYA challenge;
-- project showcase;
-- guided youth journey.
+---
 
-**Output:** evidence of actual user demand.
+## 🇬🇧 English
 
-## Phase 3 — First Product
-Only after Phases 0–2:
-- choose platform;
-- define architecture;
-- build the smallest useful product;
-- onboard a small group;
-- measure outcomes;
-- iterate.
+### Phase 0 — Define the Home
+Understand the philosophy, first segment, real routines, communities, and meaning of a digital youth center.
 
-## Phase 4 — Ecosystem
-Potential expansion:
-- advanced opportunity discovery;
-- team matching;
-- mentor network;
-- project workspace;
-- verified achievements;
-- AI assistance;
-- organization partnerships;
-- events and challenges.
+### Phase 1 — Design the Ecosystem
+Define Home, Community, Growth, Create/MIYA, Opportunities, Contribution, and Identity.
 
-## Phase 5 — Network
-Long-term possibility:
+### Phase 2 — Test the Community Before the Product
+Run small real experiments with community, challenges, MIYA, opportunity discovery, team matching, and project showcases.
 
-**Young people ↔ Projects ↔ Organizations ↔ Mentors ↔ Opportunities**
+### Phase 3 — First Product
+Only after validation, build the smallest useful product.
 
-At this stage, the platform may become infrastructure rather than just an app.
+### Phase 4 — Ecosystem
+Expand communities, opportunities, learning, MIYA, projects, mentors, achievements, events, partnerships, and useful AI.
 
-## Rule
+### Phase 5 — Youth Infrastructure
+**Young People ↔ Communities ↔ Projects ↔ Organizations ↔ Opportunities**
 
-Do not jump from Phase 0 to Phase 3 because building feels more exciting than research.
+> **Do not build the house before understanding who needs it and what they do inside it.**
+
+---
+
+## 🇷🇺 Русский
+
+### Фаза 0 — Определить дом
+Понять философию, первый сегмент, реальные привычки, сообщества и смысл цифрового молодёжного центра.
+
+### Фаза 1 — Спроектировать экосистему
+Определить Home, Community, Growth, Create/MIYA, Opportunities, Contribution и Identity.
+
+### Фаза 2 — Проверить сообщество до продукта
+Провести небольшие реальные эксперименты с сообществом, челленджами, MIYA, возможностями, командами и проектами.
+
+### Фаза 3 — Первый продукт
+Только после проверки — строить минимальный полезный продукт.
+
+### Фаза 4 — Экосистема
+Расширять сообщества, возможности, обучение, MIYA, проекты, наставников, достижения, мероприятия и партнёрства.
+
+### Фаза 5 — Инфраструктура
+**Молодые люди ↔ Сообщества ↔ Проекты ↔ Организации ↔ Возможности**
+
+> **Не строй дом, пока не понял, кто в нём будет жить и что будет делать.**
