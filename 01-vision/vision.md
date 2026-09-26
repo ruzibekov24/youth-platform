@@ -1,37 +1,61 @@
 # Vision
 
-## Long-term vision
+## 🇺🇿 O‘zbekcha
 
-Create a youth-centered ecosystem where a young person can move from **curiosity to capability to action**.
+### Uzoq muddatli vision
 
-The ideal experience is not another feed. It is a place where a young person arrives with a goal and can find a meaningful next step.
+> **Yoshlar o‘zini shu yerga tegishli his qiladigan, rivojlanadigan, nimadir yaratadigan va boshqalarga foyda beradigan raqamli uy qurish.**
 
-## The future we are exploring
+Youth Platform oddiy website emas. U **internetdagi yoshlar markazi** bo‘lishi kerak.
 
-A young person should be able to:
+### 4 ustun
 
-1. discover something relevant;
-2. understand why it matters;
-3. learn what they need;
-4. find people with complementary skills;
-5. turn an idea into a concrete project;
-6. build and test it;
-7. launch or participate in something real;
-8. document the result;
-9. use that experience to unlock the next opportunity.
+**BELONG — “Bu mening joyim.”**  
+Community, identity, groups, suhbatlar.
 
-## North Star
+**GROW — “Men bu yerda o‘saman.”**  
+Learning, skills, goals, mentors, challenges.
 
-**Help young people turn potential into action.**
+**CREATE — “Men haqiqiy nimadir qila olaman.”**  
+Problems, ideas, teams, projects, MIYA.
 
-## Possible long-term outcomes
+**CONTRIBUTE — “Men boshqalarga foyda bera olaman.”**  
+Volunteering, mentoring, organizing, knowledge sharing, community impact.
 
-- opportunities discovered and acted upon;
-- projects started and completed;
-- teams formed;
-- skills demonstrated;
-- real-world problems addressed;
-- useful connections created;
-- portfolios strengthened.
+### North Star
 
-Exact metrics should be defined after user research.
+**Yoshlarga shunchaki information topishda emas, mazmunli yo‘l qurishda yordam berish.**
+
+---
+
+## 🇬🇧 English
+
+> **Build a digital home where young people can belong, grow, create, and contribute.**
+
+Youth Platform should feel like a **youth center that exists online**, not a website people visit for one task.
+
+The four pillars are:
+
+**BELONG** — I have a place here.  
+**GROW** — I am becoming better.  
+**CREATE** — I can make something real.  
+**CONTRIBUTE** — I can help others.
+
+North Star:
+
+**Help young people build a meaningful path, not just find information.**
+
+---
+
+## 🇷🇺 Русский
+
+> **Создать цифровой дом, где молодые люди могут принадлежать сообществу, развиваться, создавать и приносить пользу.**
+
+Youth Platform должна ощущаться как **молодёжный центр в интернете**, а не как сайт для одной задачи.
+
+Четыре опоры:
+
+**BELONG** — здесь есть моё место.  
+**GROW** — я здесь развиваюсь.  
+**CREATE** — я могу создать что-то настоящее.  
+**CONTRIBUTE** — я могу быть полезен другим.
