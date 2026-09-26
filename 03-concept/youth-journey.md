@@ -1,41 +1,42 @@
 # Youth Journey
 
-## Proposed journey
+## 🇺🇿 O‘zbekcha
 
-### 1. Discover
-Encounter an opportunity, resource, problem, event, or community.
+Journey endi shunchaki “top → qil” emas. U **tegishlilikdan** boshlanadi.
 
-### 2. Understand
-Answer:
-- Am I eligible?
-- Why does this matter?
-- What do I need?
-- What is the deadline?
-- What should I do first?
+1. **Kirish** — platformada nima bo‘layotganini ko‘rish.
+2. **Tegishli bo‘lish** — o‘z odamlaring, groups va qiziqishlaringni topish.
+3. **Rivojlanish** — skill, goal, resource, challenge yoki mentor tanlash.
+4. **Kashf etish** — opportunity, problem va projectlarni ko‘rish.
+5. **Yaratish** — idea yoki problemni MIYA orqali yo‘nalishga aylantirish.
+6. **Birlashish** — team, mentor yoki contributor topish.
+7. **Qurish** — real project ustida ishlash.
+8. **Hissa qo‘shish** — volunteerlik, mentoring, organizing yoki community muammosini hal qilish.
+9. **Ko‘rsatish** — natijani profile'ga evidence sifatida qo‘shish.
+10. **Davom etish** — yangi tajriba keyingi yo‘lni ochadi.
 
-### 3. Prepare
-Learn the skills or gather resources needed for action.
+### Loop
 
-### 4. Connect
-Find peers, teammates, mentors, communities, or organizations.
+**BELONG → GROW → DISCOVER → CREATE → CONNECT → BUILD → CONTRIBUTE → SHOW → CONTINUE**
 
-### 5. Create
-Develop an idea or choose a problem. This is where MIYA can become important.
+Bu content loop emas, **hayotiy rivojlanish loopi** bo‘lishi kerak.
 
-### 6. Build
-Turn the idea into a real project with goals, roles, tasks, and progress.
+---
 
-### 7. Launch
-Submit, publish, present, use, or otherwise put the result into the real world.
+## 🇬🇧 English
 
-### 8. Show
-Turn the outcome into evidence on the user's profile.
+The journey does not simply start with “find → act.” It starts with belonging.
 
-### 9. Continue
-Find a meaningful next step based on what was learned and done.
+**Enter → Belong → Grow → Discover → Create → Connect → Build → Contribute → Show → Continue**
 
-## The loop
+The goal is a development loop, not a content-consumption loop.
 
-**Discover → Prepare → Connect → Create → Build → Launch → Show → Discover again**
+---
 
-The goal is a development loop rather than a content loop.
+## 🇷🇺 Русский
+
+Путь начинается не с поиска возможности, а с ощущения принадлежности.
+
+**Войти → Найти своё сообщество → Развиваться → Открывать → Создавать → Находить людей → Строить → Приносить пользу → Показывать результат → Продолжать**
+
+Это должен быть цикл развития, а не цикл потребления контента.
