@@ -1,131 +1,121 @@
-# Youth Platform — Concept v2
+# Yoshlar Base 🏠
+
+> **Internetda yoshlar uchun hamma narsa bor. Ammo yoshlarning o‘z joyi yo‘q.**
+
+**Yoshlar Base** — yoshlar uchun **digital home va ecosystem**. Bu katalog, oddiy social network yoki productivity app emas. Base yoshlarning internetdagi hayotini bitta youth-first muhitda birlashtirishni ko‘zlaydi: odamlar, bilim, imkoniyatlar, g‘oyalar, projectlar, xizmatlar, klublar, challenge'lar va dam olish.
 
 ## 🇺🇿 O‘zbekcha
 
-Youth Platform — **yoshlarning raqamli uyi**.
+### 1. Nega Base kerak?
 
-Bu katalog, social network yoki shunchaki productivity app emas. Maqsad — yoshning kundalik hayoti, rivojlanishi, odamlar bilan bog‘lanishi, yaratishi va dam olishi bir ecosystem ichida tabiiy bog‘langan muhit yaratish.
+Yoshlar ko‘pincha o‘ziga kerakli narsalarni turli va bir-biridan uzilgan platformalardan izlaydi:
 
-### Asosiy loop
+- rasmiy yoki ishonchli ma'lumotni topish qiyin;
+- random saytlar, reklama va shubhali platformalarga duch kelish mumkin;
+- yoshga mos bo‘lmagan kontent yoki xavfsizlik muammolari paydo bo‘lishi mumkin;
+- startup yoki project uchun jamoa topish qiyin;
+- idea bo‘lsa, uni quradigan odam yoki resurs topilmasligi mumkin;
+- skill bor bo‘lsa, uni xizmat sifatida taklif qilish uchun yoshga mos muhit yetishmaydi;
+- katta freelance platformalarida yosh bo‘yicha cheklovlar bo‘lishi mumkin;
+- challenge, club yoki foydali community topish tarqoq;
+- maqsad bor, lekin uni davom ettirish uchun accountability va muhit yetishmasligi mumkin.
 
-**BELONG → GROW → CREATE → CONTRIBUTE → PLAY → RETURN**
+Bular hozircha **muammo gipotezalari**. Base ularni research va real user feedback orqali tekshiradi.
 
----
+### 2. Base nima beradi?
 
-# 1. Yoshlarning real muammosi
+Base yoshga:
 
-Ko‘p yoshlar bir nechta muammolarni bir vaqtning o‘zida boshdan kechirishi mumkin:
+**BELONG → GROW → CREATE → CONTRIBUTE → PLAY**
 
-### “Men nimadir qilmoqchiman, lekin...”
+uchun bitta muhit beradi.
 
-- Startup qilmoqchiman → **jamoam yo‘q.**
-- Jamoam bor → **aniq idea yo‘q.**
-- Idea bor → **uni quradigan odam yoki resurs yo‘q.**
-- Project boshladim → **davom ettirish uchun intizom yo‘q.**
-- Nimadir o‘rganmoqchiman → **qayerdan va kim bilan boshlashni bilmayman.**
-- Odamlar bilan tanishmoqchiman → **mos community topish qiyin.**
-- Opportunity kerak → **ular turli joylarga tarqalib ketgan.**
-- Maqsadim bor → **uni bajarishga yordam beradigan accountability yo‘q.**
-- Bo‘sh vaqtim bor → **uni yana endless scrolling bilan sarflab yuboraman.**
-- Biror narsa qila olaman → **xizmatimni taklif qiladigan joyim yo‘q.**
-
-Bu muammolarning barchasi universal deb qabul qilinmaydi. Ular **research orqali tekshiriladigan muammo gipotezalari**.
-
----
-
-# 2. Platformaning javobi
-
-Youth Platform har bir muammoni alohida app bilan yechishga urinmaydi.
-
-Ularning orasidagi bog‘liqlikni yaratadi.
-
-### IDEA → PEOPLE → BUILD
-
-Idea bor, team yo‘q?
-
-→ kerakli odamlarni top.
-
-Team bor, idea yo‘q?
-
-→ problems / ideas ichidan birini top.
-
-Idea + team bor, build qilish qiyin?
-
-→ skills, mentors, resources, services yoki project support top.
-
-Project bor, davom ettirish qiyin?
-
-→ challenge / accountability system.
-
-Natija:
-
-> **Yosh yolg‘iz boshlagan narsasini odamlar bilan real projectga aylantira oladi.**
-
----
-
-# 3. Core Spaces
-
-## 🏠 HOME
-
-Yoshning platformadagi asosiy joyi.
-
-Bu yerda platforma uning holatini, progressini, communitylarini, projectlarini va bugungi faoliyatini ko‘rsatadi.
-
----
-
-## 🧑‍🤝‍🧑 COMMUNITY
-
-- Groups
-- Clubs
+#### 🤝 BELONG — Odamlar
 - Friends
+- Communities
+- Clubs
 - Discussions
 - Local communities
 - Interest-based communities
 
-### Misollar
+Misollar:
+- Speaking Club
+- Zakovat
+- IT Club
+- Book Club
+- Debate
+- Entrepreneurship
 
-🎤 Speaking Club  
-🧠 Zakovat Club  
-💻 IT Club  
-📚 Book Club  
-🎨 Creative Club
-
----
-
-## 🌱 GROW
-
-Yoshning rivojlanish maydoni:
-
+#### 🌱 GROW — O‘sish
 - Learning
 - Skills
 - Goals
 - Challenges
 - Mentors
 - Resources
-- Personal progress
+- Progress
 
----
+#### 🧠 CREATE — MIYA
+**MIYA** — Base'ning creation layer'i.
 
-# 4. 🎯 Challenges
+> **Muammoni ko‘r. Idea ber. Yechim top. Amalga oshir.**
 
-Challenges — platformaning muhim qismi.
+**Problem → Idea → People → Project → Action**
+
+Misollar:
+- startup
+- school initiative
+- community project
+- research
+- technology
+- creative project
+- event
+- volunteer project
+- educational project
+- social impact project
+
+Asosiy muammolar:
+
+**Idea bor, team yo‘q** → kerakli odamlarni topish.
+
+**Team bor, idea yo‘q** → problems va ideas ichidan project topish.
+
+**Idea + team bor, build qiyin** → skills, mentors, resources yoki services topish.
+
+#### 💼 CONTRIBUTE — Skill va xizmatlar
+
+Yosh faqat platformadan foydalanmaydi — boshqalarga ham foyda beradi.
+
+**Services** orqali yoshlar o‘z skilllarini yoshlar uchun mos va xavfsiz muhitda xizmat sifatida taklif qilishi mumkin:
+
+- Designer
+- Developer
+- Video editor
+- Copywriter
+- Speaker
+- Photographer
+- Translator
+- Researcher
+
+Flow:
+
+**Need → Skill → Person → Work**
+
+Trust, age safety, legal requirements, quality control va payment architecture alohida research talab qiladi.
+
+#### 🎯 CHALLENGES
+
+Base'da creatorlar challenge yaratishi mumkin.
 
 Masalan:
 
-> **“Maqsadingiz bor, lekin intizom yetishmayaptimi?”**
+**30-Day Discipline Challenge**
 
-### 30-Day Discipline Challenge
-
-Day 1 → Day 2 → ... → Day 30
-
-User yolg‘iz bajarishi shart emas.
-
-Challenge creator:
+Creator:
 - challenge yaratadi;
 - qoidalarni belgilaydi;
 - participantsni boshqaradi;
-- progressni kuzatadi;
-- community yaratadi.
+- progressni kuzatadi.
 
 Participant:
 - challengega qo‘shiladi;
@@ -133,239 +123,83 @@ Participant:
 - accountability oladi;
 - yakunda achievement oladi.
 
-### Keyingi daraja
-
+Keyinchalik:
 **1-Year Discipline Challenge**
 
-30 kunlik challenge muvaffaqiyatli tugagach, creator yanada uzoq muddatli challenge yaratishi mumkin.
-
-### Business model
-
-Platforma keyinchalik challenge creatorlar uchun:
-
-- paid challenges;
-- premium programs;
-- creator subscriptions;
-- platform fee;
+Possible monetization:
+- paid challenges
+- creator subscriptions
+- premium programs
+- platform fee
 - verified challenge services
 
-kabi modellarni sinashi mumkin.
+Avval **value → trust → monetization**.
 
-**Muhim:** monetization user value va trust tasdiqlangandan keyin keladi.
+#### 🎮 PLAY — O‘yingoh
 
----
+O‘yingoh oddiy game library emas. U Base'ning play layer'i.
 
-# 5. 🧠 MIYA — CREATE
+Konsept:
 
-MIYA platformaning creation layer'i.
+> **Entertainment should coexist with growth, not completely replace it.**
 
-> **Muammoni ko‘r. Idea ber. Yechim top. Amalga oshir.**
-
-### Flow
-
-**Problem → Idea → People → Project → Action**
-
-MIYA quyidagi holatlarni bog‘laydi:
-
-### “Startup qilmoqchiman, team yo‘q.”
-
-→ Idea/project  
-→ required roles  
-→ matching  
-→ team
-
-### “Team bor, idea yo‘q.”
-
-→ problems  
-→ ideas  
-→ community needs  
-→ project selection
-
-### “Idea va team bor, lekin qurish qiyin.”
-
-→ skills  
-→ mentors  
-→ resources  
-→ services  
-→ contributors
-
-### Project turlari
-
-Startup bilan cheklanmaydi:
-
-- School initiative
-- Community project
-- Research
-- Technology
-- Creative project
-- Event
-- Volunteer project
-- Educational project
-- Social impact project
-
----
-
-# 6. 🛠️ SERVICES
-
-Bu alohida katta layer bo‘lishi mumkin.
-
-Platformadagi yoshlar o‘z skilllarini boshqalarga **xizmat sifatida taklif qilishi** mumkin.
+Platforma foydalanuvchidan har safar “Bugun o‘qidingizmi?” deb so‘rash o‘rniga, mavjud activity signals asosida kunlik holatni o‘zi aniqlashi mumkin.
 
 Masalan:
+- Reading activity
+- Learning activity
+- Challenge progress
+- Project activity
 
-- 🎨 Designer
-- 💻 Developer
-- 🎬 Video editor
-- ✍️ Copywriter
-- 🎤 Speaker
-- 📸 Photographer
-- 🌐 Translator
-- 📊 Researcher
+Agar kunlik minimal growth activity bajarilmagan bo‘lsa, O‘yingohdagi ayrim entertainmentlar vaqtincha yopiq bo‘lishi mumkin.
 
-### Example
+User kerakli activityni bajargach, platforma buni o‘zi qayd etadi va accessni ochishi mumkin.
 
-Bir youth:
+Bu konsept uchun privacy, transparency, false-positive handling, accessibility va user safety birinchi darajali talablar.
 
-> “Menga website kerak.”
+### 3. Clubs & real-life activities
 
-Boshqasi:
+Base faqat digital content emas.
 
-> “Men frontend qilaman.”
+U real hayotdagi yoshlar faoliyatini ham bog‘laydi:
 
-Platforma:
+**Speaking Club**
+- sessions
+- topics
+- moderators
+- participants
+- attendance
+- mini-games
 
-**Need → Skill → Person → Work**
+**Zakovat**
+- quizzes
+- teams
+- school competitions
+- community competitions
+- tournaments
 
-Bu MIYA projectlarini ham kuchaytiradi.
-
-Keyinchalik platformada organizations yoki youth creators ham xizmat taklif qilishi mumkin.
-
-Trust, age safety, quality control va payment architecture alohida research talab qiladi.
-
----
-
-# 7. 🎮 O‘YINGOH
-
-O‘yingoh oddiy game library emas.
-
-Bu platformaning **play layer'i**.
-
-Lekin asosiy prinsip:
-
-> **Play should not completely replace growth.**
-
-### Adaptive access
-
-User game ochishga harakat qiladi.
-
-Userdan:
-
-> “Bugun o‘qidingizmi?”
-
-deb so‘rash shart emas.
-
-Platforma o‘zidagi activity signals asosida holatni **o‘zi aniqlaydi**.
-
-Masalan:
-
-📖 Reading — 0  
-🌱 Growth activity — 0  
-🧠 Learning — 0
-
-→ O‘yingoh access cheklanishi mumkin.
-
-Platforma:
-
-> **“Avval bugungi minimal growth activity'ni bajaring.”**
-
-User reading activity'ni bajaradi.
-
-Platforma buni o‘zi qayd etadi.
-
-→ 🎮 Access ochiladi.
-
-Bu system keyinchalik individual userga moslashishi mumkin.
-
-**Muhim:** bu feature uchun privacy, transparency, false-positive handling, accessibility va user safety juda muhim.
-
----
-
-# 8. 🎤 CLUBS & ACTIVITIES
-
-Youth Platform faqat digital content emas.
-
-U real hayotdagi youth activitiesni ham bog‘laydi.
-
-Masalan:
-
-### Speaking Club
-
-- Session
-- Topic
-- Moderator
-- Participants
-- Attendance
-- Mini-games
-- Progress
-
-### Zakovat
-
-- Quiz
-- Teams
-- School competitions
-- Community competitions
-- Rankings
-- Tournaments
-
-### Other clubs
-
+Keyinchalik:
 - Debate
-- Book club
+- Book Club
 - IT
 - Entrepreneurship
 - Art
-- Sports
 - Science
+- Sports
 
-Platforma real youth center kabi **activities**ga ega bo‘lishi kerak.
+### 4. Youth Identity
 
----
+Profil:
 
-# 9. 🤝 CONTRIBUTION
+> “Men kimman?”
 
-Yosh faqat platformadan foydalanmaydi.
-
-U boshqalarga ham foyda beradi.
-
-- Volunteer
-- Mentor
-- Organizer
-- Challenge creator
-- Club moderator
-- Project contributor
-- Service provider
-- Content / resource creator
-
-Shu contributionlar keyinchalik uning **living profile**iga aylanishi mumkin.
-
----
-
-# 10. 👤 YOUTH IDENTITY
-
-Profile oddiy:
-
-> “I am Ilyos, 15 years old.”
-
-emas.
-
-Balki:
+dan ko‘ra:
 
 > **“Men nimalar qildim?”**
 
-degan savolga javob beradigan living record.
+savoliga javob beradi.
 
 Masalan:
-
 - Projects
 - Challenges completed
 - Clubs
@@ -378,21 +212,15 @@ Masalan:
 - Services
 - Community impact
 
-Maqsad:
+**Real work → visible identity**
 
-> **Real work → visible identity**
+Follower count asosiy ko‘rsatkich emas.
 
-Follower count emas.
-
----
-
-# 11. 🔄 The Big Loop
-
-Barcha qismlar bir-biriga ulanadi:
+### 5. Base'ning asosiy loop'i
 
 **HOME**
 ↓
-**COMMUNITY**
+**BELONG**
 ↓
 **GROW**
 ↓
@@ -412,102 +240,130 @@ Barcha qismlar bir-biriga ulanadi:
 
 Masalan:
 
-Speaking Clubga kirdim  
-→ odamlar bilan tanishdim  
-→ developer topdim  
-→ MIYA'da idea yaratdim  
-→ project qurdik  
-→ designerga service buyurtma qildik  
-→ challenge orqali projectni davom ettirdik  
-→ natijani profile'ga qo‘shdik  
-→ keyin boshqa youthlarga mentor bo‘ldik.
+Speaking Club → yangi odamlar → developer topildi → MIYA'da idea → project → service orqali contributor → challenge orqali davomiylik → natija profile'ga → keyin boshqalarga yordam.
 
-**Bu ecosystemning asosiy kuchi — qismlarning o‘zaro bog‘lanishi.**
+**Base'ning asosiy kuchi featurelar sonida emas, ularning bir-biriga bog‘lanishida.**
 
----
+### 6. Asosiy product prinsipi
 
-# 12. 💰 Possible Business Models
+> **Don't organize the platform around features. Organize it around what young people want to do.**
+
+User Base'ga:
+- odam topish;
+- nimadir yaratish;
+- o‘rganish;
+- ishlash;
+- maqsadi ustida ishlash;
+- dam olish
+
+uchun kelishi mumkin.
+
+Platforma featurelarni ko‘rsatishdan oldin **user intent**ni tushunishga harakat qiladi.
+
+### 7. AI
+
+AI Base'ning alohida “chatbot”i bo‘lishi shart emas.
+
+AI platformaning **intelligence layer'i** sifatida:
+- trusted informationni topishga;
+- mos community yoki odamlarni aniqlashga;
+- project/team matchingga;
+- personal progressni tushunishga;
+- tavsiyalarni moslashtirishga;
+- activity signalsni tahlil qilishga
+
+yordam berishi mumkin.
+
+### 8. Trust & safety
+
+Base'ning asosiy farqlaridan biri **youth-first trust** bo‘lishi kerak.
+
+Maqsad:
+- imkon qadar official/trusted sources;
+- yoshga mos muhit;
+- shubhali platformalar va xavflarni kamaytirish;
+- transparent recommendation;
+- privacy;
+- yoshga bog‘liq huquqiy talablarni hisobga olish.
+
+Base “internetni to‘liq xavfsiz qilib qo‘yadi” deb va'da bermaydi. **Safety-by-design** — product prinsipi.
+
+### 9. Business model
 
 Monetization birinchi maqsad emas.
 
-Lekin ecosystem katta bo‘lgach:
+Keyinchalik:
+- Challenges
+- Services marketplace
+- Premium features
+- Organization tools
+- Events infrastructure
+- Partnerships
 
-### Challenges
-Paid challenges / creator subscriptions / platform fee.
+kabi modellar sinab ko‘rilishi mumkin.
 
-### Services
-Marketplace/service fee.
-
-### Organizations
-Organization plans / recruitment / project collaboration tools.
-
-### Premium
-Advanced productivity, project, community yoki personalization features.
-
-### Events
-Ticketing yoki event infrastructure fees.
-
-### Partnerships
-Youth organizations, education providers, companies va boshqa partners.
-
-### Rule
-
-> **Avval value → keyin trust → keyin monetization.**
-
----
-
-# 13. 🌍 Long-term Vision
-
-Youth Platform:
+### 10. Long-term vision
 
 **Yoshlar ↔ People ↔ Communities ↔ Skills ↔ Projects ↔ Services ↔ Opportunities ↔ Organizations**
 
-ni bog‘laydigan youth infrastructurega aylanishi mumkin.
+Base vaqt o‘tishi bilan yoshlar uchun **digital infrastructure**ga aylanishi mumkin.
 
-Lekin bu vision.
-
-Bugun biz buni qurishga shoshilmaymiz.
-
-Avval:
+Lekin hozirgi maqsad:
 
 **PROBLEM → RESEARCH → EXPERIMENT → COMMUNITY → PRODUCT**
 
 ---
 
-## 🇬🇧 English Summary
+## 🇬🇧 English
 
-Youth Platform is a **digital home for young people**.
+**Yoshlar Base** is a **digital home and ecosystem for young people**.
 
-It connects belonging, growth, creation, contribution, services, challenges, clubs, activities and play.
+The idea is simple:
 
-Its central creation engine is **MIYA**:
+> **The internet has everything for young people, but it doesn't have a place for them.**
 
-**Problem → Idea → People → Project → Action**
+Base connects belonging, growth, creation, contribution and play in one youth-first environment.
 
-The platform also explores an adaptive play system where access to entertainment can depend on whether the platform has detected meaningful daily growth activity.
+Core layers:
+- **Belong** — communities, clubs, friends
+- **Grow** — learning, skills, goals, challenges
+- **Create / MIYA** — problems → ideas → people → projects
+- **Contribute** — services, volunteering, mentoring, organizing
+- **Play / O‘yingoh** — games and entertainment connected with healthy daily activity
 
-Creators can offer challenges such as discipline programs, while young people can offer skills as services.
-
-The deeper goal is not to build another app.
-
-> **Build an environment where a young person can find people, grow, create something real, contribute, have fun, and build a visible record of their journey.**
+The deeper goal is to create an environment where a young person can **find people, grow, create something real, contribute, have fun, and build a visible record of their journey.**
 
 ---
 
-## 🇷🇺 Русский — кратко
+## 🇷🇺 Русский
 
-Youth Platform — **цифровой дом для молодых людей**.
+**Yoshlar Base** — это **цифровой дом и экосистема для молодых людей**.
 
-Он объединяет сообщества, развитие, создание проектов, вклад, услуги, челленджи, клубы, активности и развлечения.
+Идея:
 
-Главный creation layer — **MIYA**:
+> **В интернете есть всё для молодых людей, но нет одного места, которое было бы создано именно для них.**
 
-**Проблема → Идея → Люди → Проект → Действие**
+Base объединяет:
+- сообщества и клубы;
+- обучение и развитие;
+- создание проектов через **MIYA**;
+- услуги и вклад в проекты;
+- челленджи;
+- реальные активности;
+- развлечения через **O‘yingoh**.
 
-Платформа также может использовать адаптивную систему доступа к развлечениям, где доступ зависит от обнаруженной системой полезной активности.
+Главный принцип:
 
-Создатели смогут запускать челленджи, а молодые люди — предлагать свои навыки как услуги.
+**Люди → развитие → идеи → проекты → вклад → возвращение в сообщество.**
 
-Главная цель:
+---
 
-> **Создать среду, где молодой человек может находить людей, развиваться, создавать настоящее, приносить пользу, отдыхать и постепенно строить видимую историю своего пути.**
+## Status
+
+**Working name:** Yoshlar Base  
+**Core concept:** Digital home + youth ecosystem  
+**Creation layer:** MIYA  
+**Play layer:** O‘yingoh  
+**Current stage:** Concept / research / validation
+
+> **Think less. Choose less. Finish more.**
