@@ -1,44 +1,43 @@
 # Target Users
 
-## Initial target hypothesis
+## 🇺🇿 O‘zbekcha
 
-Our initial user should be a young person who is curious, ambitious, or simply wants to do something meaningful but does not have a clear path.
+Platforma barcha yoshlar uchun bo‘lishi mumkin, lekin research uchun birinchi segment tor bo‘lishi kerak.
 
-A particularly useful starting segment may be:
+### Dastlabki gipoteza
 
-**Teenagers and young adults who actively want opportunities, skills, projects, communities, or personal growth.**
+O‘zini rivojlantirmoqchi, odamlar bilan tanishmoqchi, biror narsada qatnashmoqchi, idea yoki project qilmoqchi va o‘z progressi yig‘ilib boradigan joyni xohlaydigan o‘smirlar va yoshlar.
 
-## Candidate segments
+Biz “scholarship qidirayotgan user” uchun emas, balki:
 
-### A. Student explorer
-Wants scholarships, competitions, exchange programs, clubs, volunteering, and learning resources.
+> **O‘z yo‘lini qurayotgan va shu yo‘l davomida o‘z joyini topishni xohlaydigan yosh odam uchun** dizayn qilamiz.
 
-Core problem:
-> I want to improve myself, but I do not know which opportunities fit me.
+Bu interviewlar bilan tekshiriladi.
 
-### B. Young builder
-Wants projects, teammates, mentors, feedback, and visibility.
+---
 
-Core problem:
-> I have an idea or skill, but struggle to turn it into something real.
+## 🇬🇧 English
 
-### C. Opportunity seeker
-Wants internships, programs, grants, events, and professional connections.
+The platform may serve young people broadly, but research needs a narrow first segment.
 
-Core problem:
-> Useful opportunities are scattered, and I miss things.
+A possible starting group is young people who want to improve themselves, meet people, participate, create projects, and have a place where their progress accumulates.
 
-### D. Community contributor
-Wants to volunteer, organize, mentor, or share knowledge.
+We are not designing only for “someone searching for a scholarship.”
 
-Core problem:
-> I want to contribute, but there is no clear system connecting me to people who need help.
+We are designing for:
 
-## Decision to validate
+> **A young person building their own path and looking for a place to belong while doing it.**
 
-Research should identify the segment with the strongest combination of:
-- urgent problem;
-- frequent need;
-- willingness to return;
-- ability to benefit from a connected ecosystem;
-- accessibility for early research.
+This must be validated through interviews.
+
+---
+
+## 🇷🇺 Русский
+
+Платформа потенциально рассчитана на молодых людей в целом, но первый исследовательский сегмент должен быть узким.
+
+Гипотеза: молодые люди, которые хотят развиваться, находить людей, участвовать, создавать проекты и иметь место, где накапливается их путь.
+
+Мы проектируем не только для человека, который ищет стипендию, а для:
+
+> **молодого человека, который строит собственный путь и хочет найти своё место в процессе.**
