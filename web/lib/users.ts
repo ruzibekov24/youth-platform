@@ -12,10 +12,11 @@ export type UserRow = {
   interests: string[];
   onboarding_step: OnboardingStep | null;
   reminders_enabled: boolean;
+  telegram_username?: string | null;
 };
 
 const COLUMNS =
-  "id, first_name, age_range, region, interests, onboarding_step, reminders_enabled";
+  "id, first_name, age_range, region, interests, onboarding_step, reminders_enabled, telegram_username";
 
 export async function findOrCreateByTelegramId(telegramId: number): Promise<UserRow> {
   const found = await db().from("users").select(COLUMNS).eq("telegram_id", telegramId).maybeSingle();
@@ -35,6 +36,12 @@ export async function getUserByTelegramId(telegramId: number): Promise<UserRow |
   const r = await db().from("users").select(COLUMNS).eq("telegram_id", telegramId).maybeSingle();
   if (r.error) throw r.error;
   return (r.data as UserRow | null) ?? null;
+}
+
+export async function getUsername(userId: string): Promise<string | null> {
+  const r = await db().from("users").select("telegram_username").eq("id", userId).maybeSingle();
+  if (r.error) throw r.error;
+  return (r.data?.telegram_username as string | null | undefined) ?? null;
 }
 
 export async function getUserById(id: string): Promise<UserRow | null> {

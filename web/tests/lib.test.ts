@@ -113,3 +113,13 @@ test("validateIdea", () => {
   assert.equal(validateIdea({ ...ok, roles: ["Hacker"] }, roles), null);
   assert.equal(validateIdea({ ...ok, problem: "qisqa" }, roles), null);
 });
+
+import { parseUsername } from "../lib/validate.ts";
+
+test("parseUsername", () => {
+  assert.equal(parseUsername("@ilyos_01"), "ilyos_01");
+  assert.equal(parseUsername(" ilyos "), "ilyos");
+  assert.equal(parseUsername("abc"), null);
+  assert.equal(parseUsername("1abcde"), null);
+  assert.equal(parseUsername("a b c d e"), null);
+});

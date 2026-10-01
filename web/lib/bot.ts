@@ -5,7 +5,7 @@ import { trackEvent } from "./events.ts";
 import { allow } from "./rate-limit.ts";
 import { INTERESTS, REGIONS, t } from "./strings.uz.ts";
 import { findOrCreateByTelegramId, getUserByTelegramId, deleteUser, updateUser, type UserRow } from "./users.ts";
-import { AGE_RANGES, isAgeRange, sanitizeName } from "./validate.ts";
+import { AGE_RANGES, isAgeRange, parseUsername, sanitizeName } from "./validate.ts";
 
 export const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN ?? "missing");
 const T = t.bot;
@@ -89,6 +89,29 @@ bot.command("start", async (ctx) => {
   }
   if (!token) await ctx.reply(T.welcomeNoToken);
   await askStep(ctx.chat.id, user, suggestedNameOf(ctx.from.first_name));
+});
+
+bot.command("username", async (ctx) => {
+  if (ctx.chat.type !== "private" || !ctx.from) return;
+  const user = await getUserByTelegramId(ctx.from.id);
+  if (!user || user.onboarding_step) return;
+  const arg = ctx.match.trim();
+  if (!arg) {
+    if (user.telegram_username) {
+      await updateUser(user.id, { telegram_username: null });
+      await ctx.reply(T.usernameRemoved);
+    } else {
+      await ctx.reply(T.usernameHelp);
+    }
+    return;
+  }
+  const name = parseUsername(arg);
+  if (!name) {
+    await ctx.reply(T.usernameBad);
+    return;
+  }
+  await updateUser(user.id, { telegram_username: name });
+  await ctx.reply(T.usernameSet(name));
 });
 
 bot.command("eslatma", async (ctx) => {

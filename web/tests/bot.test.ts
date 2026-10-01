@@ -22,7 +22,7 @@ mock.module(new URL("users.ts", root).href, {
       return structuredClone(users.get(tg)!);
     },
     getUserByTelegramId: async (tg: number) => (users.has(tg) ? structuredClone(users.get(tg)!) : null),
-    updateUser: async (id: string, patch: Partial<U>) => {
+    updateUser: async (id: string, patch: Partial<U> & { telegram_username?: string | null }) => {
       for (const u of users.values()) if (u.id === id) Object.assign(u, patch);
     },
     deleteUser: async (id: string) => {
@@ -118,4 +118,15 @@ test("allaqachon ro'yxatdan o'tgan foydalanuvchi: token darhol tasdiqlanadi", as
   await start(104, "B".repeat(32));
   assert.deepEqual(attached, ["B".repeat(32)]);
   assert.match(texts().at(-1)!, /Tayyor/);
+});
+
+test("/username: ixtiyoriy, tekshiriladi, olib tashlanadi", async () => {
+  users.set(105, { id: "u105", telegram_id: 105, first_name: "A", age_range: "16-17", region: "Andijon", interests: [], onboarding_step: null, reminders_enabled: true });
+  const cmd = (t: string) => msg(105, t, [{ type: "bot_command", offset: 0, length: 9 }]);
+  await cmd("/username @bad");
+  assert.match(texts().at(-1)!, /notoʻgʻri/);
+  await cmd("/username @ilyos_01");
+  assert.equal((users.get(105) as { telegram_username?: string }).telegram_username, "ilyos_01");
+  await cmd("/username");
+  assert.equal((users.get(105) as { telegram_username?: string | null }).telegram_username, null);
 });

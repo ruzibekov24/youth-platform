@@ -38,3 +38,9 @@ export function cleanText(input: string, max: number): string {
 export function isUuid(v: unknown): v is string {
   return typeof v === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 }
+
+// Telegram username: "@" bilan yoki "@"siz; 5–32 belgi. Yaroqsiz boʻlsa null.
+export function parseUsername(input: string): string | null {
+  const v = input.trim().replace(/^@/, "");
+  return /^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(v) ? v : null;
+}

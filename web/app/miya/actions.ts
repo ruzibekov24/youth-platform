@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { trackEvent } from "@/lib/events";
 import { MAX_PENDING_IDEAS, validateIdea } from "@/lib/idea-validate";
 import { getTelegramId, groupOfUser } from "@/lib/ideas";
+import { getUsername } from "@/lib/users";
 import { allow } from "@/lib/rate-limit";
 import { ROLES, t } from "@/lib/strings.uz";
 import { ageGroupOf, cleanText, isAgeRange, isUuid } from "@/lib/validate";
@@ -127,8 +128,9 @@ export async function decideRequest(requestId: string, decision: "accepted" | "d
     const [ownerTg, memberTg] = await Promise.all([getTelegramId(user.id), getTelegramId(row.user_id)]);
     const link = (tg: number | null, name: string | null) =>
       tg ? `<a href="tg://user?id=${tg}">${escapeHtml(name ?? "…")}</a>` : escapeHtml(name ?? "…");
-    await notify(row.user_id, t.bot.accepted(row.ideas.title, link(ownerTg, user.first_name)), true);
-    await notify(user.id, t.bot.accepted(row.ideas.title, link(memberTg, row.users.first_name)), true);
+    const [ownerUn, memberUn] = await Promise.all([getUsername(user.id), getUsername(row.user_id)]);
+    await notify(row.user_id, t.bot.accepted(row.ideas.title, link(ownerTg, user.first_name), ownerUn), true);
+    await notify(user.id, t.bot.accepted(row.ideas.title, link(memberTg, row.users.first_name), memberUn), true);
   }
   revalidatePath(`/miya/${row.idea_id}`);
 }

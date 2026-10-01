@@ -18,7 +18,7 @@ Supabase sozlanmasa ham landing namunaviy (NAMUNA) kartalar bilan ochiladi; kiri
 ## Sozlash tartibi
 
 1. **Supabase**: loyiha oching, SQL Editor'da `supabase/migrations/0001_init.sql`, keyin `0002_miya_and_limits.sql`. Sinov uchun `supabase/seed.sql`. Batafsil: `supabase/README.md`.
-2. **Telegram bot**: BotFather'da Base uchun alohida bot yarating. Token va username'ni `.env` ga yozing. Buyruqlar: `/start`, `/eslatma`.
+2. **Telegram bot**: BotFather'da Base uchun alohida bot yarating. Token va username'ni `.env` ga yozing. Buyruqlar: `/start`, `/eslatma`, `/username`.
 3. **Sirlar**: `SESSION_SECRET` (kamida 32 belgi, `openssl rand -base64 48`), `TELEGRAM_WEBHOOK_SECRET`, `CRON_SECRET`.
 4. **Vercel**: repo'ni ulang, Root Directory = `web`, `.env.example` dagi hamma oʻzgaruvchini qoʻying (`NEXT_PUBLIC_SITE_URL` = `https://domen`). `vercel.json` kunlik cron'ni (09:00 Toshkent) sozlaydi; Vercel `CRON_SECRET` ni `Authorization` sarlavhasida oʻzi yuboradi.
 5. **Webhook**: deploydan keyin `npm run bot:webhook` (`.env.local` da `NEXT_PUBLIC_SITE_URL` https boʻlishi kerak).

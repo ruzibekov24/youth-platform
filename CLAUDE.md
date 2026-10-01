@@ -39,7 +39,7 @@ If a task seems to need one of these, stop and ask.
 Users may be 13-17. Safety is by design.
 
 - Account = Telegram ID. Login is a bot deep link, no password, no email, **no phone number**.
-- Store only: Telegram ID, first name (or nickname), age range, region, interests. Age range buckets: 13-15, 16-17, 18-25. Never store exact birth date, surname, phone, photo or email.
+- Store only: Telegram ID, first name (or nickname), age range, region, interests, and an OPTIONAL Telegram username the user adds themselves via /username (shown only to an accepted MIYA teammate, deleted with the account). Age range buckets: 13-15, 16-17, 18-25. Never store exact birth date, surname, phone, photo or email.
 - No public profiles. No user-to-user DMs.
 - Contact between users happens only after a mutual accept (MIYA join request), and **only within the same age group**: under-18 users are never connected with 18+ users in v1.
 - Every user-generated item (MIYA ideas) goes through moderation (`pending` -> `open`) before being visible.
