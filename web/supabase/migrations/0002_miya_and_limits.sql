@@ -14,6 +14,7 @@ alter table rate_limits enable row level security;
 create or replace function rate_hit(p_key text, p_window_seconds int, p_limit int)
 returns boolean
 language plpgsql
+set search_path = public
 as $$
 declare
   bucket timestamptz := to_timestamp(floor(extract(epoch from now()) / p_window_seconds) * p_window_seconds);
@@ -28,7 +29,9 @@ $$;
 
 do $$
 begin
+  -- Supabase'da: faqat service_role (server) chaqira oladi.
   if exists (select 1 from pg_roles where rolname = 'anon') then
-    revoke all on function rate_hit(text, int, int) from anon, authenticated;
+    revoke all on function rate_hit(text, int, int) from public, anon, authenticated;
+    grant execute on function rate_hit(text, int, int) to service_role;
   end if;
 end $$;

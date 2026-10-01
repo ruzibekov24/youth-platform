@@ -21,3 +21,7 @@ Yangi gʻoya `ideas.status = 'pending'` holatda tushadi. Table Editor'da koʻrib
 - boʻlmasa `closed` qiling yoki qatorni oʻchiring.
 
 `reports` jadvalidagi shikoyatlarni ham shu yerda koʻring.
+
+## Joriy loyiha
+
+Supabase loyihasi `yoshlar-base` (ref `zqpvzfgzewdrpilediex`, region ap-south-1) yaratilgan: 0001–0004 migratsiyalari va namunaviy seed qoʻllangan, 13 ta jadvalda RLS yoqilgan, `anon`/`authenticated` rollariga huquq yoʻq. `SUPABASE_URL=https://zqpvzfgzewdrpilediex.supabase.co`. `SUPABASE_SERVICE_ROLE_KEY` ni Dashboard → Project Settings → API Keys dan oling (u hech qayerga yozilmaydi).

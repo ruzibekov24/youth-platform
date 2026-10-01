@@ -8,7 +8,7 @@ do $$ begin
   if not exists (select 1 from pg_roles where rolname = 'anon') then create role anon nologin; end if;
 end $$;
 grant usage on schema public to anon;
-grant select, insert, update, delete on all tables in schema public to anon;
+grant select, insert, update, delete on all tables in schema public to anon; -- eng yomon holat: faqat RLS himoya qiladi
 
 -- Namunaviy ma'lumot
 insert into users (id, telegram_id, first_name, age_range, region, onboarding_step)
@@ -27,8 +27,11 @@ do $$
 declare t text; n int; tables text[] := array['users','login_tokens','clubs','club_members','club_sessions','club_attendance','opportunities','saved_opportunities','ideas','join_requests','events','reports','rate_limits'];
 begin
   foreach t in array tables loop
-    execute format('select count(*) from %I', t) into n;
-    if n <> 0 then raise exception 'RLS ochiq: anon % dan % qator koradi', t, n; end if;
+    begin
+      execute format('select count(*) from %I', t) into n;
+      if n <> 0 then raise exception 'RLS ochiq: anon % dan % qator koradi', t, n; end if;
+    exception when insufficient_privilege then null; -- huquq olib tashlangan: bu ham yaxshi
+    end;
   end loop;
   begin
     insert into reports (entity_type, entity_id, reason) values ('club', gen_random_uuid(), 'x');
