@@ -42,3 +42,32 @@ test("ageGroupOf", () => {
   assert.equal(ageGroupOf("16-17"), "under18");
   assert.equal(ageGroupOf("18-25"), "adult");
 });
+
+import { safeNextPath } from "../lib/next-path.ts";
+
+test("safeNextPath: faqat ichki yoʻllar", () => {
+  assert.equal(safeNextPath("/klublar/x"), "/klublar/x");
+  assert.equal(safeNextPath("//evil.com"), "/");
+  assert.equal(safeNextPath("https://evil.com"), "/");
+  assert.equal(safeNextPath("/\\evil.com"), "/");
+  assert.equal(safeNextPath(undefined), "/");
+});
+
+import { checkinOpen } from "../lib/checkin.ts";
+
+test("checkinOpen oynasi", () => {
+  const start = "2026-10-10T10:00:00Z";
+  assert.equal(checkinOpen(start, new Date("2026-10-10T09:00:00Z")), false);
+  assert.equal(checkinOpen(start, new Date("2026-10-10T09:45:00Z")), true);
+  assert.equal(checkinOpen(start, new Date("2026-10-10T13:59:00Z")), true);
+  assert.equal(checkinOpen(start, new Date("2026-10-10T14:30:00Z")), false);
+});
+
+import { tashkentDayEnd } from "../lib/time.ts";
+
+test("tashkentDayEnd", () => {
+  // 04:00 UTC = 09:00 Toshkent; kun tugashi = 19:00 UTC.
+  assert.equal(tashkentDayEnd(new Date("2026-10-10T04:00:00Z")).toISOString(), "2026-10-10T19:00:00.000Z");
+  // 20:00 UTC = 01:00 Toshkent keyingi kun.
+  assert.equal(tashkentDayEnd(new Date("2026-10-10T20:00:00Z")).toISOString(), "2026-10-11T19:00:00.000Z");
+});

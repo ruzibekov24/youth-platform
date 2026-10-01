@@ -77,7 +77,43 @@ export const t = {
     open: "Rasmiy sahifaga oʻtish",
   },
   club: {
+    title: "Klublar",
+    lead: "Real klublar: qoʻshiling va sessiyaga qatnashing.",
     schedule: "Jadval",
+    organizer: "Tashkilotchi",
+    sessions: "Kelayotgan sessiyalar",
+    noSessions: "Yaqin sessiya hozircha yoʻq.",
+    join: "Klubga qoʻshilish",
+    leave: "Klubdan chiqish",
+    member: "Siz aʼzosiz",
+    loginToJoin: "Qoʻshilish uchun kiring",
+    empty: "Hozircha klub yoʻq.",
+    notFound: "Klub topilmadi.",
+    checkin: {
+      title: "Sessiyaga qatnashish",
+      loginPrompt: "Qatnashganingizni tasdiqlash uchun avval kiring.",
+      confirm: "Qatnashdim",
+      done: "Qatnashganingiz yozildi. Profilingizda koʻrinadi.",
+      already: "Siz bu sessiyaga allaqachon qatnashgansiz.",
+      closed: "Bu sessiya uchun tasdiqlash vaqti hozir ochiq emas.",
+      invalid: "Kod notoʻgʻri.",
+      toProfile: "Profilga oʻtish",
+    },
+    qrHint: "Telefon kamerasi bilan skanerlang va qatnashganingizni tasdiqlang.",
+  },
+  report: {
+    open: "Xabar berish",
+    reason: "Nima notoʻgʻri?",
+    send: "Yuborish",
+    thanks: "Rahmat, xabaringiz qabul qilindi.",
+    error: "Yuborib boʻlmadi. Birozdan keyin urinib koʻring.",
+  },
+  reminders: {
+    session: (club: string, topic: string, time: string) =>
+      `Bugun klub sessiyasi: ${club}. Mavzu: ${topic}. Vaqti: ${time}.`,
+    closing: (title: string, days: number) =>
+      `Saqlagan imkoniyatingiz yopilishiga ${days} kun qoldi: ${title}.`,
+    stopHint: "Eslatmalarni oʻchirish: /eslatma",
   },
   auth: {
     title: "Telegram orqali kirish",

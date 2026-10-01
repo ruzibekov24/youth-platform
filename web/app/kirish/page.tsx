@@ -4,14 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { getCurrentUser } from "@/lib/auth";
 import { dbConfigured } from "@/lib/db";
+import { safeNextPath } from "@/lib/next-path";
 import { t } from "@/lib/strings.uz";
 import { startLogin } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: `${t.auth.title} · ${t.brand}` };
 
-export default async function LoginPage() {
-  if (await getCurrentUser()) redirect("/");
+export default async function LoginPage({ searchParams }: PageProps<"/kirish">) {
+  const next = safeNextPath((await searchParams).next);
+  if (await getCurrentUser()) redirect(next);
   const ready =
     dbConfigured() && Boolean(process.env.TELEGRAM_BOT_USERNAME && process.env.SESSION_SECRET);
 
@@ -22,6 +24,7 @@ export default async function LoginPage() {
         <p className="mt-3 text-muted">{t.auth.lead}</p>
         {ready ? (
           <form action={startLogin} className="mt-8">
+            <input type="hidden" name="next" value={next} />
             <Button type="submit" className="w-full sm:w-auto">
               {t.auth.start}
             </Button>

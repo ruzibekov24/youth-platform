@@ -22,8 +22,9 @@ export function LoginPoller() {
       } else if (status === "ready") {
         stopped = true;
         clearInterval(timer);
-        if (await completeLogin()) {
-          router.replace("/");
+        const next = await completeLogin();
+        if (next) {
+          router.replace(next);
           router.refresh();
         } else {
           setExpired(true);
