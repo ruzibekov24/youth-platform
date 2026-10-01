@@ -24,7 +24,7 @@ export function MainNav({ loggedIn, variant }: { loggedIn: boolean; variant: "to
 
   if (variant === "top") {
     return (
-      <nav aria-label="Asosiy" className="hidden items-center gap-1 sm:flex">
+      <nav aria-label={t.nav.main} className="hidden items-center gap-1 sm:flex">
         {items.map((i) => (
           <Link
             key={i.href}
@@ -44,7 +44,7 @@ export function MainNav({ loggedIn, variant }: { loggedIn: boolean; variant: "to
 
   return (
     <nav
-      aria-label="Asosiy"
+      aria-label={t.nav.main}
       className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg sm:hidden"
     >
       <ul className="mx-auto grid max-w-md" style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>

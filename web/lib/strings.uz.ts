@@ -40,6 +40,7 @@ export const ROLES = [
 export const t = {
   brand: "Yoshlar Base",
   common: {
+    other: "Boshqa",
     sample: "NAMUNA",
     report: "Xabar berish",
     save: "Saqlash",
@@ -55,6 +56,7 @@ export const t = {
     miya: "MIYA",
     profile: "Profil",
     login: "Telegram orqali kirish",
+    main: "Asosiy",
     logout: "Chiqish",
   },
   landing: {
@@ -128,6 +130,7 @@ export const t = {
       invalid: "Kod notoʻgʻri.",
       toProfile: "Profilga oʻtish",
     },
+    qrLabel: "QR kod",
     qrHint: "Telefon kamerasi bilan skanerlang va qatnashganingizni tasdiqlang.",
   },
   report: {

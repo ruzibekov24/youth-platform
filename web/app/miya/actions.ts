@@ -79,7 +79,7 @@ export async function requestJoin(ideaId: string, _prev: FormState, formData: Fo
 
   const role = String(formData.get("role") ?? "");
   const message = cleanText(String(formData.get("message") ?? ""), 500);
-  if (!role || ![...(i.needed_roles as string[]), "Boshqa"].includes(role) || !message) {
+  if (!role || ![...(i.needed_roles as string[]), t.common.other].includes(role) || !message) {
     return { status: "error", message: t.miya.form.errorLength };
   }
 

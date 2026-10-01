@@ -29,7 +29,7 @@ export default async function QrPage({ params }: PageProps<"/qr/[code]">) {
       <div
         className="w-full max-w-sm rounded-card border border-line bg-white p-4 [&>svg]:h-auto [&>svg]:w-full"
         role="img"
-        aria-label="QR kod"
+        aria-label={t.club.qrLabel}
         dangerouslySetInnerHTML={{ __html: svg }}
       />
       <p className="max-w-sm text-sm text-muted">{t.club.qrHint}</p>

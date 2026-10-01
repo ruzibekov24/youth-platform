@@ -79,7 +79,7 @@ export function JoinForm({ ideaId, roles }: { ideaId: string; roles: string[] })
           <option value="" disabled>
             …
           </option>
-          {[...roles, "Boshqa"].map((r) => (
+          {[...new Set([...roles, t.common.other])].map((r) => (
             <option key={r} value={r}>
               {r}
             </option>
