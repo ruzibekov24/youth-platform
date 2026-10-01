@@ -1,13 +1,13 @@
 import "server-only";
 import { Bot, InlineKeyboard, webhookCallback } from "grammy";
-import { attachToken, confirmPendingTokens } from "./login";
-import { trackEvent } from "./events";
-import { allow } from "./rate-limit";
-import { INTERESTS, REGIONS, t } from "./strings.uz";
-import { findOrCreateByTelegramId, getUserByTelegramId, deleteUser, updateUser, type UserRow } from "./users";
-import { AGE_RANGES, isAgeRange, sanitizeName } from "./validate";
+import { attachToken, confirmPendingTokens } from "./login.ts";
+import { trackEvent } from "./events.ts";
+import { allow } from "./rate-limit.ts";
+import { INTERESTS, REGIONS, t } from "./strings.uz.ts";
+import { findOrCreateByTelegramId, getUserByTelegramId, deleteUser, updateUser, type UserRow } from "./users.ts";
+import { AGE_RANGES, isAgeRange, sanitizeName } from "./validate.ts";
 
-const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN ?? "missing");
+export const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN ?? "missing");
 const T = t.bot;
 
 // Har bir Telegram foydalanuvchisi uchun: daqiqada 30 ta yangilanish.
