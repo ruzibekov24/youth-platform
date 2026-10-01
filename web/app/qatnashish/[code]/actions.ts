@@ -6,10 +6,12 @@ import { checkinOpen } from "@/lib/checkin";
 import { getSessionByCode } from "@/lib/clubs";
 import { db } from "@/lib/db";
 import { trackEvent } from "@/lib/events";
+import { allow } from "@/lib/rate-limit";
 
 export async function checkIn(code: string) {
   const user = await getCurrentUser();
   if (!user) redirect(`/kirish?next=/qatnashish/${code}`);
+  if (!(await allow(`checkin:${user.id}`, 600, 10))) redirect(`/qatnashish/${code}`);
   const session = await getSessionByCode(code);
   if (!session || !checkinOpen(session.starts_at)) redirect(`/qatnashish/${code}`);
 

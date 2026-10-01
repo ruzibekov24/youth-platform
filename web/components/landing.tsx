@@ -8,6 +8,8 @@ import { t } from "@/lib/strings.uz";
 export async function Landing() {
   const l = t.landing;
   const { clubs, opportunities } = await getHomeCards();
+  const hasSample =
+    clubs.some((c) => c.is_sample) || opportunities.some((o) => o.is_sample);
   return (
     <main className="flex-1">
       <section className="pb-14 pt-14 sm:pb-20 sm:pt-24">
@@ -40,20 +42,26 @@ export async function Landing() {
         </Container>
       </section>
 
-      <section className="bg-surface py-14">
-        <Container>
-          <h2 className="text-2xl font-semibold tracking-tight">{l.soonTitle}</h2>
-          <p className="mt-1 text-sm text-muted">{l.soonText}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {clubs.map((c) => (
-              <ClubCard key={c.id} club={c} />
-            ))}
-            {opportunities.map((o) => (
-              <OpportunityCard key={o.id} opp={o} />
-            ))}
-          </div>
-        </Container>
-      </section>
+      {(clubs.length > 0 || opportunities.length > 0) && (
+        <section className="bg-surface py-14">
+          <Container>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              {l.soonTitle}
+            </h2>
+            {hasSample && (
+              <p className="mt-1 text-sm text-muted">{l.soonText}</p>
+            )}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {clubs.map((c) => (
+                <ClubCard key={c.id} club={c} />
+              ))}
+              {opportunities.map((o) => (
+                <OpportunityCard key={o.id} opp={o} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
     </main>
   );
 }

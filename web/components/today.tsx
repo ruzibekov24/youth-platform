@@ -5,6 +5,8 @@ import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
+import { trackEvent } from "@/lib/events";
+import { allow } from "@/lib/rate-limit";
 import { formatDateTime } from "@/lib/format";
 import { getTodayData } from "@/lib/queries";
 import { t } from "@/lib/strings.uz";
@@ -14,6 +16,8 @@ import type { UserRow } from "@/lib/users";
 export async function Today({ user }: { user: UserRow }) {
   const g = t.today;
   const group = ageGroupOf(user.age_range!);
+  // Qaytish oʻlchovi: foydalanuvchi kuniga bir marta "visit" deb yoziladi.
+  if (await allow(`visit:${user.id}`, 86400, 1)) await trackEvent(user.id, "visit");
   const { upcoming, savedOpps, ideas } = await getTodayData(user.id, group);
 
   return (

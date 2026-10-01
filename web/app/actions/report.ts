@@ -1,7 +1,9 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { cleanText } from "@/lib/validate";
+import { clientKey } from "@/lib/ip";
+import { allow } from "@/lib/rate-limit";
+import { cleanText, isUuid } from "@/lib/validate";
 
 const ENTITY_TYPES = ["opportunity", "club", "idea"] as const;
 type EntityType = (typeof ENTITY_TYPES)[number];
@@ -15,9 +17,10 @@ export async function reportEntity(
   formData: FormData,
 ): Promise<ReportState> {
   const reason = cleanText(String(formData.get("reason") ?? ""), 500);
-  if (!ENTITY_TYPES.includes(entityType) || !/^[0-9a-f-]{36}$/i.test(entityId) || !reason) {
+  if (!ENTITY_TYPES.includes(entityType) || !isUuid(entityId) || !reason) {
     return "error";
   }
+  if (!(await allow(`report:${await clientKey()}`, 3600, 5))) return "error";
   const r = await db().from("reports").insert({ entity_type: entityType, entity_id: entityId, reason });
   return r.error ? "error" : "ok";
 }

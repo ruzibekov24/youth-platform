@@ -1,12 +1,21 @@
 import "server-only";
 import { Bot, InlineKeyboard, webhookCallback } from "grammy";
 import { attachToken, confirmPendingTokens } from "./login";
+import { trackEvent } from "./events";
+import { allow } from "./rate-limit";
 import { INTERESTS, REGIONS, t } from "./strings.uz";
 import { findOrCreateByTelegramId, getUserByTelegramId, deleteUser, updateUser, type UserRow } from "./users";
 import { AGE_RANGES, isAgeRange, sanitizeName } from "./validate";
 
 const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN ?? "missing");
 const T = t.bot;
+
+// Har bir Telegram foydalanuvchisi uchun: daqiqada 30 ta yangilanish.
+bot.use(async (ctx, next) => {
+  if (!ctx.from) return;
+  if (!(await allow(`bot:${ctx.from.id}`, 60, 30))) return;
+  await next();
+});
 
 function ageKeyboard() {
   const kb = new InlineKeyboard();
@@ -139,6 +148,7 @@ bot.on("callback_query:data", async (ctx) => {
     if (value === "done") {
       await updateUser(user.id, { onboarding_step: null });
       await confirmPendingTokens(user.id);
+      await trackEvent(user.id, "signup");
       await bot.api.sendMessage(chatId, T.done);
       return;
     }

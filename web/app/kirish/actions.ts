@@ -3,13 +3,17 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { consumeToken, createLoginToken, getLoginStatus, type LoginStatus } from "@/lib/login";
+import { trackEvent } from "@/lib/events";
+import { clientKey } from "@/lib/ip";
 import { LOGIN_COOKIE, LOGIN_TTL_MS } from "@/lib/login-token";
+import { allow } from "@/lib/rate-limit";
 import { NEXT_COOKIE, safeNextPath } from "@/lib/next-path";
 import { SESSION_COOKIE, SESSION_MAX_AGE, signSession } from "@/lib/session";
 
 const secure = process.env.NODE_ENV === "production";
 
 export async function startLogin(formData: FormData) {
+  if (!(await allow(`login:${await clientKey()}`, 600, 10))) redirect("/kirish");
   const token = await createLoginToken();
   const jar = await cookies();
   const opts = { httpOnly: true, secure, sameSite: "lax", path: "/", maxAge: LOGIN_TTL_MS / 1000 } as const;
@@ -36,6 +40,7 @@ export async function completeLogin(): Promise<string | null> {
     path: "/",
     maxAge: SESSION_MAX_AGE,
   });
+  await trackEvent(userId, "login");
   const next = safeNextPath(jar.get(NEXT_COOKIE)?.value);
   jar.delete(LOGIN_COOKIE);
   jar.delete(NEXT_COOKIE);

@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yoshlar Base: web
 
-## Getting Started
+Next.js (App Router) + Tailwind + Supabase + Telegram bot (grammY). Reja: `../PLAN.md`, qoidalar: `../CLAUDE.md`.
 
-First, run the development server:
+## Lokal ishga tushirish
 
 ```bash
+cd web
+npm install
+cp .env.example .env.local   # qiymatlarni toʻldiring
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm test                     # sof mantiq testlari (node:test)
+npm run lint && npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Supabase sozlanmasa ham landing namunaviy (NAMUNA) kartalar bilan ochiladi; kirish va boshqa boʻlimlar uchun baza kerak.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sozlash tartibi
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Supabase**: loyiha oching, SQL Editor'da `supabase/migrations/0001_init.sql`, keyin `0002_miya_and_limits.sql`. Sinov uchun `supabase/seed.sql`. Batafsil: `supabase/README.md`.
+2. **Telegram bot**: BotFather'da Base uchun alohida bot yarating. Token va username'ni `.env` ga yozing. Buyruqlar: `/start`, `/eslatma`.
+3. **Sirlar**: `SESSION_SECRET` (kamida 32 belgi, `openssl rand -base64 48`), `TELEGRAM_WEBHOOK_SECRET`, `CRON_SECRET`.
+4. **Vercel**: repo'ni ulang, Root Directory = `web`, `.env.example` dagi hamma oʻzgaruvchini qoʻying (`NEXT_PUBLIC_SITE_URL` = `https://domen`). `vercel.json` kunlik cron'ni (09:00 Toshkent) sozlaydi; Vercel `CRON_SECRET` ni `Authorization` sarlavhasida oʻzi yuboradi.
+5. **Webhook**: deploydan keyin `npm run bot:webhook` (`.env.local` da `NEXT_PUBLIC_SITE_URL` https boʻlishi kerak).
+6. **QR**: klub sessiyasi uchun `https://domen/qr/<checkin_code>` sahifasini sensorli doskada oching (`club_sessions.checkin_code`).
 
-## Learn More
+## Xavfsizlik qisqacha
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Bazaga faqat server (service role). RLS hamma jadvalda yoqilgan, policy yoʻq.
+- Cookie: imzolangan httpOnly JWT, ichida faqat ichki user id.
+- Yozish amallari `rate_hit` (bazada) orqali cheklanadi. Webhook va cron yashirin sir bilan himoyalangan.
+- 18 yoshgacha va 18+ MIYA'da bir-biri bilan bogʻlanmaydi (server tomonida tekshiriladi).

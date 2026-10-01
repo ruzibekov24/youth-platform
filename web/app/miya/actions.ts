@@ -10,7 +10,7 @@ import { MAX_PENDING_IDEAS, validateIdea } from "@/lib/idea-validate";
 import { getTelegramId, groupOfUser } from "@/lib/ideas";
 import { allow } from "@/lib/rate-limit";
 import { ROLES, t } from "@/lib/strings.uz";
-import { ageGroupOf, cleanText, isAgeRange } from "@/lib/validate";
+import { ageGroupOf, cleanText, isAgeRange, isUuid } from "@/lib/validate";
 
 export type FormState = { status: "idle" | "ok" | "error"; message?: string };
 
@@ -65,6 +65,7 @@ export async function requestJoin(ideaId: string, _prev: FormState, formData: Fo
   const user = await getCurrentUser();
   if (!user) redirect(`/kirish?next=/miya/${ideaId}`);
   const j = t.miya.join;
+  if (!isUuid(ideaId)) return { status: "error", message: t.miya.closedNote };
 
   if (!(await allow(`join:${user.id}`, 3600, 10))) return { status: "error", message: t.miya.form.errorRate };
 
@@ -96,6 +97,7 @@ export async function requestJoin(ideaId: string, _prev: FormState, formData: Fo
 export async function decideRequest(requestId: string, decision: "accepted" | "declined") {
   const user = await getCurrentUser();
   if (!user) redirect("/kirish");
+  if (!isUuid(requestId) || !(await allow(`write:${user.id}`, 60, 30))) return;
 
   const r = await db()
     .from("join_requests")
@@ -134,6 +136,7 @@ export async function decideRequest(requestId: string, decision: "accepted" | "d
 export async function closeIdea(ideaId: string) {
   const user = await getCurrentUser();
   if (!user) redirect("/kirish");
+  if (!isUuid(ideaId)) return;
   const r = await db().from("ideas").update({ status: "closed" }).eq("id", ideaId).eq("owner_id", user.id);
   if (r.error) throw r.error;
   revalidatePath(`/miya/${ideaId}`);

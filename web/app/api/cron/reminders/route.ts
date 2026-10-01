@@ -1,4 +1,5 @@
 import { timingSafeEqual } from "node:crypto";
+import { cleanup } from "@/lib/maintenance";
 import { sendClosingReminders, sendIdeaApprovals, sendSessionReminders } from "@/lib/reminders";
 
 export const dynamic = "force-dynamic";
@@ -18,5 +19,6 @@ export async function GET(req: Request) {
   const sessions = await sendSessionReminders();
   const closing = await sendClosingReminders();
   const ideas = await sendIdeaApprovals();
+  await cleanup();
   return Response.json({ sessions, closing, ideas });
 }
