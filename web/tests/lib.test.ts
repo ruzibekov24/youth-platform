@@ -71,3 +71,32 @@ test("tashkentDayEnd", () => {
   // 20:00 UTC = 01:00 Toshkent keyingi kun.
   assert.equal(tashkentDayEnd(new Date("2026-10-10T20:00:00Z")).toISOString(), "2026-10-11T19:00:00.000Z");
 });
+
+import { matchesFilters, sortOpportunities } from "../lib/opp-filter.ts";
+import type { Opportunity } from "../lib/types.ts";
+
+const base: Opportunity = {
+  id: "1", title: "x", type: "program", organizer: "o", closes_at: null, age_min: null, age_max: null,
+  eligibility: "", region: "Toshkent", official_url: "https://a.b", verified_at: "2026-01-01T00:00:00Z",
+  status: "active", is_sample: true,
+};
+
+test("opp filtr: yosh oraligʻi kesishishi", () => {
+  const o = { ...base, age_min: 15, age_max: 18 };
+  assert.equal(matchesFilters(o, { age: "13-15" }), true);
+  assert.equal(matchesFilters(o, { age: "16-17" }), true);
+  assert.equal(matchesFilters(o, { age: "18-25" }), true);
+  assert.equal(matchesFilters({ ...base, age_min: 18 }, { age: "13-15" }), false);
+  assert.equal(matchesFilters({ ...base, age_max: 17 }, { age: "18-25" }), false);
+  assert.equal(matchesFilters(base, { type: "event" }), false);
+  assert.equal(matchesFilters(base, { region: "Toshkent" }), true);
+});
+
+test("opp saralash: ochiqlar oldin, yopilganlar oxirida", () => {
+  const now = new Date("2026-10-10T00:00:00Z");
+  const closed = { ...base, id: "c", closes_at: "2026-10-01T00:00:00Z" };
+  const soon = { ...base, id: "s", closes_at: "2026-10-12T00:00:00Z" };
+  const later = { ...base, id: "l", closes_at: "2026-12-01T00:00:00Z" };
+  const none = { ...base, id: "n", closes_at: null };
+  assert.deepEqual(sortOpportunities([closed, none, later, soon], now).map((o) => o.id), ["s", "l", "n", "c"]);
+});

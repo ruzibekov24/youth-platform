@@ -9,7 +9,9 @@ import { t } from "@/lib/strings.uz";
 export function ReportButton({
   entityType,
   entityId,
+  label,
 }: {
+  label?: string;
   entityType: "opportunity" | "club" | "idea";
   entityId: string;
 }) {
@@ -21,7 +23,7 @@ export function ReportButton({
   return (
     <details className="group text-sm">
       <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-xl px-3 text-muted hover:bg-surface">
-        {t.report.open}
+        {label ?? t.report.open}
       </summary>
       {state === "ok" ? (
         <p className="mt-2 text-ok" role="status">

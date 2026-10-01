@@ -15,7 +15,7 @@ export function OpportunityCard({ opp }: { opp: Opportunity }) {
         <Badge tone="accent">{t.opp.types[opp.type]}</Badge>
         <div className="flex gap-1.5">
           {closed && <Badge tone="danger">{t.opp.closed}</Badge>}
-          {left !== null && left <= 7 && <Badge tone="warn">{left} kun qoldi</Badge>}
+          {left !== null && left <= 7 && <Badge tone="warn">{t.opp.daysLeft(left)}</Badge>}
           {opp.is_sample && <SampleBadge />}
         </div>
       </div>

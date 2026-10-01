@@ -1,7 +1,7 @@
 import "server-only";
 import { sendTelegram } from "./bot";
 import { db } from "./db";
-import { formatDateTime } from "./format";
+import { daysLeft, formatDateTime } from "./format";
 import { t } from "./strings.uz";
 import { tashkentDayEnd } from "./time";
 
@@ -51,6 +51,42 @@ export async function sendSessionReminders(now = new Date()): Promise<number> {
       .from("club_sessions")
       .update({ reminder_sent_at: new Date().toISOString() })
       .eq("id", s.id);
+    if (mark.error) throw mark.error;
+  }
+  return sent;
+}
+
+const CLOSING_DAYS = 3;
+
+// Saqlangan imkoniyat yopilishiga 3 kun qolganda eslatma (bir marta).
+export async function sendClosingReminders(now = new Date()): Promise<number> {
+  const limit = new Date(now.getTime() + CLOSING_DAYS * 86_400_000).toISOString();
+  const r = await db()
+    .from("saved_opportunities")
+    .select("user_id, opportunity_id, opportunities!inner(title, closes_at, status), users(telegram_id, reminders_enabled, onboarding_step)")
+    .is("reminder_sent_at", null)
+    .eq("opportunities.status", "active")
+    .gte("opportunities.closes_at", now.toISOString())
+    .lte("opportunities.closes_at", limit);
+  if (r.error) throw r.error;
+
+  let sent = 0;
+  for (const row of (r.data ?? []) as unknown as {
+    user_id: string;
+    opportunity_id: string;
+    opportunities: { title: string; closes_at: string };
+    users: Member["users"];
+  }[]) {
+    const u = row.users;
+    if (u && u.reminders_enabled && !u.onboarding_step) {
+      const days = Math.max(1, daysLeft(row.opportunities.closes_at, now));
+      if (await safeSend(u.telegram_id, t.reminders.closing(row.opportunities.title, days))) sent++;
+    }
+    const mark = await db()
+      .from("saved_opportunities")
+      .update({ reminder_sent_at: new Date().toISOString() })
+      .eq("user_id", row.user_id)
+      .eq("opportunity_id", row.opportunity_id);
     if (mark.error) throw mark.error;
   }
   return sent;
