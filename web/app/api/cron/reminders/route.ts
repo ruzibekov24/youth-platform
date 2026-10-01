@@ -1,5 +1,5 @@
 import { timingSafeEqual } from "node:crypto";
-import { sendClosingReminders, sendSessionReminders } from "@/lib/reminders";
+import { sendClosingReminders, sendIdeaApprovals, sendSessionReminders } from "@/lib/reminders";
 
 export const dynamic = "force-dynamic";
 
@@ -17,5 +17,6 @@ export async function GET(req: Request) {
   if (!authorized(req)) return new Response("Unauthorized", { status: 401 });
   const sessions = await sendSessionReminders();
   const closing = await sendClosingReminders();
-  return Response.json({ sessions, closing });
+  const ideas = await sendIdeaApprovals();
+  return Response.json({ sessions, closing, ideas });
 }

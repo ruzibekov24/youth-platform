@@ -100,3 +100,16 @@ test("opp saralash: ochiqlar oldin, yopilganlar oxirida", () => {
   const none = { ...base, id: "n", closes_at: null };
   assert.deepEqual(sortOpportunities([closed, none, later, soon], now).map((o) => o.id), ["s", "l", "n", "c"]);
 });
+
+import { validateIdea } from "../lib/idea-validate.ts";
+
+test("validateIdea", () => {
+  const roles = ["Dasturchi", "Dizayner"];
+  const ok = { title: "  Ilova  ", problem: "Muammo matni uzun", description: "Tavsif matni uzun", roles: ["Dasturchi", "Hacker", "Dasturchi"] };
+  assert.deepEqual(validateIdea(ok, roles), {
+    title: "Ilova", problem: "Muammo matni uzun", description: "Tavsif matni uzun", needed_roles: ["Dasturchi"],
+  });
+  assert.equal(validateIdea({ ...ok, title: "ab" }, roles), null);
+  assert.equal(validateIdea({ ...ok, roles: ["Hacker"] }, roles), null);
+  assert.equal(validateIdea({ ...ok, problem: "qisqa" }, roles), null);
+});

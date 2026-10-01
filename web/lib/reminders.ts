@@ -91,3 +91,30 @@ export async function sendClosingReminders(now = new Date()): Promise<number> {
   }
   return sent;
 }
+
+// Moderator gʻoyani "open" qilgach (Supabase Studio), egasiga bir marta xabar beriladi.
+export async function sendIdeaApprovals(): Promise<number> {
+  const r = await db()
+    .from("ideas")
+    .select("id, title, users(telegram_id)")
+    .eq("status", "open")
+    .is("approved_notified_at", null);
+  if (r.error) throw r.error;
+
+  let sent = 0;
+  for (const i of (r.data ?? []) as unknown as { id: string; title: string; users: { telegram_id: number } | null }[]) {
+    if (i.users && (await safeSendPlain(i.users.telegram_id, t.bot.ideaApproved(i.title)))) sent++;
+    const mark = await db().from("ideas").update({ approved_notified_at: new Date().toISOString() }).eq("id", i.id);
+    if (mark.error) throw mark.error;
+  }
+  return sent;
+}
+
+async function safeSendPlain(telegramId: number, text: string): Promise<boolean> {
+  try {
+    await sendTelegram(telegramId, text);
+    return true;
+  } catch {
+    return false;
+  }
+}

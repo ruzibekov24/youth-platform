@@ -1,4 +1,4 @@
-import type { AgeRange } from "./types";
+import type { AgeRange } from "./types.ts";
 
 export const AGE_RANGES: AgeRange[] = ["13-15", "16-17", "18-25"];
 

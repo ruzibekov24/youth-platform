@@ -153,8 +153,8 @@ bot.on("callback_query:data", async (ctx) => {
   }
 });
 
-export function sendTelegram(telegramId: number, text: string) {
-  return bot.api.sendMessage(telegramId, text);
+export function sendTelegram(telegramId: number, text: string, html = false) {
+  return bot.api.sendMessage(telegramId, text, html ? { parse_mode: "HTML" } : undefined);
 }
 
 export const handleUpdate = webhookCallback(bot, "std/http", {

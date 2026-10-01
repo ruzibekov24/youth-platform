@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button, ButtonLink } from "@/components/ui/button";
+import { MainNav } from "@/components/main-nav";
 import { Container } from "@/components/ui/container";
 import { logout } from "@/app/kirish/actions";
 import { getCurrentUser } from "@/lib/auth";
@@ -14,10 +15,11 @@ export async function SiteHeader() {
         <Link href="/" className="text-lg font-semibold tracking-tight">
           {t.brand}
         </Link>
+        <MainNav loggedIn={Boolean(user)} variant="top" />
         {user ? (
           <div className="flex items-center gap-1">
             <Link
-              href="/profil"
+              href="/sozlamalar"
               className="inline-flex min-h-11 items-center rounded-xl px-3 text-sm font-medium hover:bg-surface"
             >
               {user.first_name}
@@ -34,6 +36,7 @@ export async function SiteHeader() {
           </ButtonLink>
         )}
       </Container>
+      <MainNav loggedIn={Boolean(user)} variant="bottom" />
     </header>
   );
 }

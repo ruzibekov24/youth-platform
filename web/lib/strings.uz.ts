@@ -27,6 +27,16 @@ export const INTERESTS = [
   { key: "study-abroad", label: "Chet elda oʻqish" },
 ] as const;
 
+export const ROLES = [
+  "Dasturchi",
+  "Dizayner",
+  "Marketing",
+  "Kontent / matn",
+  "Video",
+  "Menejer",
+  "Boshqa",
+] as const;
+
 export const t = {
   brand: "Yoshlar Base",
   common: {
@@ -127,6 +137,60 @@ export const t = {
     thanks: "Rahmat, xabaringiz qabul qilindi.",
     error: "Yuborib boʻlmadi. Birozdan keyin urinib koʻring.",
   },
+  miya: {
+    title: "MIYA",
+    lead: "Gʻoyani yoz, kerakli odamlarni top, jamoa tuz. Gʻoyalar koʻrinishidan oldin tekshiriladi.",
+    newIdea: "Gʻoya qoʻyish",
+    loginToPost: "Gʻoya qoʻyish uchun kiring",
+    empty: "Hozircha tasdiqlangan gʻoya yoʻq.",
+    emptyText: "Birinchi boʻlib gʻoyangizni yozing.",
+    needed: "Kerakli rollar",
+    problem: "Qanday muammoni hal qiladi",
+    description: "Gʻoya haqida",
+    groupUnder18: "13–17 yosh guruhi",
+    groupAdult: "18+ guruhi",
+    author: "Muallif",
+    form: {
+      title: "Yangi gʻoya",
+      lead: "Gʻoyangiz moderator tekshirgach doskada koʻrinadi.",
+      fTitle: "Sarlavha",
+      fTitleHint: "3–80 belgi",
+      fProblem: "Qanday muammoni hal qiladi?",
+      fProblemHint: "10–500 belgi",
+      fDescription: "Gʻoya haqida batafsil",
+      fDescriptionHint: "10–2000 belgi",
+      fRoles: "Qanday odamlar kerak?",
+      submit: "Tekshiruvga yuborish",
+      errorLength: "Maydonlarni toʻldiring va uzunlikni tekshiring.",
+      errorLimit: "Tekshiruvda 3 ta gʻoyangiz bor. Biri tasdiqlangach yangisini yozishingiz mumkin.",
+      errorRate: "Juda koʻp urinish. Birozdan keyin qayta urinib koʻring.",
+      sentTitle: "Gʻoya yuborildi",
+      sentText: "Moderator tekshirgach doskada paydo boʻladi. Holatini profilda koʻrasiz.",
+    },
+    pendingNote: "Bu gʻoya hali tekshiruvda: faqat siz koʻrasiz.",
+    closedNote: "Bu gʻoya yopilgan.",
+    join: {
+      title: "Qoʻshilaman",
+      role: "Qaysi rolda?",
+      message: "Nega aynan siz? (qisqa)",
+      submit: "Soʻrov yuborish",
+      sent: "Soʻrovingiz yuborildi. Muallif javob bergach Telegram botdan xabar olasiz.",
+      accepted: "Soʻrovingiz qabul qilindi. Bogʻlanish uchun Telegram botni tekshiring.",
+      declined: "Bu safar soʻrov qabul qilinmadi.",
+      pending: "Soʻrovingiz koʻrib chiqilmoqda.",
+      sameGroupOnly: "Soʻrov yuborish faqat oʻz yosh guruhingiz ichida mumkin.",
+      loginToJoin: "Qoʻshilish uchun kiring",
+      own: "Bu sizning gʻoyangiz.",
+    },
+    owner: {
+      requests: "Qoʻshilish soʻrovlari",
+      none: "Hozircha soʻrov yoʻq.",
+      accept: "Qabul qilish",
+      decline: "Rad etish",
+      close: "Gʻoyani yopish",
+      roleOf: (role: string) => `Rol: ${role}`,
+    },
+  },
   reminders: {
     session: (club: string, topic: string, time: string) =>
       `Bugun klub sessiyasi: ${club}. Mavzu: ${topic}. Vaqti: ${time}.`,
@@ -173,6 +237,10 @@ export const t = {
     interestsDone: "Tayyor",
     done: "Tayyor! Saytga qayting: kirish avtomatik tasdiqlanadi.",
     expiredLogin: "Bu kirish havolasining muddati tugagan. Saytdan qaytadan boshlang.",
+    newRequest: (title: string) => `Gʻoyangizga yangi qoʻshilish soʻrovi keldi: «${title}». Saytda koʻrib chiqing.`,
+    ideaApproved: (title: string) => `Gʻoyangiz tasdiqlandi va doskada koʻrinmoqda: «${title}».`,
+    accepted: (title: string, nameHtml: string) =>
+      `Jamoa tuzildi! «${title}» gʻoyasi boʻyicha bogʻlanish: ${nameHtml}. Telegram chatida yozishingiz mumkin.`,
     privateOnly: "Iltimos, botga shaxsiy xabarda yozing.",
     useButtons: "Iltimos, tugmalardan birini tanlang.",
     remindersOn: "Eslatmalar yoqildi.",

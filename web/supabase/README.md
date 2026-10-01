@@ -13,3 +13,11 @@ Kalitlar `.env` ga yoziladi (`.env.example` ga qarang). `SUPABASE_SERVICE_ROLE_K
 - `type`: `scholarship | program | competition | internship | event`
 - `closes_at`, `verified_at`: ISO sana (`2026-12-31T00:00:00Z`)
 - `official_url`: rasmiy manba, `https://` bilan
+
+## Moderatsiya (admin panel yoʻq)
+
+Yangi gʻoya `ideas.status = 'pending'` holatda tushadi. Table Editor'da koʻrib chiqing:
+- maqbul boʻlsa `status` ni `open` ga oʻzgartiring (egasiga bot orqali xabar kunlik cron bilan ketadi);
+- boʻlmasa `closed` qiling yoki qatorni oʻchiring.
+
+`reports` jadvalidagi shikoyatlarni ham shu yerda koʻring.
