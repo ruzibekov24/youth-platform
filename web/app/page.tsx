@@ -2,11 +2,14 @@ import { ClubCard } from "@/components/club-card";
 import { OpportunityCard } from "@/components/opportunity-card";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { sampleClubs, sampleOpportunities } from "@/lib/sample-data";
+import { getHomeCards } from "@/lib/queries";
 import { t } from "@/lib/strings.uz";
 
-export default function Home() {
+export const revalidate = 300;
+
+export default async function Home() {
   const l = t.landing;
+  const { clubs, opportunities } = await getHomeCards();
   return (
     <main className="flex-1">
       <section className="pb-14 pt-14 sm:pb-20 sm:pt-24">
@@ -44,10 +47,10 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight">{l.soonTitle}</h2>
           <p className="mt-1 text-sm text-muted">{l.soonText}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {sampleClubs.map((c) => (
+            {clubs.map((c) => (
               <ClubCard key={c.id} club={c} />
             ))}
-            {sampleOpportunities.map((o) => (
+            {opportunities.map((o) => (
               <OpportunityCard key={o.id} opp={o} />
             ))}
           </div>
