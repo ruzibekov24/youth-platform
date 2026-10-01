@@ -42,3 +42,13 @@ export type Opportunity = {
   status: "active" | "hidden";
   is_sample: boolean;
 };
+
+export type Idea = {
+  id: string;
+  title: string;
+  problem: string;
+  needed_roles: string[];
+  status: "pending" | "open" | "closed";
+  age_group: "under18" | "adult";
+  created_at: string;
+};

@@ -17,7 +17,7 @@ export async function SiteHeader() {
         {user ? (
           <div className="flex items-center gap-1">
             <Link
-              href="/sozlamalar"
+              href="/profil"
               className="inline-flex min-h-11 items-center rounded-xl px-3 text-sm font-medium hover:bg-surface"
             >
               {user.first_name}
