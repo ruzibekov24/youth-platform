@@ -5,8 +5,6 @@ import { Container } from "@/components/ui/container";
 import { getHomeCards } from "@/lib/queries";
 import { t } from "@/lib/strings.uz";
 
-export const revalidate = 300;
-
 export default async function Home() {
   const l = t.landing;
   const { clubs, opportunities } = await getHomeCards();

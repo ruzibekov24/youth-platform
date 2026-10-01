@@ -1,4 +1,32 @@
 // Barcha UI matnlari shu yerda (o'zbekcha, lotin). Keyin ru qo'shish oson bo'ladi.
+export const REGIONS = [
+  "Toshkent shahri",
+  "Toshkent viloyati",
+  "Andijon",
+  "Buxoro",
+  "Fargʻona",
+  "Jizzax",
+  "Xorazm",
+  "Namangan",
+  "Navoiy",
+  "Qashqadaryo",
+  "Qoraqalpogʻiston",
+  "Samarqand",
+  "Sirdaryo",
+  "Surxondaryo",
+] as const;
+
+export const INTERESTS = [
+  { key: "tech", label: "Texnologiya" },
+  { key: "business", label: "Tadbirkorlik" },
+  { key: "languages", label: "Tillar" },
+  { key: "science", label: "Fan" },
+  { key: "art", label: "Sanʼat" },
+  { key: "sport", label: "Sport" },
+  { key: "volunteering", label: "Volontyorlik" },
+  { key: "study-abroad", label: "Chet elda oʻqish" },
+] as const;
+
 export const t = {
   brand: "Yoshlar Base",
   common: {
@@ -50,6 +78,50 @@ export const t = {
   },
   club: {
     schedule: "Jadval",
+  },
+  auth: {
+    title: "Telegram orqali kirish",
+    lead: "Parol ham, telefon raqami ham kerak emas. Telegram botda 4 ta qisqa savolga javob berasiz, shu bilan tayyor.",
+    start: "Telegram botni ochish",
+    waitingTitle: "Telegramda tasdiqlang",
+    waitingText: "Bot ochilgach «Start» bosing va savollarga javob bering. Tugagach shu sahifa oʻzi davom etadi.",
+    openBot: "Botni ochish",
+    expired: "Havolaning muddati tugadi. Qaytadan urinib koʻring.",
+    retry: "Qaytadan",
+    notConfigured: "Telegram bot hali sozlanmagan.",
+    loggedInAs: "Siz kirgansiz",
+  },
+  settings: {
+    title: "Sozlamalar",
+    reminders: "Telegram eslatmalari",
+    remindersOn: "Yoqilgan",
+    remindersOff: "Oʻchirilgan",
+    toggleReminders: "Eslatmalarni almashtirish",
+    dangerTitle: "Akkauntni oʻchirish",
+    dangerText:
+      "Ismingiz, yosh oraligʻingiz, hududingiz, qiziqishlaringiz, klub va gʻoyalaringiz butunlay oʻchiriladi. Buni qaytarib boʻlmaydi.",
+    confirmLabel: "Tushundim, oʻchirilsin",
+    delete: "Akkauntni butunlay oʻchirish",
+  },
+  bot: {
+    welcomeBack: "Qaytganingiz bilan! Saytga qaytib, kirishni davom ettiring.",
+    welcomeNoToken: "Salom! Yoshlar Base botiga xush kelibsiz. Kirish uchun saytdagi «Telegram orqali kirish» tugmasidan foydalaning.",
+    askName: (suggested: string) =>
+      `Salom! Avval tanishib olamiz. Sizni qanday chaqiraylik? Telegramdagi ismingiz: ${suggested}. Shuni tanlang yoki laqab yozing.`,
+    chooseName: (name: string) => `${name} deb chaqirilsin`,
+    badName: "Ism faqat harflardan iborat boʻlsin (1–40 belgi). Havola, @ va raqamlar mumkin emas. Qaytadan yozing.",
+    askAge: "Yosh oraligʻingiz?",
+    tooYoung: "13 dan kichik boʻlsangiz hozircha roʻyxatdan oʻta olmaysiz. Hech qanday maʼlumot saqlanmadi.",
+    under13: "13 dan kichikman",
+    askRegion: "Qaysi hududdansiz?",
+    askInterests: "Qiziqishlaringizni tanlang (bir nechta mumkin), keyin «Tayyor» bosing.",
+    interestsDone: "Tayyor",
+    done: "Tayyor! Saytga qayting: kirish avtomatik tasdiqlanadi.",
+    expiredLogin: "Bu kirish havolasining muddati tugagan. Saytdan qaytadan boshlang.",
+    privateOnly: "Iltimos, botga shaxsiy xabarda yozing.",
+    useButtons: "Iltimos, tugmalardan birini tanlang.",
+    remindersOn: "Eslatmalar yoqildi.",
+    remindersOff: "Eslatmalar oʻchirildi.",
   },
   gallery: {
     title: "Komponentlar",
