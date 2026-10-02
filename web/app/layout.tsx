@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Caveat, Inter, Red_Hat_Display } from "next/font/google";
 import { t } from "@/lib/strings.uz";
 import "./globals.css";
@@ -17,6 +17,17 @@ const themeScript =
 export const metadata: Metadata = {
   title: t.meta.title,
   description: t.meta.description,
+  applicationName: t.brand,
+  // iPhone: "Bosh ekranga qo'shish" dan keyin brauzer panelisiz ochiladi.
+  appleWebApp: { capable: true, title: t.brand, statusBarStyle: "default" },
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0e13" },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
