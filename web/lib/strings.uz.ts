@@ -57,7 +57,10 @@ export const t = {
       { title: "Yosh guruhi", text: "18 yoshgacha bo'lganlar 18+ bilan bog'lanmaydi." },
       { title: "To'liq o'chirish", text: "Akkaunt va ma'lumotlar bir bosishda o'chadi." },
     ],
-    cta: "Boshlash",
+    finTitle: "Birinchi qadamni bugun qiling",
+    cta: "Telegram orqali boshlash",
+    ctaSecondary: "Imkoniyatlarni ko'rish",
+    finNote: "Parol, email va telefon raqami kerak emas.",
   },
   footer: "Yoshlar uchun digital home",
   cards: {

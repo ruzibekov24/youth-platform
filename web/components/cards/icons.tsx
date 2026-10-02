@@ -51,12 +51,12 @@ export const ShieldIcon = (p: P) => (
 );
 
 // Telegram belgisi o'z brend rangida qoladi (bu uning logotipi).
-export const TelegramMark = ({ className }: P) => (
+export const TelegramMark = ({ className, mono }: P & { mono?: boolean }) => (
   <svg viewBox="0 0 24 24" className={className} aria-hidden>
-    <circle cx="12" cy="12" r="12" fill="#29A9EB" />
+    <circle cx="12" cy="12" r="12" fill={mono ? "#fff" : "#29A9EB"} />
     <path
       d="M5.5 11.8l11.6-4.5c.5-.2 1 .1.8.9l-2 9.3c-.1.6-.5.8-1 .5l-2.9-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.4-4.9c.2-.2 0-.3-.4-.1L8.4 13.5l-2.8-.9c-.6-.2-.6-.6.1-.8z"
-      fill="#fff"
+      fill={mono ? "var(--color-accent)" : "#fff"}
     />
   </svg>
 );

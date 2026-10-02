@@ -296,14 +296,21 @@ function Safety() {
             </div>
           </div>
           <div className="fin">
-            <a className="big" href="#" data-a=".8" data-b=".92" data-s=".85" data-o="0">
-              {s.cta}
-            </a>
-            <div className="soc" data-a=".88" data-b=".98" data-y="20" data-o="0">
-              <a href="#" aria-label="Telegram">
-                <TelegramMark className="tgm-s" />
+            <h2 className="fin-title" data-a=".8" data-b=".92" data-y="30" data-o="0">
+              {s.finTitle}
+            </h2>
+            <div className="fin-actions" data-a=".86" data-b=".97" data-y="24" data-o="0">
+              <a className="btn tg-btn" href="#">
+                <TelegramMark className="tgm-btn" mono />
+                {s.cta}
+              </a>
+              <a className="btn ghost-dark" href="#makonlar">
+                {s.ctaSecondary}
               </a>
             </div>
+            <p className="fin-note" data-a=".9" data-b="1" data-o="0">
+              {s.finNote}
+            </p>
           </div>
         </div>
       </div>
