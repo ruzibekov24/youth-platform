@@ -1,8 +1,5 @@
-import { Landing } from "@/components/landing";
-import { Today } from "@/components/today";
-import { getCurrentUser } from "@/lib/auth";
+import { Landing } from "@/components/landing/landing";
 
-export default async function Home() {
-  const user = await getCurrentUser();
-  return user ? <Today user={user} /> : <Landing />;
+export default function Home() {
+  return <Landing />;
 }

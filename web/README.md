@@ -1,32 +1,22 @@
 # Yoshlar Base: web
 
-Next.js (App Router) + Tailwind + Supabase + Telegram bot (grammY). Reja: `../PLAN.md`, qoidalar: `../CLAUDE.md`.
+Next.js 16 (App Router, TypeScript) + Tailwind v4.
 
-## Lokal ishga tushirish
+## Ishga tushirish
 
 ```bash
-cd web
 npm install
-cp .env.example .env.local   # qiymatlarni toʻldiring
 npm run dev
-npm test                     # sof mantiq testlari (node:test)
-npm run lint && npm run build
 ```
 
-Supabase sozlanmasa ham landing namunaviy (NAMUNA) kartalar bilan ochiladi; kirish va boshqa boʻlimlar uchun baza kerak.
+Keyin http://localhost:3000 ni oching.
 
-## Sozlash tartibi
+## Tuzilma
 
-1. **Supabase**: loyiha oching, SQL Editor'da `supabase/migrations/0001_init.sql`, keyin `0002_miya_and_limits.sql`. Sinov uchun `supabase/seed.sql`. Batafsil: `supabase/README.md`.
-2. **Telegram bot**: BotFather'da Base uchun alohida bot yarating. Token va username'ni `.env` ga yozing. Buyruqlar: `/start`, `/eslatma`, `/username`.
-3. **Sirlar**: `SESSION_SECRET` (kamida 32 belgi, `openssl rand -base64 48`), `TELEGRAM_WEBHOOK_SECRET`, `CRON_SECRET`.
-4. **Vercel**: repo'ni ulang, Root Directory = `web`, `.env.example` dagi hamma oʻzgaruvchini qoʻying (`NEXT_PUBLIC_SITE_URL` = `https://domen`). `vercel.json` kunlik cron'ni (09:00 Toshkent) sozlaydi; Vercel `CRON_SECRET` ni `Authorization` sarlavhasida oʻzi yuboradi.
-5. **Webhook**: deploydan keyin `npm run bot:webhook` (`.env.local` da `NEXT_PUBLIC_SITE_URL` https boʻlishi kerak).
-6. **QR**: klub sessiyasi uchun `https://domen/qr/<checkin_code>` sahifasini sensorli doskada oching (`club_sessions.checkin_code`).
+- `app/` — sahifalar (hozircha faqat landing)
+- `components/landing/` — landing sahnalari, `scroll-engine.tsx` (scroll'ga bog'langan animatsiya, kutubxonasiz)
+- `components/cards/` — UI kartalar (neytral rang + bitta brend rangi)
+- `lib/strings.uz.ts` — barcha UI matnlari
+- `public/brand/` — logo va 3D ikonkalar
 
-## Xavfsizlik qisqacha
-
-- Bazaga faqat server (service role). RLS hamma jadvalda yoqilgan, policy yoʻq.
-- Cookie: imzolangan httpOnly JWT, ichida faqat ichki user id.
-- Yozish amallari `rate_hit` (bazada) orqali cheklanadi. Webhook va cron yashirin sir bilan himoyalangan.
-- 18 yoshgacha va 18+ MIYA'da bir-biri bilan bogʻlanmaydi (server tomonida tekshiriladi).
+Eslatma: CSS klass nomlarini Tailwind utility'lari bilan to'qnashtirmang (`ring`, `static`, `hidden` va h.k.).
