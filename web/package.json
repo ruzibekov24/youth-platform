@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "yoshlar-base-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --experimental-test-module-mocks --test tests/*.test.ts",
-    "bot:webhook": "node --env-file=.env.local scripts/set-webhook.mjs"
+    "bot:webhook": "node --env-file=.env.local scripts/set-webhook.mjs",
+    "bot:dev": "tsx --env-file=.env.local --conditions=react-server scripts/bot-dev.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
@@ -29,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

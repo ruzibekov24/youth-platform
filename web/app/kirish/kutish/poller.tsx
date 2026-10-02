@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ButtonLink } from "@/components/ui/button";
 import { t } from "@/lib/strings.uz";
 import { checkLogin, completeLogin } from "../actions";
 
+// Bot savollar tugagach tokenni tasdiqlaydi; sahifa har 2.5 soniyada holatni so'raydi.
 export function LoginPoller() {
   const router = useRouter();
   const [expired, setExpired] = useState(false);
@@ -39,19 +40,17 @@ export function LoginPoller() {
 
   if (!expired) {
     return (
-      <p className="mt-6 text-sm text-muted" role="status">
-        {t.common.loading}
+      <p className="wait" role="status">
+        <span className="dot" aria-hidden /> {t.app.login.waiting}
       </p>
     );
   }
   return (
-    <div className="mt-6" role="alert">
-      <p className="text-sm text-danger">{t.auth.expired}</p>
-      <div className="mt-3">
-        <ButtonLink href="/kirish" variant="secondary">
-          {t.auth.retry}
-        </ButtonLink>
-      </div>
+    <div className="wait-x" role="alert">
+      <p>{t.auth.expired}</p>
+      <Link href="/kirish" className="btn ghost">
+        {t.auth.retry}
+      </Link>
     </div>
   );
 }

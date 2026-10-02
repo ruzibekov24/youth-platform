@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
+import { LockIcon, TelegramMark } from "@/components/icons";
+import { LoginFrame } from "@/components/app/login-frame";
+import { Tile } from "@/components/ui/tile";
 import { getCurrentUser } from "@/lib/auth";
 import { dbConfigured } from "@/lib/db";
 import { safeNextPath } from "@/lib/next-path";
@@ -9,32 +10,52 @@ import { t } from "@/lib/strings.uz";
 import { startLogin } from "./actions";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: `${t.auth.title} · ${t.brand}` };
+export const metadata: Metadata = { title: `${t.app.login.title} · ${t.brand}` };
 
-export default async function LoginPage({ searchParams }: PageProps<"/kirish">) {
-  const next = safeNextPath((await searchParams).next);
-  if (await getCurrentUser()) redirect(next);
-  const ready =
-    dbConfigured() && Boolean(process.env.TELEGRAM_BOT_USERNAME && process.env.SESSION_SECRET);
+// Kirish faqat Telegram bot orqali: sayt bir martalik token yaratadi, bot tasdiqlaydi.
+export default async function LoginPage(props: PageProps<"/kirish">) {
+  const c = t.app.login;
+  const next = safeNextPath((await props.searchParams).next);
+  if (await getCurrentUser()) redirect(next === "/" ? "/asosiy" : next);
+  const ready = dbConfigured() && Boolean(process.env.TELEGRAM_BOT_USERNAME && process.env.SESSION_SECRET);
 
   return (
-    <main className="flex-1 py-16">
-      <Container className="max-w-xl">
-        <h1 className="text-3xl font-semibold tracking-tight">{t.auth.title}</h1>
-        <p className="mt-3 text-muted">{t.auth.lead}</p>
-        {ready ? (
-          <form action={startLogin} className="mt-8">
-            <input type="hidden" name="next" value={next} />
-            <Button type="submit" className="w-full sm:w-auto">
-              {t.auth.start}
-            </Button>
-          </form>
-        ) : (
-          <p className="mt-8 rounded-xl bg-warn-soft px-4 py-3 text-sm text-warn">
-            {t.auth.notConfigured}
-          </p>
-        )}
-      </Container>
-    </main>
+    <LoginFrame>
+      <Tile name="key" size={84} className="tile-lg" />
+      <h1>{c.title}</h1>
+      <p className="ph-lead">{c.lead}</p>
+
+      {ready ? (
+        <form action={startLogin}>
+          <input type="hidden" name="next" value={next === "/" ? "/asosiy" : next} />
+          <button type="submit" className="btn w big">
+            <TelegramMark mono className="tgm-btn" /> {c.cta}
+          </button>
+        </form>
+      ) : (
+        <>
+          <span className="btn w big" aria-disabled="true">
+            <TelegramMark mono className="tgm-btn" /> {c.cta}
+          </span>
+          <p className="login-note">{c.noBot}</p>
+        </>
+      )}
+
+      <ol className="steps-l">
+        {c.steps.map((s, i) => (
+          <li key={s.title}>
+            <span className="n">{i + 1}</span>
+            <div>
+              <b>{s.title}</b>
+              <span>{s.text}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <p className="login-note">
+        <LockIcon /> {c.never}
+      </p>
+    </LoginFrame>
   );
 }

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yoshlar Base: UI kartalar to'plami v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Red+Hat+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B0F1A;--mut:#8A8F98;--line:#ECECEF;--fr:#F7F7F8;--ac:#5B5CFF;--yl:#FFE88A;--h:'Red Hat Display',system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 1px 1px,#e6e6ea 1px,transparent 0) 0 0/16px 16px,var(--fr);font:400 12px/1.4 Inter,system-ui,sans-serif;color:var(--ink);padding:36px 20px 80px}
+h1{font:500 22px var(--h);letter-spacing:-.03em;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 24px;font-size:13px}
+.wrap{max-width:1180px;margin:0 auto;columns:4 270px;column-gap:18px}
+.k{display:inline-block;width:100%;break-inside:avoid;margin:0 0 22px;position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 12px 30px rgba(15,23,42,.05)}
+.k::before{content:"";position:absolute;left:-1px;top:-9px;width:58px;height:10px;background:#fff;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0}
+.k>h3{font:600 14px var(--h);letter-spacing:-.02em;margin:0 0 12px}
+.r{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px;display:grid;gap:5px}.r:last-child{margin-bottom:0}
+.t{display:flex;justify-content:space-between;align-items:center;gap:8px}.t b{font-weight:500;font-size:12.5px}.s{color:var(--mut);font-size:11px}
+.bar{height:4px;border-radius:9px;background:var(--line);overflow:hidden}.bar u{display:block;height:100%;width:var(--w);background:var(--ac);border-radius:9px}
+.nm{font-size:9.5px;font-weight:500;padding:2px 7px;border-radius:99px;background:var(--yl);color:#3b3200;white-space:nowrap}
+.ch{font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:#fff;white-space:nowrap}.ch.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ok{color:#0F7A4A;border-color:#cfe9db}.warn{color:#8A5A00;border-color:#f1dfb5}.cl{color:var(--mut)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:34px;padding:0 14px;border-radius:8px;background:var(--ac);color:#fff;font:500 12px Inter,system-ui,sans-serif;border:0}.btn.o{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}.btn.w{width:100%}
+.ico{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;flex:none}.ico svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.row{display:flex;gap:10px;align-items:center}.g{display:flex;gap:6px;flex-wrap:wrap}
+.note{background:var(--yl);border:0;border-radius:3px;rotate:-3deg;padding:26px 18px 28px;font:600 22px/1.15 Caveat,cursive;color:#3b3200;box-shadow:0 14px 24px rgba(120,90,0,.15)}.k.note::before{content:'';position:absolute;left:50%;top:-7px;width:14px;height:14px;border:0;border-radius:50%;background:#E5484D;box-shadow:inset -2px -2px 0 rgba(0,0,0,.2)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.stat div{border:1px solid var(--line);border-radius:10px;padding:8px}.stat b{display:block;font:500 20px var(--h)}
+.tl{display:grid;gap:10px}.tl div{display:grid;grid-template-columns:14px 1fr auto;gap:8px;align-items:start}.tl i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink);margin-top:3px}.tl i.f{background:var(--ink)}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.days span{height:30px;border-radius:7px;border:1px solid var(--line);display:grid;place-items:center;font-size:11px}.days .on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ring{width:110px;height:110px;border-radius:50%;margin:4px auto;background:conic-gradient(var(--ac) 0 75%,var(--line) 0);display:grid;place-items:center}.ring b{width:84px;height:84px;border-radius:50%;background:#fff;display:grid;place-items:center;font:500 22px var(--h)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.cols>div{background:var(--fr);border-radius:10px;padding:7px}.cols h4{margin:0 0 6px;font:500 11px Inter;display:flex;gap:5px;align-items:center}.cols h4 i{width:6px;height:6px;border-radius:50%;background:var(--ink)}.cols .r{background:#fff;padding:7px;font-size:10.5px}
+.path{position:relative;display:flex;justify-content:space-between;margin-top:6px}.path::before{content:"";position:absolute;left:8px;right:8px;top:7px;height:1px;background:var(--line)}.path span{position:relative;text-align:center;font-size:10px;color:var(--mut)}.path span::before{content:"";display:block;width:14px;height:14px;border-radius:50%;background:#fff;border:1.5px solid var(--line);margin:0 auto 5px}.path .d::before{background:var(--ac);border-color:var(--ac)}
+.sched .r{grid-template-columns:34px 1fr auto;align-items:center}.dt{text-align:center;border:1px solid var(--line);border-radius:7px;font:500 14px var(--h);line-height:1.1;padding:3px 0}.dt small{display:block;font:400 8px Inter;color:var(--mut)}
+.chk{display:grid;gap:9px}.chk div{display:flex;gap:9px;align-items:center}.chk i{width:15px;height:15px;border-radius:5px;border:1.5px solid #cfd2d8;flex:none;display:grid;place-items:center}.chk .y i{background:var(--ink);border-color:var(--ink)}.chk .y i::after{content:"";width:6px;height:3px;border-left:1.6px solid #fff;border-bottom:1.6px solid #fff;rotate:-45deg;margin-top:-1px}.chk .y span{color:var(--mut);text-decoration:line-through}
+.bub{background:var(--fr);border-radius:12px 12px 12px 3px;padding:10px;margin-bottom:8px}
+.tgl{width:34px;height:34px;border-radius:50%;background:#29A9EB;display:grid;place-items:center}.tgl svg{width:18px;height:18px}
+</style></head><body>
+<h1>UI kartalar to'plami</h1><p class="sub">Brend rangi faqat tugma, progress va halqada. Faol chip/sana: qora. Sariq: faqat NAMUNA.</p>
+<div class="wrap">
+
+<div class="k"><h3>Bugun</h3>
+<div class="r"><div class="t"><div class="row"><span class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></span><div><b>Speaking Club</b><div class="s">18:00</div></div></div><span class="nm">NAMUNA</span></div><div class="row"><div class="bar" style="flex:1"><u style="--w:60%"></u></div><span class="s">60%</span></div></div>
+<div class="r"><div class="t"><div class="row"><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg></span><div><b>Ariza topshirish</b><div class="s">30-noyabrgacha</div></div></div><span class="nm">NAMUNA</span></div><div class="row"><div class="bar" style="flex:1"><u style="--w:30%"></u></div><span class="s">30%</span></div></div></div>
+
+<div class="k"><h3>Eslatmalar</h3><div class="r"><div class="t"><span class="s">Bugungi sessiya</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A8F98" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b style="font:500 15px var(--h)">Speaking Club</b><span class="ch on" style="justify-self:start">18:00 – 19:30</span></div></div>
+
+<div class="k"><h3>Telegram orqali kirish</h3><div class="g" style="flex-wrap:nowrap">
+<div class="r" style="flex:1;justify-items:center;text-align:center"><span class="tgl"><svg viewBox="0 0 24 24"><path d="M5.5 11.8l11.6-4.5c.5-.2 1 .1.8.9l-2 9.3c-.1.6-.5.8-1 .5l-2.9-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.4-4.9c.2-.2 0-.3-.4-.1L8.4 13.5l-2.8-.9c-.6-.2-.6-.6.1-.8z" fill="#fff"/></svg></span><span class="s">Telegram</span></div>
+<div class="r" style="flex:1;justify-items:center;text-align:center"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span class="s">Kalendar</span></div>
+<div class="r" style="flex:1;justify-items:center;text-align:center"><span class="ico"><svg viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0112 0v6l2 2H4zM10 21h4"/></svg></span><span class="s">Eslatma</span></div></div></div>
+
+<div class="k note" style="margin-top:14px">Juma 18:00 — Speaking Club. QR tayyor!</div>
+
+<div class="k"><h3>Speaking Club</h3><div class="t" style="margin-bottom:10px"><div class="row"><span class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></span><span class="s">Juma · 18:00</span></div><span class="nm">NAMUNA</span></div><span class="btn w">Qo'shilish</span><div class="t" style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px"><span class="s">Qatnashdim</span><span class="ch ok">QR ✓</span></div></div>
+
+<div class="k"><h3>Namunaviy dastur</h3><div class="g" style="margin-bottom:10px"><span class="ch">Stipendiya</span><span class="ch">16–18 yosh</span></div><div class="chk" style="gap:7px"><div><span class="s">Ariza oxirgi kuni:</span> <b>30-noyabr</b></div><div style="color:var(--ac);font-weight:500">Rasmiy havola ↗</div></div><div class="t" style="margin-top:12px"><span class="ch ok">✓ Tekshirilgan</span><span class="nm">NAMUNA</span></div></div>
+
+<div class="k"><h3>Namunaviy g'oya</h3><div class="bar" style="height:7px;margin-bottom:7px"><u style="--w:100%;background:#E3E4E8"></u></div><div class="bar" style="height:7px;width:70%;margin-bottom:12px"><u style="--w:100%;background:#E3E4E8"></u></div><div class="g" style="margin-bottom:12px"><span class="ch">Dizayner</span><span class="ch">Dasturchi</span></div><div class="t"><span class="btn">Qo'shilaman</span><span class="nm">NAMUNA</span></div></div>
+
+<div class="k"><h3>Men nimalar qildim</h3><div class="stat"><div><b>12</b><span class="s">sessiya</span></div><div><b>2</b><span class="s">g'oya</span></div><div><b>1</b><span class="s">jamoa</span></div></div><div class="tl"><div><i class="f"></i><span><b>Speaking Club</b><br><span class="s">Juma · 18:00</span></span><span class="s">15-noy</span></div><div><i class="f"></i><span><b>G'oya taqdimoti</b><br><span class="s">Jamoa bilan</span></span><span class="s">12-noy</span></div><div><i></i><span><b>Ariza topshirish</b><br><span class="s">Stipendiya</span></span><span class="s">8-noy</span></div></div></div>
+
+<div class="k"><h3>Shu hafta</h3><div class="days"><span class="on">15</span><span class="on">16</span><span class="on">17</span><span class="on">18</span><span>19</span><span>20</span><span>21</span></div><div class="row" style="margin-top:12px"><div class="bar" style="flex:1"><u style="--w:57%"></u></div><span class="s">4/7</span></div></div>
+
+<div class="k"><h3>Qo'shilish so'rovi</h3><span class="ch" style="display:inline-block;margin-bottom:12px">Dasturchi</span><div class="row"><span class="btn" style="flex:1">Qabul</span><span class="btn o" style="flex:1">Rad etish</span></div></div>
+
+<div class="k"><h3>Faollik</h3><div class="ring"><b>75%</b></div></div>
+
+<div class="k sched"><h3>Haftalik sessiyalar</h3>
+<div class="r"><div class="dt">15<small>Noy</small></div><b>Speaking Club</b><span class="ch">18:00</span></div><div class="r"><div class="dt">16<small>Noy</small></div><b>Miya mashg'uloti</b><span class="ch">16:00</span></div><div class="r"><div class="dt">17<small>Noy</small></div><b>Imkoniyatlar</b><span class="ch">15:00</span></div></div>
+
+<div class="k"><h3>MIYA</h3><div class="cols"><div><h4><i></i>Yangi</h4><div class="r">Al ta'lim platformasi</div><div class="r">Yuqori maoshli kurs</div></div><div><h4><i></i>Jarayonda</h4><div class="r">Mobil ilova</div><div class="r">Dizayn studio</div></div><div><h4><i></i>Jamoa</h4><div class="r">EdTech loyihasi</div></div></div></div>
+
+<div class="k"><h3>G'oyadan jamoagacha</h3><div class="bar"><u style="--w:55%"></u></div><div class="path"><span class="d">G'oya</span><span class="d">Loyiha</span><span>Jamoa</span><span>Natija</span></div></div>
+
+<div class="k"><div class="g"><span class="ch on">Barchasi</span><span class="ch">Stipendiya</span><span class="ch">Klub</span><span class="ch">Stajirovka</span><span class="ch">Grant</span></div></div>
+
+<div class="k"><div class="g"><span class="nm">NAMUNA</span><span class="ch ok">Tekshirilgan</span><span class="ch cl">Yopilgan</span><span class="ch on">Yangi</span><span class="ch warn">3 kun qoldi</span></div></div>
+
+<div class="k"><h3>Birinchi qadamlar</h3><div class="chk"><div class="y"><i></i><span>Profilni to'ldirish</span></div><div class="y"><i></i><span>Telegram kanalga qo'shilish</span></div><div><i></i><span>Ariza topshirish</span></div><div><i></i><span>Sessiyaga tayyorgarlik</span></div></div></div>
+
+<div class="k"><div class="row" style="margin-bottom:8px"><span class="tgl"><svg viewBox="0 0 24 24"><path d="M5.5 11.8l11.6-4.5c.5-.2 1 .1.8.9l-2 9.3c-.1.6-.5.8-1 .5l-2.9-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.4-4.9c.2-.2 0-.3-.4-.1L8.4 13.5l-2.8-.9c-.6-.2-.6-.6.1-.8z" fill="#fff"/></svg></span><b>Yoshlar Base bot</b></div><div class="bub">Ertaga 18:00 da Speaking Club. Kelasizmi?</div><div class="row"><span class="btn" style="flex:1">Ha</span><span class="btn o" style="flex:1">Yo'q</span></div></div>
+
+</div></body></html>

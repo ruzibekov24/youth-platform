@@ -1,8 +1,9 @@
-import { Landing } from "@/components/landing";
-import { Today } from "@/components/today";
+import { redirect } from "next/navigation";
+import { Landing } from "@/components/landing/landing";
 import { getCurrentUser } from "@/lib/auth";
 
+// Mehmon landingni ko'radi; kirgan foydalanuvchi to'g'ridan-to'g'ri Asosiy ekranga o'tadi.
 export default async function Home() {
-  const user = await getCurrentUser();
-  return user ? <Today user={user} /> : <Landing />;
+  if (await getCurrentUser()) redirect("/asosiy");
+  return <Landing />;
 }

@@ -3,6 +3,16 @@ import { Bot, InlineKeyboard, webhookCallback } from "grammy";
 import { attachToken, confirmPendingTokens } from "./login.ts";
 import { trackEvent } from "./events.ts";
 import { allow } from "./rate-limit.ts";
+import {
+  adminIds,
+  decideIdea,
+  getOpenReport,
+  getPendingIdea,
+  isAdmin,
+  listOpenReportIds,
+  listPendingIdeaIds,
+  resolveReport,
+} from "./moderation.ts";
 import { INTERESTS, REGIONS, t } from "./strings.uz.ts";
 import { findOrCreateByTelegramId, getUserByTelegramId, deleteUser, updateUser, type UserRow } from "./users.ts";
 import { AGE_RANGES, isAgeRange, parseUsername, sanitizeName } from "./validate.ts";
@@ -123,6 +133,96 @@ bot.command("eslatma", async (ctx) => {
   await ctx.reply(next ? T.remindersOn : T.remindersOff);
 });
 
+// ---------- Moderatsiya (faqat ADMIN_TELEGRAM_IDS) ----------
+const M = t.mod;
+const site = () => process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
+
+async function ideaCard(id: string) {
+  const i = await getPendingIdea(id);
+  if (!i) return null;
+  const group = i.age_group === "adult" ? t.miya.groupAdult : t.miya.groupUnder18;
+  const text = [
+    M.newIdea(group),
+    "",
+    `«${i.title}»`,
+    "",
+    `${M.problem}: ${clip(i.problem, 500)}`,
+    "",
+    `${M.idea}: ${clip(i.description, 1200)}`,
+    "",
+    `${M.roles}: ${i.needed_roles.join(", ")}`,
+    `${M.author}: ${i.author ?? "—"}`,
+  ].join("\n");
+  return { text, kb: new InlineKeyboard().text(M.approve, `mi:a:${id}`).text(M.reject, `mi:r:${id}`) };
+}
+
+async function reportCard(id: string) {
+  const r = await getOpenReport(id);
+  if (!r) return null;
+  const text = [M.report(M.entity[r.entity_type]), "", `«${r.title}»`, "", `${M.reason}: ${clip(r.reason, 500)}`, "", `${site()}${r.path}`].join("\n");
+  return { text, kb: new InlineKeyboard().text(M.hide, `mr:h:${id}`).text(M.dismiss, `mr:d:${id}`) };
+}
+
+async function toAdmins(card: { text: string; kb: InlineKeyboard } | null) {
+  if (!card) return;
+  for (const id of adminIds()) {
+    try {
+      await bot.api.sendMessage(id, card.text, { reply_markup: card.kb, link_preview_options: { is_disabled: true } });
+    } catch {
+      // Moderator botni bloklagan bo'lishi mumkin: asosiy amal buzilmaydi.
+    }
+  }
+}
+
+// Server action'lardan chaqiriladi: yangi g'oya yoki shikoyat darhol moderatorlarga boradi.
+export const notifyNewIdea = async (id: string) => toAdmins(await ideaCard(id));
+export const notifyNewReport = async (id: string) => toAdmins(await reportCard(id));
+
+bot.command("navbat", async (ctx) => {
+  if (ctx.chat.type !== "private" || !ctx.from || !isAdmin(ctx.from.id)) return;
+  const [ideas, reports] = await Promise.all([listPendingIdeaIds(), listOpenReportIds()]);
+  if (!ideas.length && !reports.length) {
+    await ctx.reply(M.queueEmpty);
+    return;
+  }
+  await ctx.reply(M.queueHead(ideas.length, reports.length));
+  for (const id of ideas) {
+    const c = await ideaCard(id);
+    if (c) await ctx.reply(c.text, { reply_markup: c.kb });
+  }
+  for (const id of reports) {
+    const c = await reportCard(id);
+    if (c) await ctx.reply(c.text, { reply_markup: c.kb, link_preview_options: { is_disabled: true } });
+  }
+});
+
+bot.callbackQuery(/^m([ir]):([ahrd]):([0-9a-f-]{36})$/, async (ctx) => {
+  if (!isAdmin(ctx.from.id)) {
+    await ctx.answerCallbackQuery();
+    return;
+  }
+  const [, kind, act, id] = ctx.match;
+  let result: string | null = null;
+  if (kind === "i") {
+    const done = await decideIdea(id, act === "a");
+    if (done) {
+      result = act === "a" ? M.approved : M.rejected;
+      if (done.ownerTelegramId) {
+        const msg = act === "a" ? T.ideaApproved(done.title) : M.ownerRejected(done.title);
+        await bot.api.sendMessage(done.ownerTelegramId, msg).catch(() => {});
+      }
+      await trackEvent(null, act === "a" ? "idea_approved" : "idea_rejected", "idea", id);
+    }
+  } else {
+    const done = await resolveReport(id, act === "h" ? "hidden" : "dismissed");
+    if (done) result = act === "h" ? M.hidden : M.dismissed;
+  }
+  await ctx.answerCallbackQuery({ text: result ?? M.already });
+  const original = ctx.callbackQuery.message && "text" in ctx.callbackQuery.message ? ctx.callbackQuery.message.text : "";
+  await ctx.editMessageText(`${original ?? ""}\n\n— ${result ?? M.already}`).catch(() => {});
+});
+
 // Ism matn bilan yoziladi (laqab).
 bot.on("message:text", async (ctx) => {
   if (ctx.chat.type !== "private" || !ctx.from) return;
@@ -190,6 +290,9 @@ export function sendTelegram(telegramId: number, text: string, html = false) {
   return bot.api.sendMessage(telegramId, text, html ? { parse_mode: "HTML" } : undefined);
 }
 
-export const handleUpdate = webhookCallback(bot, "std/http", {
-  secretToken: process.env.TELEGRAM_WEBHOOK_SECRET,
-});
+// Webhook handler birinchi so'rovda yaratiladi: modul yuklanishida yaratilsa, lokal polling (npm run bot:dev) ishlamaydi.
+let webhook: ((req: Request) => Promise<Response>) | null = null;
+export function handleUpdate(req: Request): Promise<Response> {
+  webhook ??= webhookCallback(bot, "std/http", { secretToken: process.env.TELEGRAM_WEBHOOK_SECRET });
+  return webhook(req);
+}
