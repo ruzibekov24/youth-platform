@@ -527,6 +527,17 @@ export const t = {
     qrLabel: "QR kod",
     qrHint: "Telefon kamerasi bilan skanerlang va qatnashganingizni tasdiqlang.",
   },
+  tg: {
+    loading: "Yoshlar Base ochilmoqda…",
+    registerTitle: "Avval tanishib olaylik",
+    registerText: "Botda 4 ta qisqa savolga javob bering: ism, yosh oralig'i, hudud va qiziqishlar. Keyin shu tugmani qayta bosing.",
+    registerCta: "Botda javob berish",
+    retry: "Qayta urinish",
+    notTelegram: "Bu sahifa Telegram ichida ochiladi.",
+    toSite: "Saytga o'tish",
+    error: "Kirib bo'lmadi. Ilovani yopib, qayta oching.",
+    open: "Yoshlar Base'ni ochish",
+  },
   mod: {
     newIdea: (group: string) => `Yangi g'oya moderatsiyada · ${group}`,
     problem: "Muammo",

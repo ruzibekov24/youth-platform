@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TelegramBridge } from "@/components/telegram/bridge";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { getCurrentUser } from "@/lib/auth";
 import { t } from "@/lib/strings.uz";
@@ -34,6 +35,7 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
       </header>
       <main className="page">{children}</main>
       <AppNav variant="tabs" />
+      <TelegramBridge />
     </div>
   );
 }
