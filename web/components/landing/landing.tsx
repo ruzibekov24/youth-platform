@@ -13,7 +13,7 @@ import { t } from "@/lib/strings.uz";
 import { ScrollEngine } from "./scroll-engine";
 import "./landing.css";
 
-type IconName = "calendar" | "check" | "qr" | "bulb" | "cap" | "mic";
+type IconName = "base" | "calendar" | "check" | "qr" | "bulb" | "cap" | "mic";
 
 function Tile({ name, size, className }: { name: IconName; size: number; className?: string }) {
   return (
@@ -55,7 +55,7 @@ function Hero() {
     <section className="hero" id="hero" data-scene="top">
       <div className="frame">
         <div className="hero-copy">
-          <Tile name="check" size={62} className="tc" />
+          <Tile name="base" size={76} className="tc" />
           <h1 className="ld">
             <span className="line" style={{ "--i": 0 } as React.CSSProperties}>
               <span>{h.title}</span>

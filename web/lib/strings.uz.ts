@@ -16,8 +16,8 @@ export const t = {
     login: "Kirish",
   },
   hero: {
-    title: "Qiziqishdan haqiqiy ishga",
-    titleMuted: "hammasi bir joyda",
+    title: "Yoshlarning o'z makoni",
+    titleMuted: "qiziqishdan haqiqiy ishgacha",
     lead: "Klubga qo'shiling, ishonchli imkoniyatlarni toping, g'oyangizdan jamoa yig'ing. Qilganlaringiz profilingizda o'zi to'planadi.",
     primary: "Imkoniyatlarni ko'rish",
     secondary: "Telegram orqali kirish",
