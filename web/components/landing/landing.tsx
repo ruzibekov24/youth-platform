@@ -10,6 +10,7 @@ import {
 } from "@/components/cards/cards";
 import { ArrowCircleIcon, TelegramMark } from "@/components/cards/icons";
 import { t } from "@/lib/strings.uz";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { ScrollEngine } from "./scroll-engine";
 import "./landing.css";
 
@@ -44,9 +45,12 @@ function Nav() {
           </a>
         ))}
       </div>
-      <a className="btn blk" href="#">
-        {t.nav.login}
-      </a>
+      <div className="nav-r">
+        <ThemeToggle />
+        <a className="btn blk" href="/kirish">
+          {t.nav.login}
+        </a>
+      </div>
     </nav>
   );
 }

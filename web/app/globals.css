@@ -1,53 +1,36 @@
 @import "tailwindcss";
 
 @theme static {
-  --color-ink: #0b0f1a;
-  --color-on-ink: #fff;
-  --color-ink-hover: #262a35;
-  --color-muted: #8a8f98;
-  --color-text-2: #6b707b;
-  --color-text-3: #9a9ea7;
-  --color-line: #ececef;
-  --color-frame: #f7f7f8;
-  --color-surface: #fff;
-  --color-page: #fff;
-  --color-dot: #e6e6ea;
-  --color-tree: #c9cad2;
-  --color-glass: rgb(255 255 255 / 0.9);
-  --shadow-rgb: 15 23 42;
+  --color-ink: light-dark(#0b0f1a, #eceef2);
+  --color-on-ink: light-dark(#fff, #0b0f1a);
+  --color-ink-hover: light-dark(#262a35, #d4d7de);
+  --color-muted: light-dark(#8a8f98, #8b909a);
+  --color-text-2: light-dark(#6b707b, #a2a7b1);
+  --color-text-3: light-dark(#9a9ea7, #6f7480);
+  --color-line: light-dark(#ececef, #262a33);
+  --color-frame: light-dark(#f7f7f8, #111318);
+  --color-surface: light-dark(#fff, #171a21);
+  --color-page: light-dark(#fff, #0c0e13);
+  --color-dot: light-dark(#e6e6ea, #20232b);
+  --color-tree: light-dark(#c9cad2, #3a3e48);
+  --color-glass: light-dark(rgb(255 255 255 / 0.9), rgb(23 26 33 / 0.85));
+  --color-shadow: light-dark(rgb(15 23 42), rgb(0 0 0));
   --color-accent: #5b5cff;
   --color-accent-hover: #4647e6;
   --color-note: #ffe88a;
-  --color-dark: #0b0f1a;
-  --color-dark-2: #13161f;
+  --color-danger: light-dark(#d93036, #ff6369);
+  --color-dark: light-dark(#0b0f1a, #07080b);
+  --color-dark-2: light-dark(#13161f, #111318);
   --color-dark-line: #23262f;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-display-face), system-ui, sans-serif;
   --font-hand: var(--font-caveat), cursive;
 }
 
-/* Dark mode tizim sozlamasiga ergashadi. Light asosiy bo'lib qoladi. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --color-ink: #eceef2;
-    --color-on-ink: #0b0f1a;
-    --color-ink-hover: #d4d7de;
-    --color-muted: #8b909a;
-    --color-text-2: #a2a7b1;
-    --color-text-3: #6f7480;
-    --color-line: #262a33;
-    --color-frame: #111318;
-    --color-surface: #171a21;
-    --color-page: #0c0e13;
-    --color-dot: #20232b;
-    --color-tree: #3a3e48;
-    --color-glass: rgb(23 26 33 / 0.85);
-    --color-dark: #07080b;
-    --color-dark-2: #111318;
-    --shadow-rgb: 0 0 0;
-  }
-}
+/* Tema: standart holatda tizimga ergashadi; ThemeToggle data-theme qo'yadi. */
+:root { color-scheme: light dark; }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 html {
   background: var(--color-page);
@@ -65,3 +48,54 @@ body {
   outline-offset: 2px;
   border-radius: 6px;
 }
+
+/* ---------- Umumiy: sarlavhalar, tugmalar (44px tap target), pill ---------- */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  margin: 0;
+}
+
+/* ---------- Tugmalar (44px: tap target qoidasi) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: var(--color-accent);
+  color: #fff;
+  font: 500 14px var(--font-sans);
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn:hover { background: var(--color-accent-hover); }
+.btn:active { transform: scale(0.98); }
+.btn svg { width: 15px; height: 15px; }
+.btn.ghost { background: transparent; color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-line); }
+.btn.ghost:hover { background: var(--color-frame); }
+.btn.blk { background: var(--color-ink); color: var(--color-on-ink); font-size: 13px; padding: 0 16px; }
+.btn.blk:hover { background: var(--color-ink-hover); }
+.btn.is-static { cursor: default; }
+.btn.w { width: 100%; }
+.pill {
+  display: inline-block;
+  font: 500 11px var(--font-sans);
+  letter-spacing: 0.02em;
+  padding: 4px 11px;
+  border-radius: 99px;
+  background: var(--color-accent);
+  color: #fff;
+}
+.btn.danger { background: transparent; color: var(--color-danger); box-shadow: inset 0 0 0 1px var(--color-line); }
+.btn.danger:hover { background: color-mix(in srgb, var(--color-danger) 8%, transparent); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+.vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }

@@ -1,52 +1,5 @@
 /* Landing va kartalar uslublari. Ranglar globals.css dagi @theme tokenlaridan. */
 
-.ld h1,
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.06;
-  margin: 0;
-}
-
-/* ---------- Tugmalar (44px: tap target qoidasi) ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 44px;
-  padding: 0 16px;
-  border-radius: 8px;
-  background: var(--color-accent);
-  color: #fff;
-  font: 500 14px var(--font-sans);
-  text-decoration: none;
-  border: 0;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn:hover { background: var(--color-accent-hover); }
-.btn:active { transform: scale(0.98); }
-.btn svg { width: 15px; height: 15px; }
-.btn.ghost { background: transparent; color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-line); }
-.btn.ghost:hover { background: var(--color-frame); }
-.btn.blk { background: var(--color-ink); color: var(--color-on-ink); font-size: 13px; padding: 0 16px; }
-.btn.blk:hover { background: var(--color-ink-hover); }
-.btn.is-static { cursor: default; }
-.btn.w { width: 100%; }
-.pill {
-  display: inline-block;
-  font: 500 11px var(--font-sans);
-  letter-spacing: 0.02em;
-  padding: 4px 11px;
-  border-radius: 99px;
-  background: var(--color-accent);
-  color: #fff;
-}
-
 /* ---------- Navbar: tepada shaffof, scroll'da pill ---------- */
 .nav {
   position: fixed;
@@ -73,6 +26,9 @@ h3 {
   border-color: var(--color-line);
 }
 .nav.dk { background: rgb(19 22 31 / 0.88); border-color: var(--color-dark-line); }
+.nav-r { display: flex; align-items: center; gap: 6px; }
+.nav.dk .tt { color: #c9cdd6; box-shadow: inset 0 0 0 1px var(--color-dark-line); }
+.nav.dk .tt:hover { background: var(--color-dark-2); }
 .nav .logo { display: flex; align-items: center; min-height: 44px; }
 .nav .logo img { height: 26px; width: auto; }
 .nav .lg-d, .core .mk-d { display: none; }
@@ -124,7 +80,7 @@ h3 {
 .hero h1 .muted { color: var(--color-text-3); }
 .hero .lead { font-size: 15px; line-height: 1.6; color: var(--color-text-2); max-width: 420px; margin: 20px auto 0; }
 .hero .cta { display: flex; gap: 8px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
-.tc { display: block; width: 76px; height: auto; margin: 0 auto 18px; filter: drop-shadow(0 10px 12px rgb(var(--shadow-rgb) / 0.14)); animation: fl 6s ease-in-out infinite; }
+.tc { display: block; width: 76px; height: auto; margin: 0 auto 18px; filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--color-shadow) 14%, transparent)); animation: fl 6s ease-in-out infinite; }
 
 /* Kirish animatsiyasi (sahifa ochilganda) */
 .ld .line > * { transform: translateY(110%); transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: calc(var(--i) * 90ms); }
@@ -135,7 +91,7 @@ h3 {
 .go .deco { opacity: 1; transform: none; }
 .deco .k { width: 260px; }
 
-.tl { position: absolute; height: auto; filter: drop-shadow(0 12px 14px rgb(var(--shadow-rgb) / 0.18)); pointer-events: none; z-index: 2; }
+.tl { position: absolute; height: auto; filter: drop-shadow(0 12px 14px color-mix(in srgb, var(--color-shadow) 18%, transparent)); pointer-events: none; z-index: 2; }
 .note-wrap { position: relative; }
 .note-tile { right: -30px; bottom: -40px; width: 74px; }
 .with-tile { position: relative; }
@@ -143,7 +99,7 @@ h3 {
 .with-tile .k h3 { margin-left: 34px; }
 
 .mobtiles { display: none; gap: 10px; justify-content: center; margin-top: 26px; }
-.mobtiles img { width: 58px; height: auto; filter: drop-shadow(0 8px 10px rgb(var(--shadow-rgb) / 0.14)); animation: fl 6s ease-in-out infinite; }
+.mobtiles img { width: 58px; height: auto; filter: drop-shadow(0 8px 10px color-mix(in srgb, var(--color-shadow) 14%, transparent)); animation: fl 6s ease-in-out infinite; }
 .mobtiles img:nth-child(2) { animation-delay: -2s; }
 .mobtiles img:nth-child(3) { animation-delay: -4s; }
 @media (max-width: 1000px) {
@@ -163,11 +119,11 @@ h3 {
 .r1 { inset: 0; }
 .r2 { inset: 16%; }
 .r3 { inset: 32%; }
-.core { position: absolute; inset: 40%; border-radius: 50%; background: var(--color-surface); border: 1px solid var(--color-line); box-shadow: 0 10px 30px rgb(var(--shadow-rgb) / 0.08); display: grid; place-items: center; }
+.core { position: absolute; inset: 40%; border-radius: 50%; background: var(--color-surface); border: 1px solid var(--color-line); box-shadow: 0 10px 30px color-mix(in srgb, var(--color-shadow) 8%, transparent); display: grid; place-items: center; }
 .core img { width: 42%; height: auto; }
 .spin { position: absolute; inset: 0; rotate: calc(var(--p, 0) * 160deg); }
 .spin.b { inset: 16%; rotate: calc(var(--p, 0) * -120deg); }
-.chip { position: absolute; width: 60px; height: auto; margin: -30px; filter: drop-shadow(0 8px 10px rgb(var(--shadow-rgb) / 0.14)); }
+.chip { position: absolute; width: 60px; height: auto; margin: -30px; filter: drop-shadow(0 8px 10px color-mix(in srgb, var(--color-shadow) 14%, transparent)); }
 .spin .chip { rotate: calc(var(--p, 0) * -160deg); }
 .spin.b .chip { rotate: calc(var(--p, 0) * 120deg); }
 .c-top { left: 50%; top: 0; }
@@ -201,7 +157,7 @@ h3 {
 .s3-in { width: min(900px, 100% - 40px); text-align: center; }
 .icons { display: flex; gap: 8px; justify-content: center; margin-bottom: 18px; }
 .icons span { width: 46px; }
-.icons img { width: 100%; height: auto; filter: drop-shadow(0 6px 8px rgb(var(--shadow-rgb) / 0.14)); }
+.icons img { width: 100%; height: auto; filter: drop-shadow(0 6px 8px color-mix(in srgb, var(--color-shadow) 14%, transparent)); }
 .s3 h2 { font-size: clamp(30px, 4.4vw, 50px); }
 .s3-text { font-size: 14px; color: var(--color-muted); margin: 14px auto 22px; max-width: 380px; line-height: 1.55; }
 .tree svg { display: block; width: 100%; height: 56px; overflow: visible; }
@@ -249,7 +205,9 @@ h3 {
 }
 
 /* ---------- Dark mode: oq logoga almashtirish ---------- */
+:root[data-theme="dark"] :is(.nav .lg-l, .core .mk-l) { display: none; }
+:root[data-theme="dark"] :is(.nav .lg-d, .core .mk-d) { display: block; }
 @media (prefers-color-scheme: dark) {
-  .nav .lg-l, .core .mk-l { display: none; }
-  .nav .lg-d, .core .mk-d { display: block; }
+  :root:not([data-theme="light"]) :is(.nav .lg-l, .core .mk-l) { display: none; }
+  :root:not([data-theme="light"]) :is(.nav .lg-d, .core .mk-d) { display: block; }
 }

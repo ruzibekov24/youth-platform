@@ -7,6 +7,10 @@ export const t = {
   },
   brand: "Yoshlar Base",
   sample: "NAMUNA",
+  theme: {
+    toDark: "Tungi rejimga o'tish",
+    toLight: "Kunduzgi rejimga o'tish",
+  },
   nav: {
     links: [
       { href: "#makonlar", label: "Makonlar" },
