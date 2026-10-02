@@ -190,6 +190,9 @@ export function sendTelegram(telegramId: number, text: string, html = false) {
   return bot.api.sendMessage(telegramId, text, html ? { parse_mode: "HTML" } : undefined);
 }
 
-export const handleUpdate = webhookCallback(bot, "std/http", {
-  secretToken: process.env.TELEGRAM_WEBHOOK_SECRET,
-});
+// Webhook handler birinchi so'rovda yaratiladi: modul yuklanishida yaratilsa, lokal polling (npm run bot:dev) ishlamaydi.
+let webhook: ((req: Request) => Promise<Response>) | null = null;
+export function handleUpdate(req: Request): Promise<Response> {
+  webhook ??= webhookCallback(bot, "std/http", { secretToken: process.env.TELEGRAM_WEBHOOK_SECRET });
+  return webhook(req);
+}
