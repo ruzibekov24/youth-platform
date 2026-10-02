@@ -8,7 +8,7 @@ import {
   PinIcon,
   TelegramMark,
   UsersIcon,
-} from "./icons";
+} from "@/components/icons";
 import "./cards.css";
 
 // Rang qoidasi: brend ko'ki faqat asosiy tugma va progressda; faol chip qora; sariq faqat NAMUNA.

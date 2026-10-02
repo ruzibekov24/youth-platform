@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   ClubCard,
   IdeaCard,
@@ -8,28 +9,12 @@ import {
   TelegramCard,
   TodayCard,
 } from "@/components/cards/cards";
-import { ArrowCircleIcon, TelegramMark } from "@/components/cards/icons";
+import { ArrowCircleIcon, TelegramMark } from "@/components/icons";
 import { t } from "@/lib/strings.uz";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { Tile } from "@/components/ui/tile";
 import { ScrollEngine } from "./scroll-engine";
 import "./landing.css";
-
-type IconName =
-  | "base" | "calendar" | "check" | "qr" | "bulb" | "cap" | "mic"
-  | "team" | "key" | "bookmark" | "medal" | "puzzle" | "shield" | "pin" | "bell";
-
-function Tile({ name, size, className }: { name: IconName; size: number; className?: string }) {
-  return (
-    <Image
-      src={`/brand/icons/${name}.png`}
-      alt=""
-      width={size}
-      height={size}
-      className={className}
-      aria-hidden
-    />
-  );
-}
 
 function Nav() {
   return (
@@ -47,9 +32,9 @@ function Nav() {
       </div>
       <div className="nav-r">
         <ThemeToggle />
-        <a className="btn blk" href="/kirish">
+        <Link className="btn blk" href="/kirish">
           {t.nav.login}
-        </a>
+        </Link>
       </div>
     </nav>
   );
@@ -72,12 +57,12 @@ function Hero() {
           </h1>
           <p className="lead ld2">{h.lead}</p>
           <div className="cta ld2">
-            <a className="btn" href="#makonlar">
+            <Link className="btn" href="/imkoniyatlar">
               {h.primary} <ArrowCircleIcon />
-            </a>
-            <a className="btn ghost" href="#">
+            </Link>
+            <Link className="btn ghost" href="/kirish">
               {h.secondary}
-            </a>
+            </Link>
           </div>
           <div className="mobtiles ld2" aria-hidden>
             <Tile name="mic" size={58} />
@@ -307,13 +292,13 @@ function Safety() {
               {s.finTitle}
             </h2>
             <div className="fin-actions" data-a=".86" data-b=".97" data-y="24" data-o="0">
-              <a className="btn tg-btn" href="#">
+              <Link className="btn tg-btn" href="/kirish">
                 <TelegramMark className="tgm-btn" mono />
                 {s.cta}
-              </a>
-              <a className="btn ghost-dark" href="#makonlar">
+              </Link>
+              <Link className="btn ghost-dark" href="/imkoniyatlar">
                 {s.ctaSecondary}
-              </a>
+              </Link>
             </div>
             <p className="fin-note" data-a=".9" data-b="1" data-o="0">
               {s.finNote}
