@@ -2,27 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHead, SampleNotice } from "@/components/app/blocks";
 import { OpportunityItem } from "@/components/app/items";
-import { isClosed, opportunities, type OpportunityType } from "@/lib/sample-data";
+import { isClosed } from "@/lib/format";
+import { OPP_TYPES, sortOpportunities } from "@/lib/opp-filter";
+import { listActiveOpportunities } from "@/lib/opportunities";
 import { t } from "@/lib/strings.uz";
 
 export const metadata: Metadata = { title: `${t.app.opps.title} · ${t.brand}` };
 
-const TYPES: OpportunityType[] = ["Stipendiya", "Dastur", "Tanlov", "Volontyorlik", "Amaliyot"];
-
-function one(v: string | string[] | undefined) {
-  return Array.isArray(v) ? v[0] : v;
-}
+const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
 export default async function OpportunitiesPage(props: PageProps<"/imkoniyatlar">) {
   const c = t.app.opps;
   const sp = await props.searchParams;
-  const type = TYPES.find((x) => x === one(sp.tur));
-  const status = one(sp.holat) === "yopilgan" ? "yopilgan" : one(sp.holat) === "hammasi" ? "hammasi" : "ochiq";
+  const type = OPP_TYPES.find((x) => x === one(sp.tur));
+  const h = one(sp.holat);
+  const status = h === "yopilgan" || h === "hammasi" ? h : "ochiq";
 
-  const list = opportunities
-    .filter((o) => !type || o.type === type)
-    .filter((o) => (status === "hammasi" ? true : status === "yopilgan" ? isClosed(o) : !isClosed(o)))
-    .sort((a, b) => a.closes_at.localeCompare(b.closes_at));
+  const all = await listActiveOpportunities();
+  const list = sortOpportunities(
+    all
+      .filter((o) => !type || o.type === type)
+      .filter((o) => (status === "hammasi" ? true : status === "yopilgan" ? isClosed(o.closes_at) : !isClosed(o.closes_at))),
+  );
 
   // Filtr havolalari: joriy holatni saqlab, bitta qiymatni almashtiradi.
   const href = (next: { tur?: string; holat?: string }) => {
@@ -39,27 +40,28 @@ export default async function OpportunitiesPage(props: PageProps<"/imkoniyatlar"
     { v: "yopilgan", label: c.closed },
     { v: "hammasi", label: c.all },
   ];
+  const chip = (on: boolean) => ({ className: on ? "on" : undefined, "aria-current": on ? ("true" as const) : undefined });
 
   return (
     <>
       <PageHead title={c.title} lead={c.lead} />
-      <SampleNotice />
+      <SampleNotice show={list.some((o) => o.is_sample)} />
       <div className="filters">
         <div className="fl" role="group" aria-label={c.filterType}>
           <span className="fl-l">{c.filterType}</span>
-          <Link href={href({ tur: undefined })} className={!type ? "on" : undefined} aria-current={!type ? "true" : undefined}>
+          <Link href={href({ tur: undefined })} {...chip(!type)}>
             {c.all}
           </Link>
-          {TYPES.map((x) => (
-            <Link key={x} href={href({ tur: x })} className={type === x ? "on" : undefined} aria-current={type === x ? "true" : undefined}>
-              {x}
+          {OPP_TYPES.map((x) => (
+            <Link key={x} href={href({ tur: x })} {...chip(type === x)}>
+              {t.opp.types[x]}
             </Link>
           ))}
         </div>
         <div className="fl" role="group" aria-label={c.filterStatus}>
           <span className="fl-l">{c.filterStatus}</span>
           {statuses.map((s) => (
-            <Link key={s.v} href={href({ holat: s.v })} className={status === s.v ? "on" : undefined} aria-current={status === s.v ? "true" : undefined}>
+            <Link key={s.v} href={href({ holat: s.v })} {...chip(status === s.v)}>
               {s.label}
             </Link>
           ))}
@@ -72,7 +74,7 @@ export default async function OpportunitiesPage(props: PageProps<"/imkoniyatlar"
           ))}
         </div>
       ) : (
-        <p className="notice">{c.empty}</p>
+        <p className="notice">{all.length ? c.empty : t.opp.emptyAll}</p>
       )}
     </>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeftIcon, ChevronRightIcon, FlagIcon } from "@/components/icons";
+import { ArrowLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { t } from "@/lib/strings.uz";
 
 // Ilova sahifalari uchun kichik umumiy bloklar.
@@ -16,7 +16,9 @@ export function PageHead({ title, lead, action }: { title: string; lead?: string
   );
 }
 
-export function SampleNotice() {
+// Sahifada namunaviy (is_sample) qatorlar bo'lsa ko'rsatiladi.
+export function SampleNotice({ show = true }: { show?: boolean }) {
+  if (!show) return null;
   return (
     <p className="notice">
       <span className="nm">{t.sample}</span> {t.app.sampleNotice}
@@ -55,14 +57,5 @@ export function BackLink({ href }: { href: string }) {
     <Link href={href} className="back">
       <ArrowLeftIcon /> {t.app.back}
     </Link>
-  );
-}
-
-// Har bir ommaviy obyektda "Xabar berish" bor (M9 da ishga tushadi).
-export function ReportLink({ label = t.app.report }: { label?: string }) {
-  return (
-    <button type="button" className="report" disabled>
-      <FlagIcon /> {label}
-    </button>
   );
 }

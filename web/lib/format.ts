@@ -32,3 +32,22 @@ export function ageLabel(min: number | null, max: number | null): string {
   if (max) return `${max} yoshgacha`;
   return "Yosh chegarasi yoʻq";
 }
+
+const TZ = "Asia/Tashkent";
+
+// Qisqa sana, Toshkent vaqti bilan: "4-oktyabr".
+export function formatDay(iso: string): string {
+  const d = new Date(iso);
+  const day = Number(d.toLocaleString("en-GB", { day: "numeric", timeZone: TZ }));
+  const month = Number(d.toLocaleString("en-GB", { month: "numeric", timeZone: TZ }));
+  return `${day}-${MONTHS[month - 1]}`;
+}
+
+export function formatTime(iso: string): string {
+  return new Date(iso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: TZ });
+}
+
+export function isSameTashkentDay(iso: string, now = new Date()): boolean {
+  const f = (d: Date) => d.toLocaleDateString("en-CA", { timeZone: TZ });
+  return f(new Date(iso)) === f(now);
+}

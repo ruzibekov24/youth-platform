@@ -211,3 +211,14 @@
 @keyframes pulse { 50% { opacity: 0.25; transform: scale(0.7); } }
 @media (prefers-reduced-motion: reduce) { .wait .dot { animation: none; } }
 .wait-x { display: grid; gap: 12px; justify-items: center; margin-top: 18px; font-size: 14px; color: var(--color-danger); }
+.err { margin: 0; font-size: 13px; color: var(--color-danger); }
+.ok-note { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--color-frame); font-size: 14px; line-height: 1.5; }
+.empty { display: grid; justify-items: center; gap: 6px; padding: 40px 20px; text-align: center; }
+.empty h2 { margin-top: 10px; font-size: 20px; }
+.empty p { max-width: 360px; }
+.tl-link { text-decoration: none; color: inherit; }
+.tl-link:hover b { text-decoration: underline; }
+.qr-page { min-height: 100svh; display: grid; place-items: center; align-content: center; gap: 14px; padding: 32px 16px; text-align: center; background: var(--color-page); color: var(--color-ink); }
+.qr-page h1 { font-size: clamp(28px, 4vw, 40px); }
+.qr-box { width: min(380px, 100%); padding: 18px; border-radius: 20px; background: #fff; border: 1px solid var(--color-line); }
+.qr-box svg { display: block; width: 100%; height: auto; }

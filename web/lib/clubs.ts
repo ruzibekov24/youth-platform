@@ -52,3 +52,28 @@ export async function getSessionByCode(code: string) {
     clubs: { name: string; slug: string };
   } | null;
 }
+
+export type ClubOverview = { club: Club; next: ClubSession | null; members: number };
+
+// Klublar ro'yxati: har biriga keyingi sessiya va a'zolar soni (MVP hajmida JS'da guruhlanadi).
+export async function listClubsOverview(): Promise<ClubOverview[]> {
+  const clubs = await listClubs();
+  if (!clubs.length) return [];
+  const ids = clubs.map((c) => c.id);
+  const [sessions, members] = await Promise.all([
+    db()
+      .from("club_sessions")
+      .select("id, club_id, starts_at, place_or_link, topic")
+      .in("club_id", ids)
+      .gte("starts_at", new Date().toISOString())
+      .order("starts_at"),
+    db().from("club_members").select("club_id").in("club_id", ids),
+  ]);
+  if (sessions.error) throw sessions.error;
+  if (members.error) throw members.error;
+  return clubs.map((club) => ({
+    club,
+    next: ((sessions.data ?? []) as ClubSession[]).find((s) => s.club_id === club.id) ?? null,
+    members: (members.data ?? []).filter((m) => m.club_id === club.id).length,
+  }));
+}
