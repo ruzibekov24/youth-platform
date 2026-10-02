@@ -252,7 +252,9 @@ h3 {
   color: var(--color-ink);
   text-align: left;
 }
-.k::before { content: ""; position: absolute; left: -1px; top: -9px; width: 58px; height: 10px; background: #fff; border: 1px solid var(--color-line); border-bottom: 0; border-radius: 8px 8px 0 0; }
+/* Papka quloqchasi: chap chet to'g'ri davom etadi, o'ng tomoni yumshoq egilib karta chetiga qo'shiladi. */
+.k { border-top-left-radius: 0; --tab: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14'%3E%3Cpath fill='%23fff' d='M0 14V7Q0 0 7 0H50C55 0 56.5 2 58 6L59.5 10C60.6 12.6 62 13.5 66 13.5H72V14Z'/%3E%3Cpath fill='none' stroke='%23ececef' d='M.5 14V7Q.5.5 7 .5H50C55 .5 56.5 2 58 6L59.5 10C60.6 12.6 62 13.5 66 13.5H72'/%3E%3C/svg%3E"); }
+.k::before { content: ""; position: absolute; left: -1px; top: -13px; width: 72px; height: 14px; background: var(--tab) no-repeat; pointer-events: none; }
 .k h3 { font: 600 14px var(--font-display); letter-spacing: -0.02em; margin: 0 0 12px; }
 .k .r { border: 1px solid var(--color-line); border-radius: 10px; padding: 10px; margin-bottom: 8px; display: grid; gap: 6px; }
 .k .r:last-child { margin-bottom: 0; }
