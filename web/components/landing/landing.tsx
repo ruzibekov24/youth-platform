@@ -140,7 +140,8 @@ function Orbit() {
             <div className="orb-ring r2" data-a=".14" data-b=".4" data-s=".5" data-o="0" />
             <div className="orb-ring r3" data-a=".2" data-b=".45" data-s=".5" data-o="0" />
             <div className="core" data-a=".18" data-b=".42" data-s=".4" data-o="0">
-              <Image src="/brand/mark.svg" alt="" width={44} height={40} />
+              <Image src="/brand/mark.svg" alt="" width={44} height={40} className="mk-l" />
+              <Image src="/brand/mark-white.svg" alt="" width={44} height={40} className="mk-d" />
             </div>
             <div className="spin" data-a=".25" data-b=".5" data-o="0">
               <Tile name="calendar" size={60} className="chip c-top" />

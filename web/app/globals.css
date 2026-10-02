@@ -2,9 +2,19 @@
 
 @theme static {
   --color-ink: #0b0f1a;
+  --color-on-ink: #fff;
+  --color-ink-hover: #262a35;
   --color-muted: #8a8f98;
+  --color-text-2: #6b707b;
+  --color-text-3: #9a9ea7;
   --color-line: #ececef;
   --color-frame: #f7f7f8;
+  --color-surface: #fff;
+  --color-page: #fff;
+  --color-dot: #e6e6ea;
+  --color-tree: #c9cad2;
+  --color-glass: rgb(255 255 255 / 0.9);
+  --shadow-rgb: 15 23 42;
   --color-accent: #5b5cff;
   --color-accent-hover: #4647e6;
   --color-note: #ffe88a;
@@ -16,8 +26,31 @@
   --font-hand: var(--font-caveat), cursive;
 }
 
+/* Dark mode tizim sozlamasiga ergashadi. Light asosiy bo'lib qoladi. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-ink: #eceef2;
+    --color-on-ink: #0b0f1a;
+    --color-ink-hover: #d4d7de;
+    --color-muted: #8b909a;
+    --color-text-2: #a2a7b1;
+    --color-text-3: #6f7480;
+    --color-line: #262a33;
+    --color-frame: #111318;
+    --color-surface: #171a21;
+    --color-page: #0c0e13;
+    --color-dot: #20232b;
+    --color-tree: #3a3e48;
+    --color-glass: rgb(23 26 33 / 0.85);
+    --color-dark: #07080b;
+    --color-dark-2: #111318;
+    --shadow-rgb: 0 0 0;
+  }
+}
+
 html {
-  background: #fff;
+  background: var(--color-page);
   color: var(--color-ink);
 }
 
