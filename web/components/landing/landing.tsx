@@ -32,8 +32,8 @@ function Nav() {
   return (
     <nav className="nav" id="site-nav" aria-label="Asosiy">
       <a href="#hero" className="logo" aria-label={t.brand}>
-        <Image src="/brand/logo-light.png" alt={t.brand} width={99} height={33} className="lg-l" priority />
-        <Image src="/brand/logo-dark.png" alt="" width={100} height={26} className="lg-d" aria-hidden />
+        <Image src="/brand/logo.svg" alt={t.brand} width={98} height={26} className="lg-l" priority />
+        <Image src="/brand/logo-white.svg" alt="" width={98} height={26} className="lg-d" aria-hidden />
       </a>
       <div className="links">
         {t.nav.links.map((l) => (
@@ -138,7 +138,7 @@ function Orbit() {
             <div className="orb-ring r2" data-a=".14" data-b=".4" data-s=".5" data-o="0" />
             <div className="orb-ring r3" data-a=".2" data-b=".45" data-s=".5" data-o="0" />
             <div className="core" data-a=".18" data-b=".42" data-s=".4" data-o="0">
-              <Image src="/brand/logo-light.png" alt="" width={99} height={33} />
+              <Image src="/brand/mark.svg" alt="" width={44} height={40} />
             </div>
             <div className="spin" data-a=".25" data-b=".5" data-o="0">
               <Tile name="calendar" size={60} className="chip c-top" />
@@ -321,7 +321,7 @@ function Safety() {
 function Footer() {
   return (
     <footer className="foot">
-      <Image src="/brand/logo-dark.png" alt={t.brand} width={100} height={26} />
+      <Image src="/brand/logo-white.svg" alt={t.brand} width={98} height={26} />
       <p>{t.footer}</p>
     </footer>
   );

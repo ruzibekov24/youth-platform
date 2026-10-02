@@ -75,8 +75,7 @@ h3 {
 .nav.dk { background: rgb(19 22 31 / 0.88); border-color: var(--color-dark-line); }
 .nav .logo { display: flex; align-items: center; min-height: 44px; }
 .nav .logo img { height: 26px; width: auto; }
-.nav .lg-l { mix-blend-mode: multiply; }
-.nav .lg-d { display: none; mix-blend-mode: screen; }
+.nav .lg-d { display: none; }
 .nav.dk .lg-l { display: none; }
 .nav.dk .lg-d { display: block; }
 .nav .links { display: flex; gap: 20px; font-size: 13px; color: #5b606b; }
@@ -165,7 +164,7 @@ h3 {
 .r2 { inset: 16%; }
 .r3 { inset: 32%; }
 .core { position: absolute; inset: 40%; border-radius: 50%; background: #fff; border: 1px solid var(--color-line); box-shadow: 0 10px 30px rgb(15 23 42 / 0.08); display: grid; place-items: center; }
-.core img { width: 62%; height: auto; mix-blend-mode: multiply; }
+.core img { width: 42%; height: auto; }
 .spin { position: absolute; inset: 0; rotate: calc(var(--p, 0) * 160deg); }
 .spin.b { inset: 16%; rotate: calc(var(--p, 0) * -120deg); }
 .chip { position: absolute; width: 60px; height: auto; margin: -30px; filter: drop-shadow(0 8px 10px rgb(15 23 42 / 0.14)); }
@@ -237,7 +236,7 @@ h3 {
 @media (max-width: 760px) { .safe { grid-template-columns: 1fr 1fr; } }
 
 .foot { background: var(--color-dark); color: #6b7280; font-size: 13px; text-align: center; padding: 10px 0 36px; }
-.foot img { height: 26px; width: auto; mix-blend-mode: screen; margin: 0 auto 10px; }
+.foot img { height: 26px; width: auto; margin: 0 auto 10px; }
 .foot p { margin: 0; }
 
 /* ---------- Kartalar (rang: neytral + bitta brend rangi) ---------- */
