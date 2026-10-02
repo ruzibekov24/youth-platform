@@ -26,7 +26,7 @@ export async function getTodayData(userId: string, ageGroup: "under18" | "adult"
           .in("club_id", clubIds)
           .gte("starts_at", now)
           .order("starts_at")
-          .limit(3)
+          .limit(10)
       : Promise.resolve({ data: [], error: null }),
     db().from("saved_opportunities").select("opportunities(*)").eq("user_id", userId),
     db()
@@ -109,5 +109,25 @@ export async function getProfileData(userId: string) {
       ideas: { id: string; title: string };
     }[],
     teammates,
+  };
+}
+
+// Asosiy ekran: "Bugun" ma'lumotlari + bo'limlardagi sonlar + shaxsiy statistika (hammasi bitta so'rovlar to'plamida).
+export async function getHomeData(userId: string, ageGroup: "under18" | "adult") {
+  const now = new Date().toISOString();
+  const head = { count: "exact" as const, head: true };
+  const [today, clubs, opps, ideas, attended, teams] = await Promise.all([
+    getTodayData(userId, ageGroup),
+    db().from("clubs").select("id", head).eq("is_active", true),
+    db().from("opportunities").select("id", head).eq("status", "active").or(`closes_at.is.null,closes_at.gt.${now}`),
+    db().from("ideas").select("id", head).eq("status", "open").eq("age_group", ageGroup),
+    db().from("club_attendance").select("session_id", head).eq("user_id", userId),
+    db().from("join_requests").select("id", head).eq("user_id", userId).eq("status", "accepted"),
+  ]);
+  for (const r of [clubs, opps, ideas, attended, teams]) if (r.error) throw r.error;
+  return {
+    ...today,
+    counts: { clubs: clubs.count ?? 0, opportunities: opps.count ?? 0, ideas: ideas.count ?? 0 },
+    stats: { sessions: attended.count ?? 0, saved: today.savedOpps.length, teams: teams.count ?? 0 },
   };
 }

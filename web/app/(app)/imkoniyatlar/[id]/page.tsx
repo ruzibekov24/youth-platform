@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { reportEntity } from "@/app/actions/report";
-import { BackLink, SampleNotice } from "@/components/app/blocks";
+import { BackLink } from "@/components/app/blocks";
 import { ReportButton } from "@/components/app/forms";
 import { Sample } from "@/components/app/items";
 import { ArrowUpRightIcon, BookmarkIcon, CheckIcon } from "@/components/icons";
@@ -30,7 +30,6 @@ export default async function OpportunityPage(props: PageProps<"/imkoniyatlar/[i
   return (
     <>
       <BackLink href="/imkoniyatlar" />
-      <SampleNotice show={o.is_sample} />
       <div className="detail">
         <div className="stack">
           <div className="pnl">

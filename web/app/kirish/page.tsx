@@ -16,7 +16,7 @@ export const metadata: Metadata = { title: `${t.app.login.title} · ${t.brand}` 
 export default async function LoginPage(props: PageProps<"/kirish">) {
   const c = t.app.login;
   const next = safeNextPath((await props.searchParams).next);
-  if (await getCurrentUser()) redirect(next === "/" ? "/bugun" : next);
+  if (await getCurrentUser()) redirect(next === "/" ? "/asosiy" : next);
   const ready = dbConfigured() && Boolean(process.env.TELEGRAM_BOT_USERNAME && process.env.SESSION_SECRET);
 
   return (
@@ -27,7 +27,7 @@ export default async function LoginPage(props: PageProps<"/kirish">) {
 
       {ready ? (
         <form action={startLogin}>
-          <input type="hidden" name="next" value={next === "/" ? "/bugun" : next} />
+          <input type="hidden" name="next" value={next === "/" ? "/asosiy" : next} />
           <button type="submit" className="btn w big">
             <TelegramMark mono className="tgm-btn" /> {c.cta}
           </button>

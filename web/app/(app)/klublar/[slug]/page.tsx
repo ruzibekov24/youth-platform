@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { reportEntity } from "@/app/actions/report";
-import { BackLink, SampleNotice, Section } from "@/components/app/blocks";
+import { BackLink, Section } from "@/components/app/blocks";
 import { ReportButton } from "@/components/app/forms";
 import { clubTile, Sample, SessionLine } from "@/components/app/items";
 import { CheckIcon, PinIcon, QrIcon } from "@/components/icons";
@@ -29,7 +29,6 @@ export default async function ClubPage(props: PageProps<"/klublar/[slug]">) {
   return (
     <>
       <BackLink href="/klublar" />
-      <SampleNotice show={club.is_sample} />
       <div className="detail">
         <div className="stack">
           <div className="pnl">

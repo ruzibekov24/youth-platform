@@ -13,7 +13,7 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
     <div className="shell">
       <header className="topbar">
         <div className="topbar-in">
-          <Link href="/bugun" className="brand" aria-label={t.brand}>
+          <Link href="/asosiy" className="brand" aria-label={t.brand}>
             <Image src="/brand/logo.svg" alt={t.brand} width={90} height={24} className="lg-l" priority />
             <Image src="/brand/logo-white.svg" alt="" width={90} height={24} className="lg-d" aria-hidden />
           </Link>

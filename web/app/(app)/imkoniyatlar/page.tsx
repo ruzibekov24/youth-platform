@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHead, SampleNotice } from "@/components/app/blocks";
+import { PageHead } from "@/components/app/blocks";
 import { OpportunityItem } from "@/components/app/items";
 import { isClosed } from "@/lib/format";
 import { OPP_TYPES, sortOpportunities } from "@/lib/opp-filter";
@@ -45,7 +45,6 @@ export default async function OpportunitiesPage(props: PageProps<"/imkoniyatlar"
   return (
     <>
       <PageHead title={c.title} lead={c.lead} />
-      <SampleNotice show={list.some((o) => o.is_sample)} />
       <div className="filters">
         <div className="fl" role="group" aria-label={c.filterType}>
           <span className="fl-l">{c.filterType}</span>

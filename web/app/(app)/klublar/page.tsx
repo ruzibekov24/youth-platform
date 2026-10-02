@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHead, SampleNotice } from "@/components/app/blocks";
+import { PageHead } from "@/components/app/blocks";
 import { ClubItem } from "@/components/app/items";
 import { listClubsOverview } from "@/lib/clubs";
 import { t } from "@/lib/strings.uz";
@@ -12,7 +12,6 @@ export default async function ClubsPage() {
   return (
     <>
       <PageHead title={c.title} lead={c.lead} />
-      <SampleNotice show={items.some((i) => i.club.is_sample)} />
       {items.length ? (
         <div className="grid3">
           {items.map((item) => (
