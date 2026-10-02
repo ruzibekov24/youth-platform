@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { BackLink, PageHead, Section } from "@/components/app/blocks";
-import { DeleteAccount, Switch } from "@/components/app/settings-controls";
+import { DeleteAccount, SwitchSubmit } from "@/components/app/settings-controls";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { requireUser } from "@/lib/auth";
 import { t } from "@/lib/strings.uz";
+import { logout } from "../../kirish/actions";
+import { deleteAccount, toggleReminders } from "./actions";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: `${t.app.settings.title} · ${t.brand}` };
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const user = await requireUser();
   const s = t.app.settings;
   return (
     <>
@@ -14,22 +19,15 @@ export default function SettingsPage() {
       <PageHead title={s.title} />
 
       <Section title={s.reminders}>
-        <div className="pnl set">
+        <form action={toggleReminders} className="pnl set">
           <div className="set-row">
             <div>
-              <b>{s.remindSession}</b>
-              <div className="sub">{s.remindSessionText}</div>
+              <b>{s.remindAll}</b>
+              <div className="sub">{s.remindAllText}</div>
             </div>
-            <Switch label={s.remindSession} defaultOn />
+            <SwitchSubmit on={user.reminders_enabled} label={s.remindAll} />
           </div>
-          <div className="set-row">
-            <div>
-              <b>{s.remindDeadline}</b>
-              <div className="sub">{s.remindDeadlineText}</div>
-            </div>
-            <Switch label={s.remindDeadline} defaultOn />
-          </div>
-        </div>
+        </form>
       </Section>
 
       <Section title={s.theme}>
@@ -48,7 +46,7 @@ export default function SettingsPage() {
         <div className="pnl set">
           <div className="set-row">
             <div>
-              <b>{s.telegramNone}</b>
+              <b>{user.telegram_username ? `@${user.telegram_username}` : s.telegramNone}</b>
               <div className="sub">{s.telegramText}</div>
             </div>
           </div>
@@ -72,9 +70,14 @@ export default function SettingsPage() {
             <div className="sub" style={{ marginTop: 0 }}>
               {s.deleteText}
             </div>
-            <DeleteAccount />
+            <DeleteAccount action={deleteAccount} />
           </div>
         </div>
+        <form action={logout} style={{ marginTop: 16 }}>
+          <button type="submit" className="btn ghost">
+            {s.logout}
+          </button>
+        </form>
       </Section>
     </>
   );

@@ -206,3 +206,8 @@
 .role .btn { font-size: 13px; padding: 0 14px; }
 .role .meta svg { width: 14px; height: 14px; }
 .btn .tgm-btn { width: 22px; height: 22px; }
+.wait { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 14px; color: var(--color-text-2); }
+.wait .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.25; transform: scale(0.7); } }
+@media (prefers-reduced-motion: reduce) { .wait .dot { animation: none; } }
+.wait-x { display: grid; gap: 12px; justify-items: center; margin-top: 18px; font-size: 14px; color: var(--color-danger); }
