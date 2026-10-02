@@ -1,5 +1,6 @@
 "use server";
 
+import { notifyNewReport } from "@/lib/bot";
 import { db } from "@/lib/db";
 import { clientKey } from "@/lib/ip";
 import { allow } from "@/lib/rate-limit";
@@ -21,6 +22,9 @@ export async function reportEntity(
     return "error";
   }
   if (!(await allow(`report:${await clientKey()}`, 3600, 5))) return "error";
-  const r = await db().from("reports").insert({ entity_type: entityType, entity_id: entityId, reason });
-  return r.error ? "error" : "ok";
+  const r = await db().from("reports").insert({ entity_type: entityType, entity_id: entityId, reason }).select("id").single();
+  if (r.error) return "error";
+  // Moderatorlarga darhol bot orqali (yashirish / ko'rib chiqildi tugmalari bilan).
+  await notifyNewReport(r.data.id).catch(() => {});
+  return "ok";
 }

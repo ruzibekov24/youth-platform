@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
-import { sendTelegram } from "@/lib/bot";
+import { notifyNewIdea, sendTelegram } from "@/lib/bot";
 import { db } from "@/lib/db";
 import { trackEvent } from "@/lib/events";
 import { MAX_PENDING_IDEAS, validateIdea } from "@/lib/idea-validate";
@@ -59,6 +59,7 @@ export async function createIdea(_prev: FormState, formData: FormData): Promise<
     .single();
   if (ins.error) throw ins.error;
   await trackEvent(user.id, "idea_create", "idea", ins.data.id);
+  await notifyNewIdea(ins.data.id).catch(() => {});
   return { status: "ok" };
 }
 
