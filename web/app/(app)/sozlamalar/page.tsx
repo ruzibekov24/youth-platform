@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BackLink, PageHead, Section } from "@/components/app/blocks";
+import { InstallApp } from "@/components/app/install-app";
 import { DeleteAccount, SwitchSubmit } from "@/components/app/settings-controls";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { requireUser } from "@/lib/auth";
@@ -39,6 +40,7 @@ export default async function SettingsPage() {
             </div>
             <ThemeToggle />
           </div>
+          <InstallApp />
         </div>
       </Section>
 
