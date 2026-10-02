@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Saytdagi color-page tokeni bilan bir xil (light / dark). -->
+<resources>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_dark">#0C0E13</color>
+    <color name="icon_bg">#FFFFFF</color>
+</resources>

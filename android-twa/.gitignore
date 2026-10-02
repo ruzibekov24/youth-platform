@@ -1,0 +1,10 @@
+# Imzolash kaliti va parollar hech qachon commit qilinmaydi.
+keystore/
+keystore.properties
+local.properties
+.gradle/
+build/
+app/build/
+.kotlin/
+*.apk
+*.aab
