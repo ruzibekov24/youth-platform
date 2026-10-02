@@ -4,7 +4,7 @@ from scipy import ndimage as nd
 N=1000
 # --- tile mask (rounded square)
 yy,xx=np.mgrid[0:N,0:N].astype(float)
-m=0.05*N; r=0.23*N
+m=0.012*N; r=0.25*N
 def rrect(x0,y0,x1,y1,r):
     cx=np.clip(xx,x0+r,x1-r); cy=np.clip(yy,y0+r,y1-r)
     return r-np.hypot(xx-cx,yy-cy)  # signed: >0 inside
@@ -19,7 +19,7 @@ blue=np.asarray(Image.open('blue.png').convert('L'))<128
 ys,xs=np.where(ink|blue); x0,x1,y0,y1=xs.min(),xs.max(),ys.min(),ys.max()
 def fit(mask):
     im=Image.fromarray((mask[y0:y1,x0:x1]*255).astype('uint8'))
-    w,h=im.size; s=0.50*N/max(w,h); im=im.resize((int(w*s),int(h*s)),Image.LANCZOS)
+    w,h=im.size; s=0.54*N/max(w,h); im=im.resize((int(w*s),int(h*s)),Image.LANCZOS)
     c=Image.new('L',(N,N),0); c.paste(im,((N-im.size[0])//2+int(0.01*N),(N-im.size[1])//2)); return np.asarray(c)/255.
 inkm=fit(ink); bluem=fit(blue)
 # blue drawn under ink; final regions
@@ -44,7 +44,7 @@ spec=np.clip((n*Hh).sum(2),0,1)**40
 ao=1-0.22*nd.gaussian_filter(logo,0.025*N)*(1-logo)
 ao*=1-0.04*np.clip(1-sd/(0.25*N),0,1)*tile  # slight edge darkening
 alb=np.zeros((N,N,3))
-alb[:]=np.array([0.975,0.978,0.99])
+alb[:]=np.array([0.948,0.948,0.956])
 navy=np.array([0x1E,0x2A,0x52])/255.; bl=np.array([0x5B,0x5C,0xFF])/255.
 alb=alb*(1-logo[...,None])+navy*inkr[...,None]+bl*bluer[...,None]
 amb=0.80; kd=0.24
