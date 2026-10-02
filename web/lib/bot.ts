@@ -77,12 +77,20 @@ function suggestedNameOf(first: string | undefined): string {
   return (first && sanitizeName(first)) || "Doʻst";
 }
 
+// Mini App (bot menyusidagi tugma) ochadigan tugma. NEXT_PUBLIC_SITE_URL https bo'lsagina qo'shiladi.
+function openAppKeyboard(): InlineKeyboard | undefined {
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  return site.startsWith("https://") ? new InlineKeyboard().webApp(t.tg.open, `${site}/tg`) : undefined;
+}
+
 bot.command("start", async (ctx) => {
   if (ctx.chat.type !== "private" || !ctx.from) {
     await ctx.reply(T.privateOnly);
     return;
   }
-  const token = ctx.match.trim();
+  // "app": Mini App'dan anketaga yuborilgan; login token emas.
+  const raw = ctx.match.trim();
+  const token = raw === "app" ? "" : raw;
   const user = await findOrCreateByTelegramId(ctx.from.id);
   const done = user.onboarding_step === null;
 
@@ -94,10 +102,10 @@ bot.command("start", async (ctx) => {
     }
   }
   if (done) {
-    await ctx.reply(token ? T.done : T.welcomeBack);
+    await ctx.reply(token ? T.done : T.welcomeBack, { reply_markup: openAppKeyboard() });
     return;
   }
-  if (!token) await ctx.reply(T.welcomeNoToken);
+  if (!token && raw !== "app") await ctx.reply(T.welcomeNoToken);
   await askStep(ctx.chat.id, user, suggestedNameOf(ctx.from.first_name));
 });
 
@@ -272,7 +280,7 @@ bot.on("callback_query:data", async (ctx) => {
       await updateUser(user.id, { onboarding_step: null });
       await confirmPendingTokens(user.id);
       await trackEvent(user.id, "signup");
-      await bot.api.sendMessage(chatId, T.done);
+      await bot.api.sendMessage(chatId, T.done, { reply_markup: openAppKeyboard() });
       return;
     }
     if (!INTERESTS.some((i) => i.key === value)) return;
