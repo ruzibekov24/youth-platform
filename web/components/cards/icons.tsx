@@ -50,6 +50,34 @@ export const ShieldIcon = (p: P) => (
   </svg>
 );
 
+export const CheckIcon = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M5 12.5l4.2 4L19 7" />
+  </svg>
+);
+export const PinIcon = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z" />
+    <circle cx="12" cy="10" r="2.3" />
+  </svg>
+);
+export const UsersIcon = (p: P) => (
+  <svg {...base} {...p}>
+    <circle cx="9" cy="8" r="3.2" />
+    <path d="M3.5 19a5.5 5.5 0 0111 0M16 5.2a3 3 0 010 5.6M17.5 14.2A5.5 5.5 0 0120.5 19" />
+  </svg>
+);
+export const ArrowUpRightIcon = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M7 17L17 7M9 7h8v8" />
+  </svg>
+);
+export const BookmarkIcon = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M6 4h12v17l-6-4-6 4z" />
+  </svg>
+);
+
 // Telegram belgisi o'z brend rangida qoladi (bu uning logotipi).
 export const TelegramMark = ({ className, mono }: P & { mono?: boolean }) => (
   <svg viewBox="0 0 24 24" className={className} aria-hidden>

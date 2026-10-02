@@ -239,67 +239,6 @@ h3 {
 .foot img { height: 26px; width: auto; margin: 0 auto 10px; }
 .foot p { margin: 0; }
 
-/* ---------- Kartalar (rang: neytral + bitta brend rangi) ---------- */
-.k {
-  position: relative;
-  background: #fff;
-  border: 1px solid var(--color-line);
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 12px 30px rgb(15 23 42 / 0.05);
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--color-ink);
-  text-align: left;
-}
-/* Papka quloqchasi: chap chet to'g'ri davom etadi, o'ng tomoni yumshoq egilib karta chetiga qo'shiladi. */
-.k { border-top-left-radius: 0; --tab: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14'%3E%3Cpath fill='%23fff' d='M0 14V7Q0 0 7 0H50C55 0 56.5 2 58 6L59.5 10C60.6 12.6 62 13.5 66 13.5H72V14Z'/%3E%3Cpath fill='none' stroke='%23ececef' d='M.5 14V7Q.5.5 7 .5H50C55 .5 56.5 2 58 6L59.5 10C60.6 12.6 62 13.5 66 13.5H72'/%3E%3C/svg%3E"); }
-.k::before { content: ""; position: absolute; left: -1px; top: -13px; width: 72px; height: 14px; background: var(--tab) no-repeat; pointer-events: none; }
-.k h3 { font: 600 14px var(--font-display); letter-spacing: -0.02em; margin: 0 0 12px; }
-.k .r { border: 1px solid var(--color-line); border-radius: 10px; padding: 10px; margin-bottom: 8px; display: grid; gap: 6px; }
-.k .r:last-child { margin-bottom: 0; }
-.k .t { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.k .t b { font-weight: 500; font-size: 12.5px; }
-.k .s { color: var(--color-muted); font-size: 11px; }
-.k .row { display: flex; gap: 10px; align-items: center; }
-.k .g { display: flex; gap: 6px; flex-wrap: wrap; }
-.k .mb { margin-bottom: 12px; }
-.k .mt { margin-top: 12px; }
-.k .sep { margin-top: 12px; border-top: 1px solid var(--color-line); padding-top: 10px; }
-.k .ink { color: var(--color-ink); font-weight: 600; }
-.k .big-b { font: 500 15px var(--font-display); }
-.k .self-start { justify-self: start; }
-.k .link { color: var(--color-accent); font-weight: 500; margin-top: 6px; }
-.k .btn { height: 36px; font-size: 12px; padding: 0 14px; }
-.bar { flex: 1; height: 4px; border-radius: 9px; background: var(--color-line); overflow: hidden; }
-.bar u { display: block; height: 100%; background: var(--color-accent); border-radius: 9px; }
-.nm { font-size: 9.5px; font-weight: 500; padding: 2px 7px; border-radius: 99px; background: var(--color-note); color: #3b3200; white-space: nowrap; }
-.ch { font-size: 11px; padding: 4px 10px; border-radius: 99px; border: 1px solid var(--color-line); background: #fff; white-space: nowrap; }
-.ch.on { background: var(--color-ink); color: #fff; border-color: var(--color-ink); }
-.ch.ok { color: #0f7a4a; border-color: #cfe9db; }
-.ico { width: 34px; height: 34px; border-radius: 9px; border: 1px solid var(--color-line); display: grid; place-items: center; flex: none; color: var(--color-ink); }
-.ico svg { width: 16px; height: 16px; }
-.ic-muted { width: 16px; height: 16px; color: var(--color-muted); }
-.apps { display: flex; gap: 6px; }
-.apps .app { flex: 1; justify-items: center; text-align: center; margin: 0; }
-.tgm { width: 34px; height: 34px; }
-.skel { height: 7px; border-radius: 9px; background: #e3e4e8; margin-bottom: 7px; }
-.skel.short { width: 70%; margin-bottom: 12px; }
-
-.note {
-  position: relative;
-  width: 210px;
-  padding: 26px 18px 28px;
-  background: var(--color-note);
-  border-radius: 3px;
-  rotate: -4deg;
-  font: 600 22px/1.15 var(--font-hand);
-  color: #3b3200;
-  text-align: left;
-  box-shadow: 0 14px 24px rgb(120 90 0 / 0.15);
-}
-.note .pin { position: absolute; left: 50%; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: #e5484d; box-shadow: inset -2px -2px 0 rgb(0 0 0 / 0.2); }
-
 /* ---------- Harakatni kamaytirish ---------- */
 @media (prefers-reduced-motion: reduce) {
   .scene, .stick { height: auto !important; position: static !important; }

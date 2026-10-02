@@ -13,7 +13,9 @@ import { t } from "@/lib/strings.uz";
 import { ScrollEngine } from "./scroll-engine";
 import "./landing.css";
 
-type IconName = "base" | "calendar" | "check" | "qr" | "bulb" | "cap" | "mic";
+type IconName =
+  | "base" | "calendar" | "check" | "qr" | "bulb" | "cap" | "mic"
+  | "team" | "key" | "bookmark" | "medal" | "puzzle" | "shield" | "pin" | "bell";
 
 function Tile({ name, size, className }: { name: IconName; size: number; className?: string }) {
   return (
@@ -89,7 +91,7 @@ function Hero() {
         </div>
         <div className="deco" aria-hidden style={{ "--k": 1, right: "3.5%", top: "13%" } as React.CSSProperties} data-par="60">
           <div className="with-tile">
-            <Tile name="qr" size={66} className="tl corner" />
+            <Tile name="bell" size={66} className="tl corner" />
             <RemindersCard />
           </div>
         </div>
