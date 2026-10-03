@@ -10,6 +10,12 @@ export type Club = {
   schedule_text: string;
   is_active: boolean;
   is_sample: boolean;
+  // Tsikl (0006): hammasi ixtiyoriy, bo'sh bo'lsa klub oldingidek ochiq.
+  seats: number | null;
+  min_to_start: number;
+  cycle_weeks: number | null;
+  starts_on: string | null;
+  age_group: "under18" | "adult" | null;
 };
 
 export type ClubSession = {
@@ -18,6 +24,7 @@ export type ClubSession = {
   starts_at: string;
   place_or_link: string;
   topic: string;
+  kind: "regular" | "demo";
 };
 
 export type OpportunityType =

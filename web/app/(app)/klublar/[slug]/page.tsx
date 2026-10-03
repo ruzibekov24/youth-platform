@@ -9,6 +9,8 @@ import { CheckIcon, PinIcon, QrIcon } from "@/components/icons";
 import { Tile } from "@/components/ui/tile";
 import { getCurrentUser } from "@/lib/auth";
 import { getClubBySlug, getClubPage } from "@/lib/clubs";
+import { ageAllowed, cycleState, neededToStart, seatsLeft, weekOf } from "@/lib/cycle";
+import { formatDay } from "@/lib/format";
 import { t } from "@/lib/strings.uz";
 import { joinClub, leaveClub } from "../actions";
 
@@ -22,9 +24,14 @@ export default async function ClubPage(props: PageProps<"/klublar/[slug]">) {
   const user = await getCurrentUser();
   const page = await getClubPage(slug, user?.id ?? null);
   if (!page) notFound();
-  const { club, sessions, isMember } = page;
+  const { club, sessions, isMember, members, progress } = page;
   const [next, ...later] = sessions;
   const c = t.app.clubs;
+  const cy = t.club.cycle;
+  const left = seatsLeft(club.seats, members);
+  const state = cycleState(club, members);
+  const ageOk = ageAllowed(club.age_group, user?.age_range ?? null);
+  const week = club.starts_on && club.cycle_weeks ? weekOf(club.starts_on, club.cycle_weeks) : 0;
 
   return (
     <>
@@ -51,7 +58,43 @@ export default async function ClubPage(props: PageProps<"/klublar/[slug]">) {
                 <dt>{c.organizer}</dt>
                 <dd>{club.organizer}</dd>
               </div>
+              {club.age_group && (
+                <div>
+                  <dt>{cy.audience}</dt>
+                  <dd>{cy.ageOnly[club.age_group]}</dd>
+                </div>
+              )}
+              {club.cycle_weeks && (
+                <div>
+                  <dt>{cy.length}</dt>
+                  <dd>{cy.weeks(club.cycle_weeks)}</dd>
+                </div>
+              )}
+              {club.starts_on && (
+                <div>
+                  <dt>{cy.starts}</dt>
+                  <dd>{formatDay(`${club.starts_on}T00:00:00+05:00`)}</dd>
+                </div>
+              )}
+              {club.seats && (
+                <div>
+                  <dt>{cy.seats}</dt>
+                  <dd>
+                    {cy.seatsOf(members, club.seats)}
+                    <div className="seat-meter" aria-hidden>
+                      <i style={{ width: `${Math.min(100, Math.round((members / club.seats) * 100))}%` }} />
+                    </div>
+                  </dd>
+                </div>
+              )}
             </dl>
+            {state === "needs" && <p className="cycle-note">{cy.needs(neededToStart(club.min_to_start, members))}</p>}
+            {state === "ready" && <p className="cycle-note">{cy.ready}</p>}
+            {state === "running" && club.cycle_weeks && (
+              <p className="cycle-note">
+                {week > club.cycle_weeks ? cy.finished : cy.running(week, club.cycle_weeks)}
+              </p>
+            )}
           </div>
           {later.length > 0 && (
             <Section title={t.club.sessions}>
@@ -62,6 +105,15 @@ export default async function ClubPage(props: PageProps<"/klublar/[slug]">) {
               </div>
             </Section>
           )}
+          <Section title={t.club.rules.title}>
+            <div className="pnl">
+              <ul className="rules">
+                {t.club.rules.items.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+            </div>
+          </Section>
         </div>
 
         <aside>
@@ -70,7 +122,8 @@ export default async function ClubPage(props: PageProps<"/klublar/[slug]">) {
             {next ? (
               <>
                 <h3>{next.topic}</h3>
-                <SessionLine s={{ starts_at: next.starts_at, topic: "" }} />
+                <SessionLine s={{ starts_at: next.starts_at, topic: "", kind: next.kind }} />
+                {next.kind === "demo" && <p className="cycle-note">{t.club.demoHint}</p>}
                 <div className="meta">
                   <span>
                     <PinIcon /> {next.place_or_link}
@@ -91,12 +144,21 @@ export default async function ClubPage(props: PageProps<"/klublar/[slug]">) {
                     <CheckIcon /> {t.club.member}
                   </span>
                 </div>
+                {progress && progress.held > 0 && (
+                  <p className="cycle-note" style={{ margin: 0 }}>
+                    {cy.yourProgress(progress.attended, progress.held)}
+                  </p>
+                )}
                 <form action={leaveClub.bind(null, club.id, slug)}>
                   <button type="submit" className="btn ghost w">
                     {t.club.leave}
                   </button>
                 </form>
               </>
+            ) : !ageOk ? (
+              <p className="ok-note">{cy.ageBlocked}</p>
+            ) : left === 0 ? (
+              <p className="ok-note">{cy.full}</p>
             ) : (
               <form action={joinClub.bind(null, club.id, slug)}>
                 <button type="submit" className="btn w">
