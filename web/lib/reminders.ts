@@ -21,7 +21,7 @@ type Member = { users: { telegram_id: number; reminders_enabled: boolean; onboar
 export async function sendSessionReminders(now = new Date()): Promise<number> {
   const sessions = await db()
     .from("club_sessions")
-    .select("id, club_id, starts_at, topic, clubs(name)")
+    .select("id, club_id, starts_at, topic, kind, clubs(name)")
     .is("reminder_sent_at", null)
     .gte("starts_at", now.toISOString())
     .lt("starts_at", tashkentDayEnd(now).toISOString());
@@ -33,6 +33,7 @@ export async function sendSessionReminders(now = new Date()): Promise<number> {
     club_id: string;
     starts_at: string;
     topic: string;
+    kind: "regular" | "demo";
     clubs: { name: string };
   }[]) {
     const members = await db()
@@ -41,7 +42,9 @@ export async function sendSessionReminders(now = new Date()): Promise<number> {
       .eq("club_id", s.club_id);
     if (members.error) throw members.error;
 
-    const text = t.reminders.session(s.clubs.name, s.topic, formatDateTime(s.starts_at));
+    const when = formatDateTime(s.starts_at);
+    const text =
+      s.kind === "demo" ? t.reminders.demo(s.clubs.name, when) : t.reminders.session(s.clubs.name, s.topic, when);
     for (const m of (members.data ?? []) as unknown as Member[]) {
       const u = m.users;
       if (!u || !u.reminders_enabled || u.onboarding_step) continue;

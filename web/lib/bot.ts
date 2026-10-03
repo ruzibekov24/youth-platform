@@ -1,5 +1,6 @@
 import "server-only";
 import { Bot, InlineKeyboard, webhookCallback } from "grammy";
+import { clubStatsText } from "./club-stats.ts";
 import { attachToken, confirmPendingTokens } from "./login.ts";
 import { trackEvent } from "./events.ts";
 import { allow } from "./rate-limit.ts";
@@ -203,6 +204,12 @@ bot.command("navbat", async (ctx) => {
     const c = await reportCard(id);
     if (c) await ctx.reply(c.text, { reply_markup: c.kb, link_preview_options: { is_disabled: true } });
   }
+});
+
+// Pilot o'lchovi: klublar bo'yicha a'zolar, davomat va qolish (faqat moderatorlarga, faqat sonlar).
+bot.command("klub", async (ctx) => {
+  if (ctx.chat.type !== "private" || !ctx.from || !isAdmin(ctx.from.id)) return;
+  await ctx.reply(await clubStatsText());
 });
 
 bot.callbackQuery(/^m([ir]):([ahrd]):([0-9a-f-]{36})$/, async (ctx) => {

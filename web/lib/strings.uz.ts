@@ -449,6 +449,8 @@ export const t = {
   reminders: {
     session: (club: string, topic: string, time: string) =>
       `Bugun klub sessiyasi: ${club}. Mavzu: ${topic}. Vaqti: ${time}.`,
+    demo: (club: string, time: string) =>
+      `Bugun Demo Day: ${club}. Vaqti: ${time}. Natijangizni ko'rsatadigan kun!`,
     closing: (title: string, days: number) =>
       `Saqlagan imkoniyatingiz yopilishiga ${days} kun qoldi: ${title}.`,
     stopHint: "Eslatmalarni oʻchirish: /eslatma",
@@ -530,6 +532,34 @@ export const t = {
     },
     qrLabel: "QR kod",
     qrHint: "Telefon kamerasi bilan skanerlang va qatnashganingizni tasdiqlang.",
+    cycle: {
+      audience: "Kimlar uchun",
+      length: "Davomiyligi",
+      weeks: (n: number) => `${n} hafta`,
+      starts: "Boshlanishi",
+      seats: "O'rinlar",
+      seatsOf: (taken: number, total: number) => `${taken} / ${total}`,
+      seatsFree: (n: number) => `${n} ta o'rin bo'sh`,
+      needs: (n: number) => `Boshlanishi uchun yana ${n} kishi kerak`,
+      ready: "Guruh yig'ildi: tsikl rejaga ko'ra boshlanadi.",
+      running: (week: number, total: number) => `Tsikl ketmoqda: ${week}-hafta / ${total}`,
+      finished: "Tsikl tugagan.",
+      full: "O'rinlar tugadi",
+      ageOnly: { under18: "13–17 yosh uchun", adult: "18–25 yosh uchun" },
+      ageBlocked: "Bu klub boshqa yosh guruhi uchun. Yosh guruhlari aralashmaydi.",
+      yourProgress: (attended: number, held: number) => `Qatnashganingiz: ${attended} / ${held}`,
+    },
+    demo: "Demo Day",
+    demoHint: "Tsikl yakuni: jamoalar natijasini ko'rsatadi.",
+    rules: {
+      title: "Uchrashuv qoidalari",
+      items: [
+        "Har uchrashuvda kamida ikki kattalar bor.",
+        "Yozib olish faqat hamma rozi bo'lsa.",
+        "Shaxsiy chat va telefon almashish yo'q: aloqa guruh ichida.",
+        "Xavotirli holatda «Xabar berish» tugmasini bosing.",
+      ],
+    },
   },
   tg: {
     loading: "Yoshlar Base ochilmoqda…",
@@ -562,6 +592,15 @@ export const t = {
     already: "Bu allaqachon ko'rib chiqilgan.",
     queueEmpty: "Navbat bo'sh: tekshiruvdagi g'oya ham, ochiq shikoyat ham yo'q.",
     queueHead: (ideas: number, reports: number) => `Navbat: ${ideas} ta g'oya, ${reports} ta shikoyat.`,
+    stats: {
+      empty: "Haqiqiy klub hali yo'q (namunaviylar hisobga olinmaydi).",
+      club: (name: string, members: number, seats: number | null) =>
+        `${name} · ${members}${seats ? ` / ${seats}` : ""} a'zo`,
+      noSessions: "Sessiya hali bo'lmagan.",
+      session: (n: number, day: string, count: number, demo: boolean) =>
+        `${demo ? "Demo Day" : `${n}-sessiya`} (${day}): ${count}`,
+      retention: (pct: number) => `Qolish: oxirgi sessiya / birinchi = ${pct}%`,
+    },
     ownerRejected: (title: string) => `«${title}» g'oyangiz bu safar doskaga chiqmadi. Qoidalarni tekshirib, qayta yozishingiz mumkin.`,
   },
 } as const;

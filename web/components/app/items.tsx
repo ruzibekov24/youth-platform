@@ -37,8 +37,9 @@ export function ClubItem({ item }: { item: ClubOverview }) {
       </div>
       <div className="meta">
         <span>
-          <UsersIcon /> {members} {c.members}
+          <UsersIcon /> {club.seats ? t.club.cycle.seatsOf(members, club.seats) : members} {c.members}
         </span>
+        {club.cycle_weeks && <span>{t.club.cycle.weeks(club.cycle_weeks)}</span>}
         {next && (
           <span>
             <PinIcon /> {next.place_or_link}
@@ -53,12 +54,13 @@ export function ClubItem({ item }: { item: ClubOverview }) {
   );
 }
 
-export function SessionLine({ s }: { s: Pick<ClubSession, "starts_at" | "topic"> }) {
+export function SessionLine({ s }: { s: Pick<ClubSession, "starts_at" | "topic"> & { kind?: ClubSession["kind"] } }) {
   return (
     <div className="meta">
       <span>
         <CalendarIcon /> {formatDay(s.starts_at)} · {formatTime(s.starts_at)}
       </span>
+      {s.kind === "demo" && <span className="ch on">{t.club.demo}</span>}
       <span>{s.topic}</span>
     </div>
   );

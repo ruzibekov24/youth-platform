@@ -133,6 +133,42 @@ Sabablar: Challenge'ning oddiy versiyasi "soxta belgilash" bo'lib qoladi (falsaf
 5. **Brend:** logo va asosiy rang hali yo'q. M1 da vaqtinchalik rang olinadi, logo keyin.
 6. **Kontent:** 30+ imkoniyat va birinchi klub ma'lumotlarini kim va qachon yig'adi?
 
+## 12. Yo'nalish yangilanishi (2026-10-03): "qilish va isbotlash"
+
+Qoralama, tasdiqlash kutilmoqda. Bo'lim 1-9 dagi umumiy tuzilma o'z kuchida; bu bo'lim pozitsiya va qurish tartibini yangilaydi. To'liq g'oyalar: `IDEAS.md`.
+
+**Pozitsiya.** Base katalog emas. Yosh klubda o'rganadi, jamoada real narsa chiqaradi, natija tasdiqlangan yutuq bo'ladi. Klublarni boshida o'zimiz ochamiz (operator), keyin viloyat koordinatorlari.
+
+**Qolish mexanizmi.** Ritual (haftalik uchrashuv), odamlar (doimiy guruh), natija (tsikl oxirida Demo Day va yutuq).
+
+**Ma'lumot qarori (amalga oshirildi, migratsiya 0006):** alohida `club_cycles` jadvali yozilmadi, pilotda har klub = bitta tsikl. Shuning uchun `clubs` jadvaliga ustunlar qo'shildi: `seats`, `min_to_start`, `cycle_weeks`, `starts_on`, `age_group`; `club_sessions.kind` ('regular' | 'demo'). Ikkinchi tsikl kerak bo'lganda jadvalga ajratamiz. O'rinlar `join_club()` funksiyasi bilan atomik tekshiriladi.
+- MIYA g'oyalari tsiklga bog'lanadi (M12): ochiq doska emas, jamoalar tsikl oxirida shu yerda yig'iladi
+- Yangi shaxsiy ma'lumot maydoni yo'q
+
+**Pilot: 2 klub** (har biri kamida 5 kishi bilan boshlanadi, aks holda 1 hafta suramiz yoki birlashtiramiz):
+1. **Speaking Club**: haftalik ingliz tilida suhbat, oxirida 3 daqiqalik nutq (Demo Day).
+2. **Startuper klub**: muammo -> tekshirish -> jamoa -> Demo Day (MIYA bilan bog'lanadi).
+Har klubga bitta yetakchi, kunlar turli, yosh guruhi aralashmaydi.
+
+**O'lchov:** moderator botda `/klub` yozadi: a'zolar, sessiyalar bo'yicha davomat va qolish foizi (faqat sonlar).
+
+**Pilot (kod yozishdan oldin).** 1 klub, 10 yosh, 4 hafta, 1 yetakchi. Meeting: Google Meet yoki Telegram voice chat; ro'yxat: bot.
+Muvaffaqiyat mezoni (oldindan): kamida 6 kishi 4-haftagacha qoladi. Hujjat: `CLUB-PLAYBOOK.md` pilot davomida yoziladi.
+
+**Yangi milestone'lar (M9 dan keyin, pilot natijasiga qarab):**
+
+| # | Bosqich | Tugash mezoni |
+|---|---|---|
+| **M10** | **Klub tsikli.** (bajarildi) tsikl ustunlari, tsikl sahifasi (davomiylik, boshlanish, o'rinlar, yosh guruhi, "yana N kishi kerak"), atomik qo'shilish, a'zo progressi, `/klub` statistikasi | Foydalanuvchi tsiklga yoziladi va uchrashuvdan oldin eslatma oladi |
+| **M11** | **Demo Day.** (bajarildi) `kind = 'demo'` sessiya: belgi, alohida eslatma matni, QR davomat orqali profilga yoziladi | Demo sanasi klub sahifasida ko'rinadi |
+| **M12** | **MIYA = tsikl yakuni.** G'oya tsiklga bog'lanadi, 2-4 kishilik jamoa, jamoa yakunlanishi profilga yoziladi | Tsikl ishtirokchilari jamoa yig'adi, natija profilda |
+
+**Meeting xavfsizlik qoidalari (MVP):** har uchrashuvda ikki kattalar, yozib olish faqat rozilik bilan, shaxsiy chat yo'q, yosh guruhlari ajratilgan.
+
+**MVPdan tashqarida:** koordinatorlar, offline, sertifikat, topshiriqlar, pasport, tadbirlar taqvimi, mentorlar, hamkor portal.
+
+**Ochiq savollar (yangi):** birinchi klub mavzusi va yetakchisi; haftasiga ajratiladigan vaqt; birinchi guruh yoshi (13-15 / 16-17 / 18-25); koordinatorlar uchun huquqiy talablar.
+
 ## 11. Claude Code bilan ishlash
 
 1. `youth-platform` repo'sida `web/` ochiladi, `CLAUDE.md` va `PLAN.md` repo ildiziga qo'yiladi.

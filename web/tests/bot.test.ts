@@ -38,6 +38,7 @@ mock.module(new URL("login.ts", root).href, {
 });
 mock.module(new URL("events.ts", root).href, { namedExports: { trackEvent: async (_u: string, type: string) => { events.push(type); } } });
 mock.module(new URL("rate-limit.ts", root).href, { namedExports: { allow: async () => true } });
+mock.module(new URL("club-stats.ts", root).href, { namedExports: { clubStatsText: async () => "stats" } });
 mock.module(new URL("moderation.ts", root).href, {
   namedExports: {
     adminIds: () => [],
